@@ -42,7 +42,7 @@ export function Navbar() {
               مستندات
             </a>
             <a
-              href="#components"
+              href="/components"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               کامپوننت‌ها
@@ -128,4 +128,3 @@ export function Navbar() {
     </nav>
   );
 }
-
