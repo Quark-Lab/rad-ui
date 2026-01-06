@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { cn } from "@rad-ui/ui";
 
 export function Navbar() {
@@ -24,14 +25,14 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Right side (RTL) */}
-          <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <div className="text-2xl font-bold bg-gradient-to-l from-primary to-primary/60 bg-clip-text text-transparent">
               راد
             </div>
-            <span className="text-sm text-muted-foreground hidden sm:inline">
-              Rad UI
-            </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation - Left side (RTL) */}
           <div className="hidden md:flex items-center gap-6">
