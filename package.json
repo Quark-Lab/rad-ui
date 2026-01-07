@@ -8,10 +8,18 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "devDependencies": {
     "prettier": "^3.2.5",
     "turbo": "^2.0.0",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "packageManager": "npm@9.0.0",
   "workspaces": [
