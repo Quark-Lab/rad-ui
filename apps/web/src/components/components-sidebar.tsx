@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, MousePointer2, Minus } from "lucide-react";
+import { X, Menu, MousePointer2, Minus, User } from "lucide-react";
 import { cn } from "@rad-ui/ui";
 
 // Component list configuration
@@ -28,6 +28,17 @@ const componentCategories = [
         nameFA: "جداکننده",
         href: "/components/separator",
         icon: Minus,
+      },
+    ],
+  },
+  {
+    category: "Display",
+    components: [
+      {
+        name: "Avatar",
+        nameFA: "آواتار",
+        href: "/components/avatar",
+        icon: User,
       },
     ],
   },
