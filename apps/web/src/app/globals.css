@@ -9,11 +9,16 @@
     --foreground: 220 15% 15%;
     --primary: 175 100% 31%; /* #00909e (Firoozeh) */
     --primary-foreground: 0 0% 100%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 220 15% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     --card: 40 20% 96%;
     --card-foreground: 220 15% 15%;
     --border: 40 10% 88%;
     --muted: 40 10% 92%;
     --muted-foreground: 220 10% 40%;
+    --ring: 175 100% 31%;
     --radius: 0.5rem;
   }
 
@@ -23,11 +28,16 @@
     --foreground: 210 40% 98%;
     --primary: 170 65% 50%; /* #2dd4bf (Glowing Firoozeh) */
     --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
     --card: 222 47% 13%;
     --card-foreground: 210 40% 98%;
     --border: 217 33% 20%;
     --muted: 217 33% 17%;
     --muted-foreground: 210 20% 70%;
+    --ring: 170 65% 50%;
   }
 }
 
