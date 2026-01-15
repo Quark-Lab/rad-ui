@@ -70,6 +70,12 @@ const componentCategories = [
         href: "/components/skeleton",
         icon: Loader,
       },
+      {
+        name: "Spinner",
+        nameFA: "اسپینر",
+        href: "/components/spinner",
+        icon: Loader,
+      },
     ],
   },
 ];
