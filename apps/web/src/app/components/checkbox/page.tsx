@@ -13,22 +13,19 @@ export default function CheckboxPage() {
   });
 
   return (
-    <div className="container mx-auto p-8 max-w-6xl" dir="rtl">
+    <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">چک‌باکس</h1>
-        <p className="text-lg text-muted-foreground" dir="ltr">
-          Checkbox
-        </p>
-        <p className="mt-4 text-muted-foreground leading-relaxed">
-          کامپوننت چک‌باکس برای انتخاب یک یا چند گزینه از مجموعه‌ای از انتخاب‌ها استفاده می‌شود. از این کامپوننت در فرم‌ها، تنظیمات و فیلترها استفاده کنید.
+        <h1 className="text-4xl font-bold mb-4">چک‌باکس (Checkbox)</h1>
+        <p className="text-lg text-muted-foreground">
+          کامپوننت چک‌باکس برای انتخاب یک یا چند گزینه از مجموعه‌ای از انتخاب‌ها استفاده می‌شود
         </p>
       </div>
 
       {/* Installation */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4 pb-2 border-b">نصب و راه‌اندازی</h2>
-        <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
+        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
             <code>{`npm install @radix-ui/react-checkbox`}</code>
           </pre>
@@ -36,8 +33,10 @@ export default function CheckboxPage() {
       </section>
 
       {/* Basic Usage */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">استفاده ساده</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">
+          استفاده پایه (Basic Usage)
+        </h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="flex items-center space-x-2 space-x-reverse">
@@ -47,7 +46,7 @@ export default function CheckboxPage() {
               </Label>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`import { Checkbox, Label } from "@rad-ui/ui";
 
@@ -65,8 +64,8 @@ export function CheckboxDemo() {
       </section>
 
       {/* With Label */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">همراه با برچسب</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">با برچسب (With Label)</h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-4">
@@ -84,7 +83,7 @@ export function CheckboxDemo() {
               </div>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`<div className="space-y-4">
   <div className="flex items-center space-x-2 space-x-reverse">
@@ -102,8 +101,8 @@ export function CheckboxDemo() {
       </section>
 
       {/* Controlled */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">کنترل‌شده</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">کنترل شده (Controlled)</h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-4">
@@ -122,7 +121,7 @@ export function CheckboxDemo() {
               </p>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`const [checked, setChecked] = useState(false);
 
@@ -141,8 +140,8 @@ export function CheckboxDemo() {
       </section>
 
       {/* Disabled */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">غیرفعال</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">حالت غیرفعال (Disabled State)</h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-4">
@@ -160,7 +159,7 @@ export function CheckboxDemo() {
               </div>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`<div className="space-y-4">
   <div className="flex items-center space-x-2 space-x-reverse">
@@ -178,8 +177,8 @@ export function CheckboxDemo() {
       </section>
 
       {/* Form Example */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">مثال فرم</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">مثال فرم (Form Example)</h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-6">
@@ -258,7 +257,7 @@ export function CheckboxDemo() {
               </div>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm overflow-x-auto">
               <code>{`const [notifications, setNotifications] = useState({
   email: true,
@@ -290,8 +289,10 @@ export function CheckboxDemo() {
       </section>
 
       {/* Terms Acceptance */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">پذیرش قوانین</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">
+          پذیرش قوانین (Terms Acceptance)
+        </h2>
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-4">
@@ -327,7 +328,7 @@ export function CheckboxDemo() {
               </button>
             </div>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+          <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm overflow-x-auto">
               <code>{`const [termsAccepted, setTermsAccepted] = useState(false);
 
@@ -354,96 +355,109 @@ export function CheckboxDemo() {
       </section>
 
       {/* API Reference */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">مرجع API</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">
+          مرجع API (API Reference)
+        </h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="border-b">
-                <th className="text-right p-3 font-semibold">ویژگی</th>
-                <th className="text-right p-3 font-semibold">نوع</th>
-                <th className="text-right p-3 font-semibold">پیش‌فرض</th>
-                <th className="text-right p-3 font-semibold">توضیحات</th>
+              <tr className="border-b border-border">
+                <th className="text-right p-4 font-semibold">پراپ (Prop)</th>
+                <th className="text-right p-4 font-semibold">نوع (Type)</th>
+                <th className="text-right p-4 font-semibold">
+                  پیش‌فرض (Default)
+                </th>
+                <th className="text-right p-4 font-semibold">
+                  توضیحات (Description)
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  checked
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>
+                  checked</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  boolean
+                <td className="p-4" dir="ltr">
+                  <code>boolean</code>
                 </td>
-                <td className="p-3 font-mono text-sm">-</td>
-                <td className="p-3">وضعیت انتخاب چک‌باکس (کنترل‌شده)</td>
+                <td className="p-4" dir="ltr">
+                  <code>undefined</code>
+                </td>
+                <td className="p-4">وضعیت کنترل شده</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  defaultChecked
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>defaultChecked</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  boolean
+                <td className="p-4" dir="ltr">
+                  <code>boolean</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  false
+                <td className="p-4" dir="ltr">
+                  <code>false</code>
                 </td>
-                <td className="p-3">وضعیت اولیه چک‌باکس (غیرکنترل‌شده)</td>
+                <td className="p-4">وضعیت پیش‌فرض (غیرکنترل شده)</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  onCheckedChange
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>onCheckedChange</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  (checked: boolean) =&gt; void
+                <td className="p-4" dir="ltr">
+                  <code>(checked: boolean) =&gt; void</code>
                 </td>
-                <td className="p-3 font-mono text-sm">-</td>
-                <td className="p-3">تابع فراخوانی شده هنگام تغییر وضعیت</td>
+                <td className="p-4" dir="ltr">
+                  <code>undefined</code>
+                </td>
+                <td className="p-4">تابع فراخوانی هنگام تغییر وضعیت</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  disabled
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>disabled</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  boolean
+                <td className="p-4" dir="ltr">
+                  <code>boolean</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  false
+                <td className="p-4" dir="ltr">
+                  <code>false</code>
                 </td>
-                <td className="p-3">غیرفعال کردن چک‌باکس</td>
+                <td className="p-4">غیرفعال کردن چک‌باکس</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  required
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>required</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  boolean
+                <td className="p-4" dir="ltr">
+                  <code>boolean</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  false
+                <td className="p-4" dir="ltr">
+                  <code>false</code>
                 </td>
-                <td className="p-3">الزامی بودن چک‌باکس در فرم</td>
+                <td className="p-4">الزامی بودن در فرم</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  name
+              <tr className="border-b border-border">
+                <td className="p-4" dir="ltr">
+                  <code>name</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  string
+                <td className="p-4" dir="ltr">
+                  <code>string</code>
                 </td>
-                <td className="p-3 font-mono text-sm">-</td>
-                <td className="p-3">نام چک‌باکس در فرم</td>
+                <td className="p-4" dir="ltr">
+                  <code>undefined</code>
+                </td>
+                <td className="p-4">نام فیلد برای ارسال فرم</td>
               </tr>
-              <tr className="border-b">
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  value
+              <tr>
+                <td className="p-4" dir="ltr">
+                  <code>value</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  string
+                <td className="p-4" dir="ltr">
+                  <code>string</code>
                 </td>
-                <td className="p-3 font-mono text-sm" dir="ltr">
-                  &quot;on&quot;
+                <td className="p-4" dir="ltr">
+                  <code>&quot;on&quot;</code>
                 </td>
-                <td className="p-3">مقدار چک‌باکس هنگام ارسال فرم</td>
+                <td className="p-4">مقدار ارسالی در فرم</td>
               </tr>
             </tbody>
           </table>
@@ -451,113 +465,258 @@ export function CheckboxDemo() {
       </section>
 
       {/* Accessibility */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">دسترسی‌پذیری</h2>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">
+          دسترسی‌پذیری (Accessibility)
+        </h2>
         <div className="space-y-4 text-muted-foreground">
-          <p>
-            کامپوننت Checkbox از Radix UI استفاده می‌کند و دسترسی‌پذیری کامل را
-            فراهم می‌آورد:
-          </p>
-          <ul className="list-disc list-inside space-y-2 mr-4">
-            <li>پشتیبانی کامل از صفحه‌کلید (Space برای تغییر وضعیت)</li>
-            <li>سازگاری با screen readers</li>
-            <li>استفاده از ویژگی‌های ARIA مناسب</li>
-            <li>
-              استفاده از Label برای بهبود تجربه کاربری (کلیک روی متن چک‌باکس را
-              فعال می‌کند)
-            </li>
-            <li>مدیریت وضعیت focus برای ناوبری با صفحه‌کلید</li>
-            <li>پشتیبانی از ویژگی required در فرم‌ها</li>
-          </ul>
+          <div className="p-4 rounded-lg bg-card border border-border">
+            <h3 className="font-semibold text-foreground mb-2">
+              کیبورد (Keyboard)
+            </h3>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                <code className="text-sm bg-muted px-2 py-1 rounded">
+                  Space
+                </code>{" "}
+                - تغییر وضعیت چک‌باکس
+              </li>
+              <li>
+                <code className="text-sm bg-muted px-2 py-1 rounded">Tab</code>{" "}
+                - حرکت به چک‌باکس بعدی
+              </li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-card border border-border">
+            <h3 className="font-semibold text-foreground mb-2">
+              برچسب‌ها (Labels)
+            </h3>
+            <p>
+              همیشه از کامپوننت Label با ویژگی htmlFor استفاده کنید تا چک‌باکس
+              را با برچسب مرتبط کنید
+            </p>
+          </div>
+          <div className="p-4 rounded-lg bg-card border border-border">
+            <h3 className="font-semibold text-foreground mb-2">
+              وضعیت (State)
+            </h3>
+            <p>
+              وضعیت چک‌باکس از طریق{" "}
+              <code className="text-sm bg-muted px-2 py-1 rounded">
+                aria-checked
+              </code>{" "}
+              به صورت خودکار اعلام می‌شود
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Best Practices */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">بهترین روش‌ها</h2>
-        <div className="space-y-4">
-          <div className="p-6 border-r-4 border-green-500 bg-green-500/10 rounded">
-            <h3 className="font-semibold mb-2 text-green-700 dark:text-green-400">
-              ✓ انجام دهید
-            </h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• همیشه از Label همراه با Checkbox استفاده کنید</li>
-              <li>• برچسب‌های واضح و مختصر بنویسید</li>
-              <li>• برای انتخاب‌های مستقل از Checkbox استفاده کنید</li>
-              <li>• در فرم‌ها از حالت کنترل‌شده استفاده کنید</li>
-              <li>• توضیحات اضافی را در کنار چک‌باکس قرار دهید</li>
-            </ul>
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">
+          بهترین شیوه‌ها (Best Practices)
+        </h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold mb-3">برچسب واضح (Clear Labels)</h3>
+            <p className="text-muted-foreground">
+              همیشه از Label همراه با Checkbox استفاده کنید و برچسب‌های واضح و
+              مختصر بنویسید
+            </p>
           </div>
-          <div className="p-6 border-r-4 border-red-500 bg-red-500/10 rounded">
-            <h3 className="font-semibold mb-2 text-red-700 dark:text-red-400">
-              ✗ انجام ندهید
+          <div>
+            <h3 className="font-semibold mb-3">
+              انتخاب‌های مستقل (Independent Choices)
             </h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
-                • برای انتخاب‌های انحصاری از Checkbox استفاده نکنید (از Radio
-                استفاده کنید)
-              </li>
-              <li>• چک‌باکس را بدون برچسب رها نکنید</li>
-              <li>• تعداد زیادی چک‌باکس را در یک گروه قرار ندهید</li>
-              <li>• از چک‌باکس برای اقدامات فوری استفاده نکنید (از Switch استفاده کنید)</li>
-              <li>• برچسب‌های مبهم و طولانی ننویسید</li>
-            </ul>
+            <p className="text-muted-foreground">
+              از Checkbox برای انتخاب‌های مستقل استفاده کنید. برای انتخاب‌های
+              انحصاری از Radio Button استفاده کنید
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3">
+              تفاوت با Switch
+            </h3>
+            <p className="text-muted-foreground">
+              از Checkbox برای انتخاب‌های چندگانه که نیاز به تایید دارند و از
+              Switch برای تنظیمات فوری (روشن/خاموش) استفاده کنید
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3">
+              گروه‌بندی (Grouping)
+            </h3>
+            <p className="text-muted-foreground">
+              چک‌باکس‌های مرتبط را در گروه‌های منطقی دسته‌بندی کنید و از تعداد
+              زیاد چک‌باکس در یک گروه خودداری کنید
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3">
+              توضیحات کمکی (Helper Text)
+            </h3>
+            <p className="text-muted-foreground">
+              برای گزینه‌های پیچیده، متن توضیحی اضافه کنید تا کاربر بهتر متوجه
+              شود چه انتخابی می‌کند
+            </p>
           </div>
         </div>
       </section>
 
       {/* Code Example */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-6 pb-2 border-b">مثال کامل کد</h2>
-        <div className="bg-muted/50 p-6 rounded-lg" dir="ltr">
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
+        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm overflow-x-auto">
             <code>{`import { useState } from "react";
 import { Checkbox, Label } from "@rad-ui/ui";
 
-export function CheckboxExample() {
-  const [preferences, setPreferences] = useState({
-    newsletter: false,
-    updates: true,
-    offers: false,
-  });
-
-  const handleChange = (key: string, value: boolean) => {
-    setPreferences((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
+export default function MyComponent() {
+  const [checked, setChecked] = useState(false);
 
   return (
-    <div className="space-y-4">
+    <div>
+      {/* Basic */}
       <div className="flex items-center space-x-2 space-x-reverse">
-        <Checkbox
-          id="newsletter"
-          checked={preferences.newsletter}
-          onCheckedChange={(checked) => handleChange("newsletter", checked)}
-        />
-        <Label htmlFor="newsletter">دریافت خبرنامه</Label>
+        <Checkbox id="basic" />
+        <Label htmlFor="basic">Accept terms</Label>
       </div>
+
+      {/* Controlled */}
       <div className="flex items-center space-x-2 space-x-reverse">
         <Checkbox
-          id="updates"
-          checked={preferences.updates}
-          onCheckedChange={(checked) => handleChange("updates", checked)}
+          id="controlled"
+          checked={checked}
+          onCheckedChange={setChecked}
         />
-        <Label htmlFor="updates">اطلاع از به‌روزرسانی‌ها</Label>
+        <Label htmlFor="controlled">Controlled checkbox</Label>
       </div>
+
+      {/* Default Checked */}
+      <Checkbox defaultChecked />
+
+      {/* Disabled */}
+      <Checkbox disabled />
+      <Checkbox disabled checked />
+
+      {/* With description */}
       <div className="flex items-center space-x-2 space-x-reverse">
-        <Checkbox
-          id="offers"
-          checked={preferences.offers}
-          onCheckedChange={(checked) => handleChange("offers", checked)}
-        />
-        <Label htmlFor="offers">دریافت پیشنهادات ویژه</Label>
+        <Checkbox id="desc" />
+        <div className="flex flex-col">
+          <Label htmlFor="desc">Enable notifications</Label>
+          <p className="text-sm text-muted-foreground">
+            Receive notifications about updates
+          </p>
+        </div>
       </div>
     </div>
   );
 }`}</code>
           </pre>
+        </div>
+      </section>
+
+      {/* Advanced Examples */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-6">
+          مثال‌های پیشرفته (Advanced Examples)
+        </h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">
+              فرم تنظیمات با حالت ذخیره خودکار (Settings with Auto-save)
+            </h3>
+            <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
+              <pre className="text-sm">
+                <code>{`const [settings, setSettings] = useState({
+  notifications: true,
+  marketing: false,
+  updates: true
+});
+
+// Auto-save on change
+const updateSetting = (key, value) => {
+  setSettings(prev => {
+    const newSettings = { ...prev, [key]: value };
+    // Save to API or localStorage
+    localStorage.setItem('settings', JSON.stringify(newSettings));
+    return newSettings;
+  });
+};
+
+<div className="space-y-4">
+  <div className="flex items-center space-x-2 space-x-reverse">
+    <Checkbox
+      id="notif"
+      checked={settings.notifications}
+      onCheckedChange={(checked) =>
+        updateSetting('notifications', checked)
+      }
+    />
+    <Label htmlFor="notif">Enable Notifications</Label>
+  </div>
+  <div className="flex items-center space-x-2 space-x-reverse">
+    <Checkbox
+      id="marketing"
+      checked={settings.marketing}
+      onCheckedChange={(checked) =>
+        updateSetting('marketing', checked)
+      }
+    />
+    <Label htmlFor="marketing">Marketing Emails</Label>
+  </div>
+</div>`}</code>
+              </pre>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-medium mb-3">
+              انتخاب همه / هیچکدام (Select All / None)
+            </h3>
+            <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
+              <pre className="text-sm">
+                <code>{`const [items, setItems] = useState([
+  { id: 1, label: 'Item 1', checked: false },
+  { id: 2, label: 'Item 2', checked: false },
+  { id: 3, label: 'Item 3', checked: false }
+]);
+
+const allChecked = items.every(item => item.checked);
+const someChecked = items.some(item => item.checked);
+
+const toggleAll = () => {
+  setItems(items.map(item => ({ ...item, checked: !allChecked })));
+};
+
+const toggleItem = (id) => {
+  setItems(items.map(item =>
+    item.id === id ? { ...item, checked: !item.checked } : item
+  ));
+};
+
+<div className="space-y-4">
+  <div className="flex items-center space-x-2 space-x-reverse border-b pb-2">
+    <Checkbox
+      checked={allChecked}
+      onCheckedChange={toggleAll}
+      aria-label="Select all"
+    />
+    <Label>Select All</Label>
+  </div>
+  {items.map(item => (
+    <div key={item.id} className="flex items-center space-x-2 space-x-reverse ml-6">
+      <Checkbox
+        id={item.id}
+        checked={item.checked}
+        onCheckedChange={() => toggleItem(item.id)}
+      />
+      <Label htmlFor={item.id}>{item.label}</Label>
+    </div>
+  ))}
+</div>`}</code>
+              </pre>
+            </div>
+          </div>
         </div>
       </section>
     </div>
