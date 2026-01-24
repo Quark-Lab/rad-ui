@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, MousePointer2, Minus, User, RectangleHorizontal, Keyboard, BadgeCheck, Tag, Loader, BoxSelect, ToggleLeft, ToggleRight, TextCursorInput, Power, SlidersHorizontal } from "lucide-react";
+import { X, Menu, MousePointer2, Minus, User, RectangleHorizontal, Keyboard, BadgeCheck, Tag, Loader, BoxSelect, ToggleLeft, ToggleRight, TextCursorInput, Power, SlidersHorizontal, CheckSquare } from "lucide-react";
 import { cn } from "@rad-ui/ui";
 
 // Component list configuration
@@ -53,6 +53,12 @@ const componentCategories = [
         nameFA: "اسلایدر",
         href: "/components/slider",
         icon: SlidersHorizontal,
+      },
+      {
+        name: "Checkbox",
+        nameFA: "چک‌باکس",
+        href: "/components/checkbox",
+        icon: CheckSquare,
       },
     ],
   },

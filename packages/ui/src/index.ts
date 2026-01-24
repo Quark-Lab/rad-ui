@@ -19,4 +19,6 @@ export type { ToggleProps } from "./toggle";
 export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
 export { Textarea } from "./textarea";
 export type { TextareaProps } from "./textarea";
+export { Checkbox } from "./checkbox";
+export type { CheckboxProps } from "./checkbox";
 
