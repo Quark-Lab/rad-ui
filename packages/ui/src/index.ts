@@ -10,6 +10,7 @@ export { Badge, badgeVariants } from "./badge";
 export type { BadgeProps } from "./badge";
 export { Label } from "./label";
 export { Skeleton } from "./skeleton";
+export { Slider } from "./slider";
 export { Spinner, spinnerVariants } from "./spinner";
 export type { SpinnerProps } from "./spinner";
 export { Switch } from "./switch";
