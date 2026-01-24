@@ -15,4 +15,6 @@ export type { SpinnerProps } from "./spinner";
 export { Toggle, toggleVariants } from "./toggle";
 export type { ToggleProps } from "./toggle";
 export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
+export { Textarea } from "./textarea";
+export type { TextareaProps } from "./textarea";
 
