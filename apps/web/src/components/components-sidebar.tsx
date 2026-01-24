@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, MousePointer2, Minus, User, RectangleHorizontal, Keyboard, BadgeCheck, Tag, Loader, BoxSelect } from "lucide-react";
+import { X, Menu, MousePointer2, Minus, User, RectangleHorizontal, Keyboard, BadgeCheck, Tag, Loader, BoxSelect, ToggleLeft } from "lucide-react";
 import { cn } from "@rad-ui/ui";
 
 // Component list configuration
@@ -23,6 +23,12 @@ const componentCategories = [
         nameFA: "برچسب",
         href: "/components/label",
         icon: Tag,
+      },
+      {
+        name: "Toggle",
+        nameFA: "دکمه دوحالته",
+        href: "/components/toggle",
+        icon: ToggleLeft,
       },
     ],
   },

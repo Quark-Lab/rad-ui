@@ -12,4 +12,6 @@ export { Label } from "./label";
 export { Skeleton } from "./skeleton";
 export { Spinner, spinnerVariants } from "./spinner";
 export type { SpinnerProps } from "./spinner";
+export { Toggle, toggleVariants } from "./toggle";
+export type { ToggleProps } from "./toggle";
 
