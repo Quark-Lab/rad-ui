@@ -36,15 +36,15 @@ export default function RadioGroupPage() {
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <RadioGroup defaultValue="option-one">
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-one" id="option-one" />
                 <Label htmlFor="option-one">گزینه اول</Label>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-two" id="option-two" />
                 <Label htmlFor="option-two">گزینه دوم</Label>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-three" id="option-three" />
                 <Label htmlFor="option-three">گزینه سوم</Label>
               </div>
@@ -57,11 +57,11 @@ export default function RadioGroupPage() {
 export function RadioGroupDemo() {
   return (
     <RadioGroup defaultValue="option-one">
-      <div className="flex items-center space-x-2 space-x-reverse">
+      <div className="flex flex-row-reverse items-center gap-2">
         <RadioGroupItem value="option-one" id="option-one" />
         <Label htmlFor="option-one">گزینه اول</Label>
       </div>
-      <div className="flex items-center space-x-2 space-x-reverse">
+      <div className="flex flex-row-reverse items-center gap-2">
         <RadioGroupItem value="option-two" id="option-two" />
         <Label htmlFor="option-two">گزینه دوم</Label>
       </div>
@@ -81,27 +81,27 @@ export function RadioGroupDemo() {
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <RadioGroup defaultValue="comfortable">
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="default" id="r1" />
-                <div className="flex flex-col">
+                <div className="flex flex-col items-end">
                   <Label htmlFor="r1">پیش‌فرض</Label>
                   <p className="text-sm text-muted-foreground">
                     فاصله‌گذاری استاندارد برای اکثر موارد استفاده
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="comfortable" id="r2" />
-                <div className="flex flex-col">
+                <div className="flex flex-col items-end">
                   <Label htmlFor="r2">راحت</Label>
                   <p className="text-sm text-muted-foreground">
                     فاصله‌گذاری بیشتر برای خوانایی بهتر
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="compact" id="r3" />
-                <div className="flex flex-col">
+                <div className="flex flex-col items-end">
                   <Label htmlFor="r3">فشرده</Label>
                   <p className="text-sm text-muted-foreground">
                     فاصله‌گذاری کمتر برای نمایش بیشتر
@@ -113,9 +113,9 @@ export function RadioGroupDemo() {
           <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`<RadioGroup defaultValue="comfortable">
-  <div className="flex items-center space-x-2 space-x-reverse">
+  <div className="flex flex-row-reverse items-center gap-2">
     <RadioGroupItem value="default" id="r1" />
-    <div className="flex flex-col">
+    <div className="flex flex-col items-end">
       <Label htmlFor="r1">پیش‌فرض</Label>
       <p className="text-sm text-muted-foreground">
         فاصله‌گذاری استاندارد
@@ -137,15 +137,15 @@ export function RadioGroupDemo() {
           <div className="p-8 border rounded-lg bg-card">
             <div className="space-y-4">
               <RadioGroup value={selectedOption} onValueChange={setSelectedOption}>
-                <div className="flex items-center space-x-2 space-x-reverse">
+                <div className="flex flex-row-reverse items-center gap-2">
                   <RadioGroupItem value="default" id="c1" />
                   <Label htmlFor="c1">پیش‌فرض</Label>
                 </div>
-                <div className="flex items-center space-x-2 space-x-reverse">
+                <div className="flex flex-row-reverse items-center gap-2">
                   <RadioGroupItem value="comfortable" id="c2" />
                   <Label htmlFor="c2">راحت</Label>
                 </div>
-                <div className="flex items-center space-x-2 space-x-reverse">
+                <div className="flex flex-row-reverse items-center gap-2">
                   <RadioGroupItem value="compact" id="c3" />
                   <Label htmlFor="c3">فشرده</Label>
                 </div>
@@ -160,7 +160,7 @@ export function RadioGroupDemo() {
               <code>{`const [value, setValue] = useState("comfortable");
 
 <RadioGroup value={value} onValueChange={setValue}>
-  <div className="flex items-center space-x-2 space-x-reverse">
+  <div className="flex flex-row-reverse items-center gap-2">
     <RadioGroupItem value="default" id="c1" />
     <Label htmlFor="c1">پیش‌فرض</Label>
   </div>
@@ -179,17 +179,17 @@ export function RadioGroupDemo() {
         <div className="space-y-6">
           <div className="p-8 border rounded-lg bg-card">
             <RadioGroup defaultValue="option-one">
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-one" id="d1" />
                 <Label htmlFor="d1">گزینه فعال</Label>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-two" id="d2" disabled />
                 <Label htmlFor="d2" className="opacity-50">
                   گزینه غیرفعال
                 </Label>
               </div>
-              <div className="flex items-center space-x-2 space-x-reverse">
+              <div className="flex flex-row-reverse items-center gap-2">
                 <RadioGroupItem value="option-three" id="d3" />
                 <Label htmlFor="d3">گزینه دیگر</Label>
               </div>
@@ -198,11 +198,11 @@ export function RadioGroupDemo() {
           <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
               <code>{`<RadioGroup defaultValue="option-one">
-  <div className="flex items-center space-x-2 space-x-reverse">
+  <div className="flex flex-row-reverse items-center gap-2">
     <RadioGroupItem value="option-one" id="d1" />
     <Label htmlFor="d1">گزینه فعال</Label>
   </div>
-  <div className="flex items-center space-x-2 space-x-reverse">
+  <div className="flex flex-row-reverse items-center gap-2">
     <RadioGroupItem value="option-two" id="d2" disabled />
     <Label htmlFor="d2">گزینه غیرفعال</Label>
   </div>
@@ -235,27 +235,27 @@ export function RadioGroupDemo() {
                   onValueChange={setNotifyMethod}
                   name="notifyMethod"
                 >
-                  <div className="flex items-center space-x-2 space-x-reverse">
+                  <div className="flex flex-row-reverse items-center gap-2">
                     <RadioGroupItem value="email" id="email" />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-end">
                       <Label htmlFor="email">ایمیل</Label>
                       <p className="text-sm text-muted-foreground">
                         دریافت اعلان از طریق ایمیل
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2 space-x-reverse">
+                  <div className="flex flex-row-reverse items-center gap-2">
                     <RadioGroupItem value="sms" id="sms" />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-end">
                       <Label htmlFor="sms">پیامک</Label>
                       <p className="text-sm text-muted-foreground">
                         دریافت اعلان از طریق پیامک
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2 space-x-reverse">
+                  <div className="flex flex-row-reverse items-center gap-2">
                     <RadioGroupItem value="push" id="push" />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-end">
                       <Label htmlFor="push">اعلان فشاری</Label>
                       <p className="text-sm text-muted-foreground">
                         دریافت اعلان فشاری در مرورگر
@@ -281,9 +281,14 @@ export function RadioGroupDemo() {
   console.log("Method:", method);
 }}>
   <RadioGroup value={method} onValueChange={setMethod} name="method">
-    <div className="flex items-center space-x-2 space-x-reverse">
+    <div className="flex flex-row-reverse items-center gap-2">
       <RadioGroupItem value="email" id="email" />
-      <Label htmlFor="email">Email</Label>
+      <div className="flex flex-col items-end">
+        <Label htmlFor="email">Email</Label>
+        <p className="text-sm text-muted-foreground">
+          Receive notifications via email
+        </p>
+      </div>
     </div>
   </RadioGroup>
   <button type="submit">Save</button>
@@ -303,7 +308,7 @@ export function RadioGroupDemo() {
             <RadioGroup value={plan} onValueChange={setPlan}>
               <div className="grid gap-4">
                 <div
-                  className={`relative flex items-start space-x-3 space-x-reverse p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                  className={`relative flex items-start flex-row-reverse gap-2 p-4 border-2 rounded-lg cursor-pointer transition-colors ${
                     plan === "free"
                       ? "border-primary bg-primary/5"
                       : "border-border hover:border-primary/50"
@@ -312,7 +317,7 @@ export function RadioGroupDemo() {
                 >
                   <RadioGroupItem value="free" id="free" className="mt-1" />
                   <div className="flex-1">
-                    <Label htmlFor="free" className="cursor-pointer">
+                    <Label htmlFor="free" className="cursor-pointer flex flex-col items-end">
                       <div className="font-semibold">رایگان</div>
                       <p className="text-sm text-muted-foreground mt-1">
                         برای شروع کار و آزمایش ویژگی‌ها
@@ -322,7 +327,7 @@ export function RadioGroupDemo() {
                   </div>
                 </div>
                 <div
-                  className={`relative flex items-start space-x-3 space-x-reverse p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                  className={`relative flex items-start flex-row-reverse gap-2 p-4 border-2 rounded-lg cursor-pointer transition-colors ${
                     plan === "pro"
                       ? "border-primary bg-primary/5"
                       : "border-border hover:border-primary/50"
@@ -331,7 +336,7 @@ export function RadioGroupDemo() {
                 >
                   <RadioGroupItem value="pro" id="pro" className="mt-1" />
                   <div className="flex-1">
-                    <Label htmlFor="pro" className="cursor-pointer">
+                    <Label htmlFor="pro" className="cursor-pointer flex flex-col items-end">
                       <div className="font-semibold">حرفه‌ای</div>
                       <p className="text-sm text-muted-foreground mt-1">
                         برای کسب‌وکارهای در حال رشد
@@ -341,7 +346,7 @@ export function RadioGroupDemo() {
                   </div>
                 </div>
                 <div
-                  className={`relative flex items-start space-x-3 space-x-reverse p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                  className={`relative flex items-start flex-row-reverse gap-2 p-4 border-2 rounded-lg cursor-pointer transition-colors ${
                     plan === "enterprise"
                       ? "border-primary bg-primary/5"
                       : "border-border hover:border-primary/50"
@@ -350,7 +355,7 @@ export function RadioGroupDemo() {
                 >
                   <RadioGroupItem value="enterprise" id="enterprise" className="mt-1" />
                   <div className="flex-1">
-                    <Label htmlFor="enterprise" className="cursor-pointer">
+                    <Label htmlFor="enterprise" className="cursor-pointer flex flex-col items-end">
                       <div className="font-semibold">سازمانی</div>
                       <p className="text-sm text-muted-foreground mt-1">
                         برای سازمان‌های بزرگ با نیازهای سفارشی
