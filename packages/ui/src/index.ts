@@ -21,4 +21,5 @@ export { Textarea } from "./textarea";
 export type { TextareaProps } from "./textarea";
 export { Checkbox } from "./checkbox";
 export type { CheckboxProps } from "./checkbox";
+export { RadioGroup, RadioGroupItem } from "./radio-group";
 
