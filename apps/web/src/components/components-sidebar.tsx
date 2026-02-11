@@ -4,7 +4,27 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, MousePointer2, Minus, User, RectangleHorizontal, Keyboard, BadgeCheck, Tag, Loader, BoxSelect, ToggleLeft, ToggleRight, TextCursorInput, Power, SlidersHorizontal, CheckSquare, CircleDot } from "lucide-react";
+import {
+  X,
+  Menu,
+  MousePointer2,
+  Minus,
+  User,
+  RectangleHorizontal,
+  Keyboard,
+  BadgeCheck,
+  Tag,
+  Loader,
+  BoxSelect,
+  ToggleLeft,
+  ToggleRight,
+  TextCursorInput,
+  Power,
+  SlidersHorizontal,
+  CheckSquare,
+  CircleDot,
+  ChevronDown,
+} from "lucide-react";
 import { cn } from "@rad-ui/ui";
 
 // Component list configuration
@@ -35,6 +55,12 @@ const componentCategories = [
         nameFA: "گروه دکمه دوحالته",
         href: "/components/toggle-group",
         icon: ToggleRight,
+      },
+      {
+        name: "Native Select",
+        nameFA: "انتخابگر بومی",
+        href: "/components/native-select",
+        icon: ChevronDown,
       },
       {
         name: "Textarea",
@@ -168,7 +194,10 @@ export function ComponentsSidebar({ className }: ComponentsSidebarProps) {
                       <Icon className="h-4 w-4 flex-shrink-0" />
                       <div className="flex-1 flex items-center justify-between">
                         <span>{component.nameFA}</span>
-                        <span className="text-xs text-muted-foreground" dir="ltr">
+                        <span
+                          className="text-xs text-muted-foreground"
+                          dir="ltr"
+                        >
                           {component.name}
                         </span>
                       </div>

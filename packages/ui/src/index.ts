@@ -22,4 +22,14 @@ export type { TextareaProps } from "./textarea";
 export { Checkbox } from "./checkbox";
 export type { CheckboxProps } from "./checkbox";
 export { RadioGroup, RadioGroupItem } from "./radio-group";
-
+export {
+  NativeSelect,
+  NativeSelectOption,
+  NativeSelectOptGroup,
+  nativeSelectVariants,
+} from "./native-select";
+export type {
+  NativeSelectProps,
+  NativeSelectOptionProps,
+  NativeSelectOptGroupProps,
+} from "./native-select";
