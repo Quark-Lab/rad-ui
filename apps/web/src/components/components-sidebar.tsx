@@ -63,6 +63,12 @@ const componentCategories = [
         icon: TextCursorInput,
       },
       {
+        name: "Input OTP",
+        nameFA: "ورودی رمز یکبار مصرف",
+        href: "/components/input-otp",
+        icon: Keyboard,
+      },
+      {
         name: "Native Select",
         nameFA: "انتخابگر بومی",
         href: "/components/native-select",

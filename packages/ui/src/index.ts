@@ -25,6 +25,13 @@ export { RadioGroup, RadioGroupItem } from "./radio-group";
 export { Input, inputVariants } from "./input";
 export type { InputProps } from "./input";
 export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from "./input-otp";
+export { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+export {
   NativeSelect,
   NativeSelectOption,
   NativeSelectOptGroup,
