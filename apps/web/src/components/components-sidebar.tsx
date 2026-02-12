@@ -57,6 +57,12 @@ const componentCategories = [
         icon: ToggleRight,
       },
       {
+        name: "Input",
+        nameFA: "ورودی متن",
+        href: "/components/input",
+        icon: TextCursorInput,
+      },
+      {
         name: "Native Select",
         nameFA: "انتخابگر بومی",
         href: "/components/native-select",
