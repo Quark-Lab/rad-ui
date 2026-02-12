@@ -1,0 +1,22 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "description": "A control that allows the user to toggle between checked and not checked",
+  "platform": "web",
+  "dependencies": [
+    "@radix-ui/react-checkbox",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/checkbox.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\";\nimport { Check } from \"lucide-react\";\nimport { cn } from \"../lib/utils\";\n\nexport interface CheckboxProps\n  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {}\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, ...props }, ref) => (\n  <CheckboxPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"peer h-4 w-4 shrink-0 rounded-sm border border-primary shadow transition-colors\",\n      \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\",\n      className\n    )}\n    {...props}\n  >\n    <CheckboxPrimitive.Indicator\n      className={cn(\"flex items-center justify-center text-current\")}\n    >\n      <Check className=\"h-4 w-4\" />\n    </CheckboxPrimitive.Indicator>\n  </CheckboxPrimitive.Root>\n));\n\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\n\nexport { Checkbox };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

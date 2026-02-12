@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Slider, Label } from "@rad-ui/ui";
+import { Slider, Label } from "@/registry/web/ui";
 import { Volume2, DollarSign } from "lucide-react";
 
 export default function SliderDemo() {
@@ -24,7 +24,7 @@ export default function SliderDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add slider`}</code>
           </pre>
         </div>
       </section>
@@ -563,7 +563,8 @@ export default function SliderDemo() {
         <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`import { Slider, Label } from "@quarklab/rad-ui";
+            <code>{`import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
 import { useState } from "react";
 
 export default function Settings() {

@@ -1,0 +1,21 @@
+{
+  "name": "slider",
+  "type": "registry:ui",
+  "description": "An input where the user selects a value from within a given range",
+  "platform": "web",
+  "dependencies": [
+    "@radix-ui/react-slider"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/slider.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport * as SliderPrimitive from \"@radix-ui/react-slider\";\nimport { cn } from \"../lib/utils\";\n\nconst Slider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n>(({ className, value, defaultValue, ...props }, ref) => {\n  // Determine the number of thumbs based on value or defaultValue\n  const thumbCount = React.useMemo(() => {\n    if (value && Array.isArray(value)) {\n      return value.length;\n    }\n    if (defaultValue && Array.isArray(defaultValue)) {\n      return defaultValue.length;\n    }\n    return 1; // Default to single thumb\n  }, [value, defaultValue]);\n\n  return (\n    <SliderPrimitive.Root\n      ref={ref}\n      className={cn(\n        \"relative flex w-full touch-none select-none items-center\",\n        className\n      )}\n      value={value}\n      defaultValue={defaultValue}\n      {...props}\n    >\n      <SliderPrimitive.Track className=\"relative h-2 w-full grow overflow-hidden rounded-full bg-secondary\">\n        <SliderPrimitive.Range className=\"absolute h-full bg-primary\" />\n      </SliderPrimitive.Track>\n      {Array.from({ length: thumbCount }).map((_, index) => (\n        <SliderPrimitive.Thumb\n          key={index}\n          className=\"block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\"\n        />\n      ))}\n    </SliderPrimitive.Root>\n  );\n});\n\nSlider.displayName = SliderPrimitive.Root.displayName;\n\nexport { Slider };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

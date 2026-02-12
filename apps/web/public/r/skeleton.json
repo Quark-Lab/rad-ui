@@ -1,0 +1,19 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "description": "A placeholder to show while content is loading",
+  "platform": "web",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/skeleton.tsx",
+      "type": "registry:ui",
+      "content": "import { cn } from \"../lib/utils\";\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

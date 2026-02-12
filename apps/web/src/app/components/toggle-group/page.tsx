@@ -1,6 +1,6 @@
 "use client";
 
-import { ToggleGroup, ToggleGroupItem } from "@rad-ui/ui";
+import { ToggleGroup, ToggleGroupItem } from "@/registry/web/ui";
 import {
   Bold,
   Italic,
@@ -18,7 +18,9 @@ export default function ToggleGroupDemo() {
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">گروه دکمه دوحالته (Toggle Group)</h1>
+        <h1 className="text-4xl font-bold mb-4">
+          گروه دکمه دوحالته (Toggle Group)
+        </h1>
         <p className="text-lg text-muted-foreground">
           مجموعه‌ای از دکمه‌های دوحالته که می‌توانند روشن یا خاموش باشند، با
           پشتیبانی از انتخاب تکی یا چندگانه
@@ -30,7 +32,7 @@ export default function ToggleGroupDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add toggle-group`}</code>
           </pre>
         </div>
       </section>
@@ -511,9 +513,7 @@ export default function ToggleGroupDemo() {
             </p>
           </div>
           <div className="p-4 rounded-lg bg-card border border-border">
-            <h3 className="font-semibold text-foreground mb-2">
-              Roving Focus
-            </h3>
+            <h3 className="font-semibold text-foreground mb-2">Roving Focus</h3>
             <p>
               گروه از الگوی roving tabindex برای مدیریت فوکوس استفاده می‌کند که
               تجربه کیبورد را بهبود می‌بخشد
@@ -544,9 +544,7 @@ export default function ToggleGroupDemo() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-3">
-              دسترسی‌پذیری (Accessibility)
-            </h3>
+            <h3 className="font-semibold mb-3">دسترسی‌پذیری (Accessibility)</h3>
             <p className="text-muted-foreground">
               همیشه{" "}
               <code className="text-sm bg-muted px-2 py-1 rounded">
@@ -558,8 +556,8 @@ export default function ToggleGroupDemo() {
           <div>
             <h3 className="font-semibold mb-3">آیکون‌ها (Icons)</h3>
             <p className="text-muted-foreground">
-              از آیکون‌های واضح و شناخته شده استفاده کنید که هدف هر آیتم را
-              مشخص کنند
+              از آیکون‌های واضح و شناخته شده استفاده کنید که هدف هر آیتم را مشخص
+              کنند
             </p>
           </div>
           <div>
@@ -577,7 +575,7 @@ export default function ToggleGroupDemo() {
         <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`import { ToggleGroup, ToggleGroupItem } from "@quarklab/rad-ui";
+            <code>{`import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Bold, Italic, Underline } from "lucide-react";
 
 export default function MyComponent() {

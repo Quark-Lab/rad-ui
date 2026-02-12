@@ -5,7 +5,7 @@ import {
   NativeSelectOption,
   NativeSelectOptGroup,
   Label,
-} from "@rad-ui/ui";
+} from "@/registry/web/ui";
 
 export default function NativeSelectDemo() {
   return (
@@ -26,7 +26,7 @@ export default function NativeSelectDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add native-select`}</code>
           </pre>
         </div>
       </section>

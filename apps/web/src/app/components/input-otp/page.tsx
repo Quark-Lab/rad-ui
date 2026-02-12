@@ -10,7 +10,7 @@ import {
   Button,
   REGEXP_ONLY_DIGITS,
   REGEXP_ONLY_DIGITS_AND_CHARS,
-} from "@rad-ui/ui";
+} from "@/registry/web/ui";
 
 const PERSIAN_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 function toPersianDigits(str: string): string {
@@ -40,7 +40,7 @@ export default function InputOTPDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add input-otp`}</code>
           </pre>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default function InputOTPDemo() {
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-} from "@quarklab/rad-ui";
+} from "@/components/ui/input-otp";
 
 <InputOTP maxLength={6}>
   <InputOTPGroup>

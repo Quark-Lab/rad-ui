@@ -1,0 +1,21 @@
+{
+  "name": "button",
+  "type": "registry:ui",
+  "description": "Displays a button or a component that looks like a button",
+  "platform": "web",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/button.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { type VariantProps, cva } from \"class-variance-authority\";\nimport { cn } from \"../lib/utils\";\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80\",\n        destructive:\n          \"bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80\",\n        outline:\n          \"border border-border bg-background hover:bg-muted hover:text-foreground active:bg-muted/80\",\n        ghost:\n          \"hover:bg-muted hover:text-foreground active:bg-muted/80\",\n        link:\n          \"text-primary underline-offset-4 hover:underline active:text-primary/80\",\n      },\n      size: {\n        sm: \"h-9 px-3 text-xs rounded-md\",\n        md: \"h-10 px-4 py-2\",\n        lg: \"h-11 px-8 text-base rounded-lg\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  }\n);\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean;\n}\n\nconst Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\n  ({ className, variant, size, ...props }, ref) => {\n    return (\n      <button\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      />\n    );\n  }\n);\n\nButton.displayName = \"Button\";\n\nexport { Button, buttonVariants };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

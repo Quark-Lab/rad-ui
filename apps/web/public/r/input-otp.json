@@ -1,0 +1,22 @@
+{
+  "name": "input-otp",
+  "type": "registry:ui",
+  "description": "One-time password input component",
+  "platform": "web",
+  "dependencies": [
+    "input-otp",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/input-otp.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { OTPInput, OTPInputContext } from \"input-otp\";\nimport { MinusIcon } from \"lucide-react\";\n\nimport { cn } from \"../lib/utils\";\n\nconst PERSIAN_DIGITS = [\"۰\", \"۱\", \"۲\", \"۳\", \"۴\", \"۵\", \"۶\", \"۷\", \"۸\", \"۹\"];\n\nfunction toPersianDigit(\n  str: string | null | undefined\n): string | null | undefined {\n  if (!str) return str;\n  return str.replace(/\\d/g, (d) => PERSIAN_DIGITS[parseInt(d)] ?? d);\n}\n\nconst InputOTP = React.forwardRef<\n  React.ElementRef<typeof OTPInput>,\n  React.ComponentPropsWithoutRef<typeof OTPInput> & {\n    containerClassName?: string;\n  }\n>(({ className, containerClassName, ...props }, ref) => (\n  <div dir=\"ltr\">\n    <OTPInput\n      ref={ref}\n      containerClassName={cn(\n        \"flex items-center gap-2 has-[:disabled]:opacity-50\",\n        containerClassName\n      )}\n      className={cn(\"disabled:cursor-not-allowed\", className)}\n      {...props}\n    />\n  </div>\n));\nInputOTP.displayName = \"InputOTP\";\n\nconst InputOTPGroup = React.forwardRef<\n  React.ElementRef<\"div\">,\n  React.ComponentPropsWithoutRef<\"div\">\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"flex items-center\", className)} {...props} />\n));\nInputOTPGroup.displayName = \"InputOTPGroup\";\n\nconst InputOTPSlot = React.forwardRef<\n  React.ElementRef<\"div\">,\n  React.ComponentPropsWithoutRef<\"div\"> & { index: number }\n>(({ index, className, ...props }, ref) => {\n  const inputOTPContext = React.useContext(OTPInputContext);\n  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};\n\n  return (\n    <div\n      ref={ref}\n      className={cn(\n        \"relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm shadow-sm transition-all\",\n        \"first:rounded-l-md first:border-l last:rounded-r-md\",\n        isActive && \"z-10 ring-2 ring-ring\",\n        className\n      )}\n      {...props}\n    >\n      {toPersianDigit(char)}\n      {hasFakeCaret && (\n        <div className=\"pointer-events-none absolute inset-0 flex items-center justify-center\">\n          <div className=\"h-4 w-px animate-caret-blink bg-foreground duration-1000\" />\n        </div>\n      )}\n    </div>\n  );\n});\nInputOTPSlot.displayName = \"InputOTPSlot\";\n\nconst InputOTPSeparator = React.forwardRef<\n  React.ElementRef<\"div\">,\n  React.ComponentPropsWithoutRef<\"div\">\n>(({ ...props }, ref) => (\n  <div ref={ref} role=\"separator\" {...props}>\n    <MinusIcon className=\"h-4 w-4\" />\n  </div>\n));\nInputOTPSeparator.displayName = \"InputOTPSeparator\";\n\nexport { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

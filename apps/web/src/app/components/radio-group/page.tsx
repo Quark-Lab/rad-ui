@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { RadioGroup, RadioGroupItem, Label } from "@rad-ui/ui";
+import { RadioGroup, RadioGroupItem, Label } from "@/registry/web/ui";
 
 export default function RadioGroupPage() {
   const [selectedOption, setSelectedOption] = useState("comfortable");
@@ -52,7 +52,8 @@ export default function RadioGroupPage() {
           </div>
           <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
-              <code>{`import { RadioGroup, RadioGroupItem, Label } from "@quarklab/rad-ui";
+              <code>{`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label"
 
 export function RadioGroupDemo() {
   return (
@@ -693,7 +694,8 @@ export function RadioGroupDemo() {
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
             <code>{`import { useState } from "react";
-import { RadioGroup, RadioGroupItem, Label } from "@quarklab/rad-ui";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label"
 
 export default function MyComponent() {
   const [value, setValue] = useState("option-one");

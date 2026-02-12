@@ -1,0 +1,203 @@
+[
+  {
+    "name": "aspect-ratio",
+    "description": "Displays content within a desired ratio",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-aspect-ratio"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "avatar",
+    "description": "An image element with a fallback for representing the user",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-avatar"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "badge",
+    "description": "Displays a badge or a component that looks like a badge",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "button",
+    "description": "Displays a button or a component that looks like a button",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "checkbox",
+    "description": "A control that allows the user to toggle between checked and not checked",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-checkbox",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "field",
+    "description": "A complete form field with label, description, error message, and more",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "label",
+      "separator"
+    ]
+  },
+  {
+    "name": "input",
+    "description": "A text input field with multiple variants",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "input-group",
+    "description": "Group inputs with addons, buttons, and text",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "button",
+      "input",
+      "textarea"
+    ]
+  },
+  {
+    "name": "input-otp",
+    "description": "One-time password input component",
+    "platform": "web",
+    "dependencies": [
+      "input-otp",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "kbd",
+    "description": "Display keyboard shortcuts and key combinations",
+    "platform": "web",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "label",
+    "description": "Renders an accessible label associated with controls",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-label",
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "native-select",
+    "description": "A native HTML select element with custom styling",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "radio-group",
+    "description": "A set of checkable buttons where only one can be checked at a time",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-radio-group",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "separator",
+    "description": "Visually or semantically separates content",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-separator"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "skeleton",
+    "description": "A placeholder to show while content is loading",
+    "platform": "web",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "slider",
+    "description": "An input where the user selects a value from within a given range",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-slider"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "spinner",
+    "description": "A loading spinner indicator with multiple variants",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "switch",
+    "description": "A control that allows the user to toggle between on and off",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-switch"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "textarea",
+    "description": "A multi-line text input",
+    "platform": "web",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "toggle",
+    "description": "A two-state button that can be either on or off",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-toggle",
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "toggle-group",
+    "description": "A set of two-state buttons that can be toggled on or off",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-toggle-group",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ]
+  }
+]

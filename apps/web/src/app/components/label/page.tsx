@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@rad-ui/ui";
+import { Label } from "@/registry/web/ui";
 
 export default function LabelDemo() {
   return (
@@ -18,7 +18,7 @@ export default function LabelDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add label`}</code>
           </pre>
         </div>
       </section>
@@ -587,7 +587,7 @@ export default function LabelDemo() {
             <h3 className="font-medium mb-3">پایه (Basic)</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Label } from "@quarklab/rad-ui";
+                <code>{`import { Label } from "@/components/ui/label";
 
 <Label htmlFor="email">ایمیل</Label>
 <input type="email" id="email" />`}</code>

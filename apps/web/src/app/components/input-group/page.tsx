@@ -11,7 +11,7 @@ import {
   Label,
   Kbd,
   Button,
-} from "@rad-ui/ui";
+} from "@/registry/web/ui";
 import { Search, Copy, Eye, EyeOff, Mail, Globe, Loader2 } from "lucide-react";
 
 export default function InputGroupDemo() {
@@ -36,7 +36,7 @@ export default function InputGroupDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add input-group`}</code>
           </pre>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function InputGroupDemo() {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@quarklab/rad-ui";
+} from "@/components/ui/input-group";
 
 <InputGroup>
   <InputGroupInput placeholder="جستجو..." />

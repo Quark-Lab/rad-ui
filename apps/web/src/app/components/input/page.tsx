@@ -1,6 +1,6 @@
 "use client";
 
-import { Input, Label, Button, Badge } from "@rad-ui/ui";
+import { Input, Label, Button, Badge } from "@/registry/web/ui";
 import { Search, Mail, User, Phone, MapPin } from "lucide-react";
 
 export default function InputDemo() {
@@ -20,7 +20,7 @@ export default function InputDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add input`}</code>
           </pre>
         </div>
       </section>
