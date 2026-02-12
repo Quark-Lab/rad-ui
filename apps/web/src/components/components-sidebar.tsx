@@ -69,6 +69,12 @@ const componentCategories = [
         icon: Keyboard,
       },
       {
+        name: "Input Group",
+        nameFA: "گروه ورودی",
+        href: "/components/input-group",
+        icon: TextCursorInput,
+      },
+      {
         name: "Native Select",
         nameFA: "انتخابگر بومی",
         href: "/components/native-select",

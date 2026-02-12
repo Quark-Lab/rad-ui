@@ -32,6 +32,20 @@ export {
 } from "./input-otp";
 export { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 export {
+  InputGroup,
+  InputGroupAddon,
+  inputGroupAddonVariants,
+  InputGroupButton,
+  inputGroupButtonVariants,
+  InputGroupText,
+  InputGroupInput,
+  InputGroupTextarea,
+} from "./input-group";
+export type {
+  InputGroupAddonProps,
+  InputGroupButtonProps,
+} from "./input-group";
+export {
   NativeSelect,
   NativeSelectOption,
   NativeSelectOptGroup,
