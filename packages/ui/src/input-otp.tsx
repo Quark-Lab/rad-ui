@@ -8,7 +8,9 @@ import { cn } from "./lib/utils";
 
 const PERSIAN_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
-function toPersianDigit(str: string | undefined): string | undefined {
+function toPersianDigit(
+  str: string | null | undefined
+): string | null | undefined {
   if (!str) return str;
   return str.replace(/\d/g, (d) => PERSIAN_DIGITS[parseInt(d)] ?? d);
 }
