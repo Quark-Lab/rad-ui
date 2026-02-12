@@ -46,6 +46,25 @@ export type {
   InputGroupButtonProps,
 } from "./input-group";
 export {
+  Field,
+  fieldVariants,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from "./field";
+export type {
+  FieldProps,
+  FieldLegendProps,
+  FieldSeparatorProps,
+  FieldErrorProps,
+} from "./field";
+export {
   NativeSelect,
   NativeSelectOption,
   NativeSelectOptGroup,
