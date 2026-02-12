@@ -24,6 +24,7 @@ import {
   CheckSquare,
   CircleDot,
   ChevronDown,
+  FormInput,
 } from "lucide-react";
 import { cn } from "@rad-ui/ui";
 
@@ -73,6 +74,12 @@ const componentCategories = [
         nameFA: "گروه ورودی",
         href: "/components/input-group",
         icon: TextCursorInput,
+      },
+      {
+        name: "Field",
+        nameFA: "فیلد فرم",
+        href: "/components/field",
+        icon: FormInput,
       },
       {
         name: "Native Select",
