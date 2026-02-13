@@ -1,5 +1,4 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import fs from "fs-extra";
 import * as p from "@clack/prompts";
 import chalk from "chalk";
@@ -25,77 +24,26 @@ import {
   type RegistryItem,
 } from "../utils/fetch-registry";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /**
- * Resolve the path to bundled templates (fallback).
- */
-function getTemplatesDir(): string {
-  return path.resolve(__dirname, "..", "templates");
-}
-
-/**
- * Read a component from bundled templates (fallback for offline use).
- */
-async function readBundledTemplate(
-  name: string,
-  platform: string
-): Promise<RegistryItem | null> {
-  const comp = getComponent(name);
-  if (!comp) return null;
-
-  const platformDir = platform === "mobile" ? "mobile" : "web";
-  const templatesDir = getTemplatesDir();
-  const sourceDir = path.resolve(templatesDir, platformDir);
-
-  const files = [];
-  for (const file of comp.files) {
-    const filePath = path.resolve(sourceDir, file);
-    if (await fs.pathExists(filePath)) {
-      const content = await fs.readFile(filePath, "utf-8");
-      files.push({ path: `ui/${file}`, type: "registry:ui", content });
-    }
-  }
-
-  // Read utils
-  const utilsPath = path.resolve(sourceDir, "lib", "utils.ts");
-  const utilsContent = (await fs.pathExists(utilsPath))
-    ? await fs.readFile(utilsPath, "utf-8")
-    : undefined;
-
-  return {
-    name: comp.name,
-    type: "registry:ui",
-    description: comp.description,
-    platform: comp.platform,
-    dependencies: Object.keys(comp.npmDependencies),
-    registryDependencies: comp.internalDependencies,
-    files,
-    utils: utilsContent
-      ? { path: "lib/utils.ts", content: utilsContent }
-      : undefined,
-  };
-}
-
-/**
- * Get component content — try HTTP first, fall back to bundled templates.
+ * Get component content from the HTTP registry.
  */
 async function getComponentContent(
   name: string,
   config: RadUIConfig
 ): Promise<RegistryItem | null> {
-  // Try HTTP registry first
-  if (config.registry) {
-    try {
-      return await fetchComponent(config.registry, name);
-    } catch {
-      // Fall through to bundled
-    }
+  if (!config.registry) {
+    throw new Error(
+      "No registry URL configured. Run `rad-ui init` first."
+    );
   }
 
-  // Fallback to bundled templates
-  return readBundledTemplate(name, config.platform);
+  try {
+    return await fetchComponent(config.registry, name);
+  } catch {
+    throw new Error(
+      `Failed to fetch component "${name}" from ${config.registry}. Is the registry available?`
+    );
+  }
 }
 
 export async function addCommand(

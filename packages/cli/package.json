@@ -1,6 +1,6 @@
 {
   "name": "@quarklab/rad-ui",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "A CLI for adding Rad UI components to your project. Beautiful Persian-themed React components built on Radix UI and Tailwind CSS.",
   "license": "MIT",
   "type": "module",
@@ -9,14 +9,12 @@
     "rad-ui": "dist/index.js"
   },
   "files": [
-    "dist",
-    "templates"
+    "dist"
   ],
   "scripts": {
-    "prebuild": "node scripts/sync-templates.js",
     "build": "tsup",
     "dev": "tsup --watch",
-    "clean": "rm -rf dist templates/web templates/mobile"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "commander": "^12.1.0",

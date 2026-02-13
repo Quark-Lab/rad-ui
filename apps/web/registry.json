@@ -1,0 +1,263 @@
+{
+  "name": "rad-ui",
+  "homepage": "https://rad-ui.com",
+  "registryDir": "registry/web",
+  "items": [
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "description": "Displays content within a desired ratio",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-aspect-ratio@^1.1.8"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/aspect-ratio.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "An image element with a fallback for representing the user",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-avatar@^1.1.11"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/avatar.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Displays a badge or a component that looks like a badge",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/badge.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Displays a button or a component that looks like a button",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/button.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "description": "A control that allows the user to toggle between checked and not checked",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-checkbox@^1.1.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/checkbox.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "description": "A complete form field with label, description, error message, and more",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": ["label", "separator"],
+      "files": [
+        { "path": "registry/web/ui/field.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "A text input field with validation, keyboard filtering, and file validation",
+      "platform": "web",
+      "dependencies": [
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/input/input.tsx", "type": "registry:ui" },
+        { "path": "registry/web/ui/input/validation.ts", "type": "registry:lib" }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "description": "Group inputs with addons, buttons, and text",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": ["button", "input", "textarea"],
+      "files": [
+        { "path": "registry/web/ui/input-group.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "description": "One-time password input component",
+      "platform": "web",
+      "dependencies": ["input-otp@^1.4.2", "lucide-react@^0.309.0"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/input-otp.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "description": "Display keyboard shortcuts and key combinations",
+      "platform": "web",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/kbd.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "description": "Renders an accessible label associated with controls",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-label@^2.1.8",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/label.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "description": "A native HTML select element with custom styling",
+      "platform": "web",
+      "dependencies": [
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/native-select.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "description": "A set of checkable buttons where only one can be checked at a time",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-radio-group@^1.2.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/radio-group.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "description": "Visually or semantically separates content",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-separator@^1.1.8"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/separator.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "A placeholder to show while content is loading",
+      "platform": "web",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/skeleton.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "An input where the user selects a value from within a given range",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-slider@^1.2.0"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/slider.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "description": "A loading spinner indicator with multiple variants",
+      "platform": "web",
+      "dependencies": [
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/spinner.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "description": "A control that allows the user to toggle between on and off",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-switch@^1.1.0"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/switch.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "description": "A multi-line text input",
+      "platform": "web",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/textarea.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "description": "A two-state button that can be either on or off",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-toggle@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/toggle.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "description": "A set of two-state buttons that can be toggled on or off",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-toggle-group@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": ["toggle"],
+      "files": [
+        { "path": "registry/web/ui/toggle-group.tsx", "type": "registry:ui" }
+      ]
+    }
+  ]
+}
