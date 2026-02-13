@@ -1,6 +1,6 @@
 "use client";
 
-import { Toggle } from "@rad-ui/ui";
+import { Toggle } from "@/registry/web/ui";
 import {
   Bold,
   Italic,
@@ -27,7 +27,7 @@ export default function ToggleDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add toggle`}</code>
           </pre>
         </div>
       </section>
@@ -505,7 +505,7 @@ export default function ToggleDemo() {
         <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`import { Toggle } from "@quarklab/rad-ui";
+            <code>{`import { Toggle } from "@/components/ui/toggle";
 import { Italic, Bold } from "lucide-react";
 
 export default function MyComponent() {

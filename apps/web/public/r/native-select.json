@@ -1,0 +1,22 @@
+{
+  "name": "native-select",
+  "type": "registry:ui",
+  "description": "A native HTML select element with custom styling",
+  "platform": "web",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/native-select.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"../lib/utils\";\n\nconst nativeSelectVariants = cva(\n  \"flex w-full appearance-none rounded-md border border-input bg-background px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 pe-8\",\n  {\n    variants: {\n      size: {\n        sm: \"h-9 text-sm\",\n        md: \"h-10 text-sm\",\n        lg: \"h-11 text-base\",\n      },\n    },\n    defaultVariants: {\n      size: \"sm\",\n    },\n  }\n);\n\nexport interface NativeSelectProps\n  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, \"size\">,\n    VariantProps<typeof nativeSelectVariants> {}\n\nconst NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(\n  ({ className, children, size, ...props }, ref) => {\n    return (\n      <div className=\"relative\">\n        <select\n          className={cn(nativeSelectVariants({ size, className }))}\n          ref={ref}\n          {...props}\n        >\n          {children}\n        </select>\n        <ChevronDown className=\"absolute end-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none opacity-50\" />\n      </div>\n    );\n  }\n);\nNativeSelect.displayName = \"NativeSelect\";\n\nexport interface NativeSelectOptionProps\n  extends React.OptionHTMLAttributes<HTMLOptionElement> {}\n\nconst NativeSelectOption = React.forwardRef<\n  HTMLOptionElement,\n  NativeSelectOptionProps\n>(({ className, ...props }, ref) => {\n  return <option className={cn(\"\", className)} ref={ref} {...props} />;\n});\nNativeSelectOption.displayName = \"NativeSelectOption\";\n\nexport interface NativeSelectOptGroupProps\n  extends React.OptgroupHTMLAttributes<HTMLOptGroupElement> {}\n\nconst NativeSelectOptGroup = React.forwardRef<\n  HTMLOptGroupElement,\n  NativeSelectOptGroupProps\n>(({ className, ...props }, ref) => {\n  return <optgroup className={cn(\"\", className)} ref={ref} {...props} />;\n});\nNativeSelectOptGroup.displayName = \"NativeSelectOptGroup\";\n\nexport {\n  NativeSelect,\n  NativeSelectOption,\n  NativeSelectOptGroup,\n  nativeSelectVariants,\n};\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "kbd",
+  "type": "registry:ui",
+  "description": "Display keyboard shortcuts and key combinations",
+  "platform": "web",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/kbd.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\nexport interface KbdProps extends React.HTMLAttributes<HTMLElement> {}\n\nconst Kbd = React.forwardRef<HTMLElement, KbdProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <kbd\n        ref={ref}\n        className={cn(\n          \"pointer-events-none inline-flex h-6 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground shadow-sm\",\n          className\n        )}\n        {...props}\n      />\n    );\n  }\n);\nKbd.displayName = \"Kbd\";\n\nexport interface KbdGroupProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst KbdGroup = React.forwardRef<HTMLDivElement, KbdGroupProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\"inline-flex items-center gap-1\", className)}\n        {...props}\n      />\n    );\n  }\n);\nKbdGroup.displayName = \"KbdGroup\";\n\nexport { Kbd, KbdGroup };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

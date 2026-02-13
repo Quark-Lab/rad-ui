@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@rad-ui/ui";
+import { Skeleton } from "@/registry/web/ui";
 
 export default function SkeletonDemo() {
   return (
@@ -18,7 +18,7 @@ export default function SkeletonDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add skeleton`}</code>
           </pre>
         </div>
       </section>
@@ -382,7 +382,7 @@ export default function SkeletonDemo() {
             <h3 className="font-medium mb-3">پایه (Basic)</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Skeleton } from "@quarklab/rad-ui";
+                <code>{`import { Skeleton } from "@/components/ui/skeleton";
 
 <Skeleton className="h-4 w-[250px]" />`}</code>
               </pre>

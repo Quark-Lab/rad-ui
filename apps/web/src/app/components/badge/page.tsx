@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@rad-ui/ui";
+import { Badge } from "@/registry/web/ui";
 import {
   Check,
   X,
@@ -30,7 +30,7 @@ export default function BadgeDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add badge`}</code>
           </pre>
         </div>
       </section>
@@ -507,7 +507,7 @@ export default function BadgeDemo() {
             <h3 className="font-medium mb-3">پایه (Basic)</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Badge } from "@quarklab/rad-ui";
+                <code>{`import { Badge } from "@/components/ui/badge";
 
 <Badge>فعال</Badge>`}</code>
               </pre>
@@ -530,7 +530,7 @@ export default function BadgeDemo() {
             <h3 className="font-medium mb-3">با آیکون</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Badge } from "@quarklab/rad-ui";
+                <code>{`import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 
 <Badge className="gap-1">

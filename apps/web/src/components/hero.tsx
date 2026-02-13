@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Download } from "lucide-react";
-import { cn } from "@rad-ui/ui";
+import { cn } from "@/registry/web/ui";
 
 export function Hero() {
   return (

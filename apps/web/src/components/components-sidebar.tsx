@@ -26,7 +26,7 @@ import {
   ChevronDown,
   FormInput,
 } from "lucide-react";
-import { cn } from "@rad-ui/ui";
+import { cn } from "@/registry/web/ui";
 
 // Component list configuration
 const componentCategories = [

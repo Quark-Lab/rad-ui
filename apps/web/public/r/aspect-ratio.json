@@ -1,0 +1,21 @@
+{
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "description": "Displays content within a desired ratio",
+  "platform": "web",
+  "dependencies": [
+    "@radix-ui/react-aspect-ratio"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/aspect-ratio.tsx",
+      "type": "registry:ui",
+      "content": "import * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\n\nconst AspectRatio = AspectRatioPrimitive.Root;\n\nexport { AspectRatio };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

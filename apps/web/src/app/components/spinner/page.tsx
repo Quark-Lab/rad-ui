@@ -1,6 +1,6 @@
 "use client";
 
-import { Spinner, Button } from "@rad-ui/ui";
+import { Spinner, Button } from "@/registry/web/ui";
 import { useState } from "react";
 
 export default function SpinnerDemo() {
@@ -26,7 +26,7 @@ export default function SpinnerDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add spinner`}</code>
           </pre>
         </div>
       </section>
@@ -474,7 +474,7 @@ export default function SpinnerDemo() {
             <h3 className="font-medium mb-3">پایه (Basic)</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Spinner } from "@quarklab/rad-ui";
+                <code>{`import { Spinner } from "@/components/ui/spinner";
 
 <Spinner />`}</code>
               </pre>
@@ -508,7 +508,8 @@ export default function SpinnerDemo() {
             <h3 className="font-medium mb-3">در دکمه</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { Button, Spinner } from "@quarklab/rad-ui";
+                <code>{`import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
 <Button disabled>
   <Spinner size="sm" className="me-2" />

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Languages, Code, Palette } from "lucide-react";
-import { cn, Button } from "@rad-ui/ui";
+import { cn, Button } from "@/registry/web/ui";
 import Link from "next/link";
 
 const features = [

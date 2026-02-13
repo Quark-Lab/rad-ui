@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AspectRatio } from "@rad-ui/ui";
+import { AspectRatio } from "@/registry/web/ui";
 
 export default function AspectRatioDemo() {
   return (
@@ -19,7 +19,7 @@ export default function AspectRatioDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npm install @quarklab/rad-ui`}</code>
+            <code>{`npx @quarklab/rad-ui add aspect-ratio`}</code>
           </pre>
         </div>
       </section>
@@ -443,7 +443,7 @@ export default function AspectRatioDemo() {
             <h3 className="font-medium mb-3">پایه (Basic)</h3>
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
-                <code>{`import { AspectRatio } from "@quarklab/rad-ui";
+                <code>{`import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 <AspectRatio ratio={16 / 9}>
   <img src="image.jpg" alt="Description" />
@@ -457,7 +457,7 @@ export default function AspectRatioDemo() {
             <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
               <pre className="text-sm">
                 <code>{`import Image from "next/image";
-import { AspectRatio } from "@quarklab/rad-ui";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 <AspectRatio ratio={16 / 9}>
   <Image

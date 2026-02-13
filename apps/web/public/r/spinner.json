@@ -1,0 +1,22 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "description": "A loading spinner indicator with multiple variants",
+  "platform": "web",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/spinner.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { Loader } from \"lucide-react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"../lib/utils\";\n\nconst spinnerVariants = cva(\"animate-spin\", {\n  variants: {\n    size: {\n      sm: \"size-4\",\n      default: \"size-6\",\n      lg: \"size-8\",\n      xl: \"size-12\",\n    },\n  },\n  defaultVariants: {\n    size: \"default\",\n  },\n});\n\nexport interface SpinnerProps\n  extends React.SVGProps<SVGSVGElement>,\n    VariantProps<typeof spinnerVariants> {\n  srText?: string;\n}\n\nconst Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(\n  ({ className, size, srText = \"Loading...\", ...props }, ref) => {\n    return (\n      <>\n        <Loader\n          ref={ref}\n          className={cn(spinnerVariants({ size }), className)}\n          role=\"status\"\n          aria-label={srText}\n          {...props}\n        />\n        <span className=\"sr-only\">{srText}</span>\n      </>\n    );\n  }\n);\nSpinner.displayName = \"Spinner\";\n\nexport { Spinner, spinnerVariants };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

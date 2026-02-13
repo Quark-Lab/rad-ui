@@ -130,3 +130,6 @@ storybook-static/
 # Build outputs
 *.tgz
 *.tar.gz
+
+# Generated registry JSON
+public/r/

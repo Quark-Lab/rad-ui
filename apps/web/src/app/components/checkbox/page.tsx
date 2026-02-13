@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Checkbox, Label } from "@rad-ui/ui";
+import { Checkbox, Label } from "@/registry/web/ui";
 
 export default function CheckboxPage() {
   const [singleChecked, setSingleChecked] = useState(false);
@@ -48,7 +48,8 @@ export default function CheckboxPage() {
           </div>
           <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
             <pre className="text-sm">
-              <code>{`import { Checkbox, Label } from "@quarklab/rad-ui";
+              <code>{`import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label"
 
 export function CheckboxDemo() {
   return (
@@ -569,7 +570,8 @@ export function CheckboxDemo() {
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm overflow-x-auto">
             <code>{`import { useState } from "react";
-import { Checkbox, Label } from "@quarklab/rad-ui";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label"
 
 export default function MyComponent() {
   const [checked, setChecked] = useState(false);

@@ -10,7 +10,6 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
-    "@rad-ui/ui": "*",
     "expo": "~50.0.0",
     "expo-router": "~3.4.0",
     "expo-status-bar": "~1.11.1",

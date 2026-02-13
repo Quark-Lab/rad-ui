@@ -1,0 +1,19 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "description": "A multi-line text input",
+  "platform": "web",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/textarea.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\nexport interface TextareaProps\n  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}\n\nconst Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <textarea\n        className={cn(\n          \"flex min-h-[60px] w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm transition-colors\",\n          \"placeholder:text-muted-foreground\",\n          \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2\",\n          \"disabled:cursor-not-allowed disabled:opacity-50\",\n          \"resize-y\",\n          className\n        )}\n        ref={ref}\n        {...props}\n      />\n    );\n  }\n);\n\nTextarea.displayName = \"Textarea\";\n\nexport { Textarea };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

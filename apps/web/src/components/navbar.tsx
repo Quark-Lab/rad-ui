@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { cn } from "@rad-ui/ui";
+import { cn } from "@/registry/web/ui";
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
