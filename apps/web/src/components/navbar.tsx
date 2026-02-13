@@ -1,29 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/registry/web/ui";
+import { ThemeSwitcher } from "./theme-switcher";
+
+const navLinks = [
+  { href: "/", label: "صفحه اصلی" },
+  { href: "/installation", label: "نصب" },
+  { href: "/components", label: "کامپوننت‌ها" },
+  { href: "/about", label: "درباره ما" },
+  { href: "/contact", label: "تماس با ما" },
+];
 
 export function Navbar() {
-  const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex-row-reverse flex items-center justify-between h-16">
           {/* Logo - Right side (RTL) */}
           <Link
             href="/"
@@ -36,33 +34,18 @@ export function Navbar() {
 
           {/* Desktop Navigation - Left side (RTL) */}
           <div className="hidden md:flex items-center gap-6">
-            <a
-              href="#docs"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              مستندات
-            </a>
-            <a
-              href="/components"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              کامپوننت‌ها
-            </a>
-
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-lg hover:bg-card transition-colors"
-                aria-label="Toggle theme"
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Theme Switcher */}
+            <ThemeSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,38 +72,19 @@ export function Navbar() {
               className="md:hidden overflow-hidden"
             >
               <div className="py-4 space-y-3 border-t border-border">
-                <a
-                  href="#docs"
-                  className="block text-sm font-medium text-foreground hover:text-primary transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  مستندات
-                </a>
-                <a
-                  href="#components"
-                  className="block text-sm font-medium text-foreground hover:text-primary transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  کامپوننت‌ها
-                </a>
-                {mounted && (
-                  <button
-                    onClick={toggleTheme}
-                    className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors w-full text-right"
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block text-sm font-medium text-foreground hover:text-primary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    {theme === "dark" ? (
-                      <>
-                        <Sun className="h-5 w-5" />
-                        حالت روشن
-                      </>
-                    ) : (
-                      <>
-                        <Moon className="h-5 w-5" />
-                        حالت تاریک
-                      </>
-                    )}
-                  </button>
-                )}
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="pt-2">
+                  <ThemeSwitcher />
+                </div>
               </div>
             </motion.div>
           )}
