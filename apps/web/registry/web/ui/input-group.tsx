@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../lib/utils";
 import { Button } from "./button";
-import { Input } from "./input";
+import { Input } from "./input/input";
 import { Textarea } from "./textarea";
 
 // ---------------------------------------------------------------------------

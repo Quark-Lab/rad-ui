@@ -82,9 +82,10 @@ const components: ComponentDef[] = [
   },
   {
     name: "input",
-    description: "A text input field with multiple variants",
+    description:
+      "A text input field with validation, keyboard filtering, and file validation",
     platform: "web",
-    files: ["input.tsx"],
+    files: ["input/input.tsx", "input/validation.ts"],
     dependencies: ["class-variance-authority", "lucide-react"],
     registryDependencies: [],
   },

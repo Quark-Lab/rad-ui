@@ -24,7 +24,7 @@ const REGISTRY_WEB = path.resolve(
 );
 const TEMPLATES_WEB = path.resolve(CLI_ROOT, "templates", "web");
 
-// Component files to sync
+// Component files to sync (supports both flat files and folder-based components)
 const COMPONENT_FILES = [
   "aspect-ratio.tsx",
   "avatar.tsx",
@@ -32,7 +32,8 @@ const COMPONENT_FILES = [
   "button.tsx",
   "checkbox.tsx",
   "field.tsx",
-  "input.tsx",
+  "input/input.tsx",
+  "input/validation.ts",
   "input-group.tsx",
   "input-otp.tsx",
   "kbd.tsx",
@@ -68,6 +69,9 @@ function syncFiles() {
       console.warn(`  Warning: Source not found: ${file}`);
       continue;
     }
+
+    // Ensure destination subdirectory exists for folder-based components
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
 
     fs.copyFileSync(src, dest);
     synced++;

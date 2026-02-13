@@ -253,9 +253,9 @@ export async function addCommand(
       // Transform import paths
       content = transformImports(content, config);
 
-      // Write to user's project (strip ui/ prefix from path)
-      const fileName = path.basename(file.path);
-      const destPath = path.resolve(componentsDir, fileName);
+      // Write to user's project (strip ui/ prefix, preserve subfolder structure)
+      const relPath = file.path.replace(/^ui\//, "");
+      const destPath = path.resolve(componentsDir, relPath);
       await fs.ensureDir(path.dirname(destPath));
       await fs.writeFile(destPath, content, "utf-8");
       copiedCount++;

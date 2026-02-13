@@ -73,9 +73,10 @@ export const components: ComponentDef[] = [
   },
   {
     name: "input",
-    description: "A text input field with multiple variants",
+    description:
+      "A text input field with validation, keyboard filtering, and file validation",
     platform: "web",
-    files: ["input.tsx"],
+    files: ["input/input.tsx", "input/validation.ts"],
     npmDependencies: {
       "class-variance-authority": "^0.7.1",
       "lucide-react": "^0.309.0",

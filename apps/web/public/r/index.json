@@ -59,7 +59,7 @@
   },
   {
     "name": "input",
-    "description": "A text input field with multiple variants",
+    "description": "A text input field with validation, keyboard filtering, and file validation",
     "platform": "web",
     "dependencies": [
       "class-variance-authority",
