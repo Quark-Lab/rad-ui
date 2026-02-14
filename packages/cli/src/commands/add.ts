@@ -6,10 +6,11 @@ import {
   readConfig,
   configExists,
   resolveComponentsDir,
+  resolveHooksDir,
+  resolveUtilsDir,
   type RadUIConfig,
 } from "../utils/config";
 import {
-  components as registryComponents,
   getComponent,
   getComponentsByPlatform,
   resolveDependencies,
@@ -23,6 +24,104 @@ import {
   fetchRegistryIndex,
   type RegistryItem,
 } from "../utils/fetch-registry";
+
+/**
+ * File type classification for smart file distribution.
+ */
+type FileType = "component" | "hook" | "util";
+
+/**
+ * Classify a file based on its path and name.
+ * - Hooks: files starting with "use-" or "use" (e.g., use-mobile.ts, useDebounce.ts)
+ * - Utils: .ts files that are not components (validation.ts, helpers.ts, schema.ts, etc.)
+ * - Components: .tsx files
+ */
+function classifyFile(filePath: string): FileType {
+  const fileName = path.basename(filePath);
+  const ext = path.extname(filePath);
+
+  // Hooks: use-*.ts or use*.ts pattern
+  if (/^use[-_]?[a-zA-Z]/.test(fileName) && ext === ".ts") {
+    return "hook";
+  }
+
+  // Components are .tsx files
+  if (ext === ".tsx") {
+    return "component";
+  }
+
+  // Everything else that's .ts is a util (validation.ts, schema.ts, helpers.ts, etc.)
+  if (ext === ".ts") {
+    return "util";
+  }
+
+  // Default to component for other extensions (e.g., .css, .json)
+  return "component";
+}
+
+/**
+ * Transform relative imports within a component file to point to the new locations.
+ * 
+ * For example, if input.tsx imports "./validation", and validation.ts is moved to lib/input/,
+ * we need to update the import to point to the user's configured utils path.
+ */
+function transformRelativeImports(
+  content: string,
+  originalFilePath: string,
+  componentFiles: Array<{
+    originalPath: string;
+    destPath: string;
+    content: string;
+    fileType: FileType;
+  }>,
+  config: RadUIConfig,
+  componentName: string
+): string {
+  let result = content;
+
+  // Find all relative imports (e.g., "./validation", "./helpers")
+  const relativeImportRegex = /from\s+["']\.\/([^"']+)["']/g;
+  let match;
+
+  while ((match = relativeImportRegex.exec(content)) !== null) {
+    const importedModule = match[1];
+    
+    // Find the corresponding file in our component files
+    const importedFile = componentFiles.find((f) => {
+      const baseName = path.basename(f.originalPath, path.extname(f.originalPath));
+      // Handle both exact matches and path matches
+      return baseName === importedModule || 
+             f.originalPath.includes(`/${importedModule}.`) ||
+             f.originalPath.endsWith(`/${importedModule}.ts`) ||
+             f.originalPath.endsWith(`/${importedModule}.tsx`);
+    });
+
+    if (importedFile && importedFile.fileType !== "component") {
+      // This import points to a file that was moved
+      let newImportPath: string;
+      
+      if (importedFile.fileType === "hook") {
+        // Hooks go to @/hooks/hookName
+        const hookFileName = path.basename(importedFile.destPath, ".ts");
+        newImportPath = `${config.aliases.hooks}/${hookFileName}`;
+      } else {
+        // Utils go to @/lib/componentName/fileName
+        const utilFileName = path.basename(importedFile.destPath, ".ts");
+        // Get the base utils alias without the "utils" file part
+        const utilsBase = config.aliases.utils.replace(/\/utils$/, "");
+        newImportPath = `${utilsBase}/${componentName}/${utilFileName}`;
+      }
+
+      // Replace the import
+      result = result.replace(
+        new RegExp(`from\\s+["']\\.\\/${importedModule}["']`, "g"),
+        `from "${newImportPath}"`
+      );
+    }
+  }
+
+  return result;
+}
 
 /**
  * Get component content from the HTTP registry.
@@ -134,10 +233,12 @@ export async function addCommand(
     );
   }
 
-  // Determine component output directory
+  // Determine output directories
   const componentsDir = opts.path
     ? path.resolve(cwd, opts.path)
     : resolveComponentsDir(cwd, config);
+  const hooksDir = resolveHooksDir(cwd, config);
+  const utilsDir = resolveUtilsDir(cwd, config);
 
   // Check for existing components
   if (!opts.overwrite) {
@@ -178,9 +279,17 @@ export async function addCommand(
   s.start("Adding components...");
 
   await fs.ensureDir(componentsDir);
+  await fs.ensureDir(hooksDir);
+  await fs.ensureDir(utilsDir);
 
   let copiedCount = 0;
+  let hooksCount = 0;
+  let utilsCount = 0;
   const allDeps: string[] = [];
+
+  // Track where files were placed for import path updates
+  const filePlacements: Map<string, { destPath: string; fileType: FileType }> =
+    new Map();
 
   for (const name of allNames) {
     const item = await getComponentContent(name, config);
@@ -195,22 +304,73 @@ export async function addCommand(
       allDeps.push(...item.dependencies);
     }
 
-    for (const file of item.files) {
-      let content = file.content;
+    // First pass: classify and place files
+    const componentFiles: Array<{
+      originalPath: string;
+      destPath: string;
+      content: string;
+      fileType: FileType;
+    }> = [];
 
-      // Transform import paths
+    for (const file of item.files) {
+      // Strip ui/ prefix from path
+      const relPath = file.path.replace(/^ui\//, "");
+      const fileName = path.basename(relPath);
+      const fileType = classifyFile(relPath);
+
+      // Determine destination based on file type
+      let destPath: string;
+      if (fileType === "component") {
+        // Flatten components: use only filename, not subfolder structure
+        destPath = path.resolve(componentsDir, fileName);
+      } else if (fileType === "hook") {
+        destPath = path.resolve(hooksDir, fileName);
+        hooksCount++;
+      } else {
+        // Utils go into a component-named subfolder to avoid collisions
+        destPath = path.resolve(utilsDir, name, fileName);
+        utilsCount++;
+      }
+
+      componentFiles.push({
+        originalPath: relPath,
+        destPath,
+        content: file.content,
+        fileType,
+      });
+
+      filePlacements.set(relPath, { destPath, fileType });
+    }
+
+    // Second pass: transform imports and write files
+    for (const fileInfo of componentFiles) {
+      let content = fileInfo.content;
+
+      // Transform standard imports (lib/utils -> user's alias)
       content = transformImports(content, config);
 
-      // Write to user's project (strip ui/ prefix, preserve subfolder structure)
-      const relPath = file.path.replace(/^ui\//, "");
-      const destPath = path.resolve(componentsDir, relPath);
-      await fs.ensureDir(path.dirname(destPath));
-      await fs.writeFile(destPath, content, "utf-8");
+      // Transform relative imports within the component to point to new locations
+      // e.g., "./validation" -> user's configured utils path
+      if (fileInfo.fileType === "component") {
+        content = transformRelativeImports(
+          content,
+          fileInfo.originalPath,
+          componentFiles,
+          config,
+          name
+        );
+      }
+
+      await fs.ensureDir(path.dirname(fileInfo.destPath));
+      await fs.writeFile(fileInfo.destPath, content, "utf-8");
       copiedCount++;
     }
   }
 
-  s.stop(`Added ${copiedCount} component file(s).`);
+  const summary: string[] = [`Added ${copiedCount} file(s)`];
+  if (hooksCount > 0) summary.push(`${hooksCount} hook(s)`);
+  if (utilsCount > 0) summary.push(`${utilsCount} util(s)`);
+  s.stop(summary.join(", ") + ".");
 
   // Install npm dependencies
   // Merge HTTP-fetched deps with bundled registry deps

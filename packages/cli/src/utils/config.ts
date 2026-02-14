@@ -15,6 +15,7 @@ export interface RadUIConfig {
   aliases: {
     components: string;
     utils: string;
+    hooks: string;
   };
 }
 
@@ -34,7 +35,14 @@ export async function readConfig(cwd: string): Promise<RadUIConfig> {
   if (!exists) {
     throw new Error(`Configuration file not found. Run \`rad-ui init\` first.`);
   }
-  return fs.readJson(configPath);
+  const config = await fs.readJson(configPath);
+
+  // Provide default for hooks alias for backward compatibility with older configs
+  if (!config.aliases.hooks) {
+    config.aliases.hooks = "@/hooks";
+  }
+
+  return config;
 }
 
 export async function writeConfig(
@@ -55,9 +63,15 @@ export async function writeConfig(
  *
  * Examples (with srcDir = "app"):
  *   "@/components/ui" -> "app/components/ui"
+ *
+ * Examples (with srcDir = "."):
+ *   "@/components/ui" -> "components/ui"
+ *   "@/lib/utils"     -> "lib/utils"
  */
 function resolveAlias(alias: string, srcDir: string): string {
-  return alias.replace(/^@\//, srcDir + "/").replace(/^~\//, srcDir + "/");
+  // When srcDir is "." (root), we replace @/ with nothing (just remove the prefix)
+  const prefix = srcDir === "." ? "" : srcDir + "/";
+  return alias.replace(/^@\//, prefix).replace(/^~\//, prefix);
 }
 
 /**
@@ -74,4 +88,21 @@ export function resolveComponentsDir(cwd: string, config: RadUIConfig): string {
 export function resolveUtilsPath(cwd: string, config: RadUIConfig): string {
   const relPath = resolveAlias(config.aliases.utils, config.srcDir);
   return path.resolve(cwd, relPath + ".ts");
+}
+
+/**
+ * Resolve the utils directory from the config aliases.
+ */
+export function resolveUtilsDir(cwd: string, config: RadUIConfig): string {
+  const relPath = resolveAlias(config.aliases.utils, config.srcDir);
+  // Remove the filename part (e.g., "@/lib/utils" -> "lib")
+  return path.resolve(cwd, path.dirname(relPath));
+}
+
+/**
+ * Resolve the hooks directory from the config aliases.
+ */
+export function resolveHooksDir(cwd: string, config: RadUIConfig): string {
+  const relPath = resolveAlias(config.aliases.hooks, config.srcDir);
+  return path.resolve(cwd, relPath);
 }

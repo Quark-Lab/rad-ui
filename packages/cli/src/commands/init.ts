@@ -36,7 +36,7 @@ export async function initCommand(opts: { yes?: boolean }) {
   const projectType = await detectProjectType(cwd);
   const packageManager = await detectPackageManager(cwd);
   const detectedSrcDir = await detectSrcDir(cwd);
-  const defaultCssPath = getDefaultCssPath(projectType);
+  const defaultCssPath = getDefaultCssPath(projectType, detectedSrcDir);
   const tailwindVersion = await detectTailwindVersion(cwd, defaultCssPath);
 
   if (projectType !== "unknown") {
@@ -44,7 +44,21 @@ export async function initCommand(opts: { yes?: boolean }) {
   }
   p.log.info(`Package manager: ${chalk.cyan(packageManager)}`);
   p.log.info(`Tailwind CSS: ${chalk.cyan(tailwindVersion)}`);
-  p.log.info(`Source directory: ${chalk.cyan(detectedSrcDir + "/")}`);
+  // Display source directory info (show "." as "root" for clarity)
+  const srcDirDisplay = detectedSrcDir === "." ? "project root" : detectedSrcDir + "/";
+  p.log.info(`Source directory: ${chalk.cyan(srcDirDisplay)}`);
+
+  // Compute smart defaults for aliases based on project structure.
+  // For Next.js without src, @ resolves to root but files should go into app/.
+  const isRootNextJs = projectType === "nextjs" && detectedSrcDir === ".";
+  const aliasBase = isRootNextJs ? "@/app" : "@";
+
+  const defaultComponents = `${aliasBase}/components/ui`;
+  const defaultUtils = `${aliasBase}/lib/utils`;
+  const defaultHooks = `${aliasBase}/hooks`;
+
+  // Helper to show example paths based on srcDir
+  const examplePrefix = isRootNextJs ? "app/" : detectedSrcDir === "." ? "" : detectedSrcDir + "/";
 
   // Prompts
   const responses = await p.group(
@@ -60,21 +74,27 @@ export async function initCommand(opts: { yes?: boolean }) {
         }),
       srcDir: () =>
         p.text({
-          message: `Base directory that @ resolves to:`,
+          message: `Base directory that @ resolves to (use "." for project root):`,
           placeholder: detectedSrcDir,
           defaultValue: detectedSrcDir,
         }),
       componentsPath: () =>
         p.text({
-          message: `Where to add UI components (e.g. ${detectedSrcDir}/components/ui):`,
-          placeholder: "@/components/ui",
-          defaultValue: "@/components/ui",
+          message: `Where to add UI components (e.g. ${examplePrefix}components/ui):`,
+          placeholder: defaultComponents,
+          defaultValue: defaultComponents,
         }),
       utilsPath: () =>
         p.text({
-          message: `Where to create the cn() helper (e.g. ${detectedSrcDir}/lib/utils.ts):`,
-          placeholder: "@/lib/utils",
-          defaultValue: "@/lib/utils",
+          message: `Where to create the cn() helper (e.g. ${examplePrefix}lib/utils.ts):`,
+          placeholder: defaultUtils,
+          defaultValue: defaultUtils,
+        }),
+      hooksPath: () =>
+        p.text({
+          message: `Where to add hooks (e.g. ${examplePrefix}hooks):`,
+          placeholder: defaultHooks,
+          defaultValue: defaultHooks,
         }),
       cssPath: () =>
         p.text({
@@ -124,6 +144,7 @@ export async function initCommand(opts: { yes?: boolean }) {
     aliases: {
       components: responses.componentsPath as string,
       utils: responses.utilsPath as string,
+      hooks: responses.hooksPath as string,
     },
   };
 
@@ -148,10 +169,14 @@ export async function initCommand(opts: { yes?: boolean }) {
   // 3. Copy lib/utils.ts
   s.start("Setting up utilities...");
 
+  // Helper function to resolve alias to path (handles "." srcDir)
+  const resolveAliasPath = (alias: string): string => {
+    const prefix = srcDir === "." ? "" : srcDir + "/";
+    return alias.replace(/^@\//, prefix).replace(/^~\//, prefix);
+  };
+
   const utilsAlias = config.aliases.utils;
-  const utilsRelPath =
-    utilsAlias.replace(/^@\//, srcDir + "/").replace(/^~\//, srcDir + "/") +
-    ".ts";
+  const utilsRelPath = resolveAliasPath(utilsAlias) + ".ts";
   const utilsDestPath = path.resolve(cwd, utilsRelPath);
   const utilsDir = path.dirname(utilsDestPath);
   await fs.ensureDir(utilsDir);
@@ -173,9 +198,7 @@ export function cn(...inputs: ClassValue[]) {
     s.start("Configuring Tailwind CSS...");
 
     const tailwindConfigPath = path.resolve(cwd, config.tailwind.config);
-    const componentsRelPath = config.aliases.components
-      .replace(/^@\//, srcDir + "/")
-      .replace(/^~\//, srcDir + "/");
+    const componentsRelPath = resolveAliasPath(config.aliases.components);
 
     if (await fs.pathExists(tailwindConfigPath)) {
       // Read existing config and try to add our content path
@@ -336,6 +359,13 @@ module.exports = {
 
   // Done
   logger.break();
+
+  // Helper to show resolved paths in summary
+  const showResolvedPath = (alias: string, addExtension?: string): string => {
+    const resolved = resolveAliasPath(alias);
+    return resolved + (addExtension || "");
+  };
+
   p.note(
     [
       `${chalk.green("Rad UI has been initialized!")}`,
@@ -345,8 +375,9 @@ module.exports = {
       "",
       `Theme: ${chalk.cyan(selectedTheme?.label || config.theme)}`,
       `Tailwind: ${chalk.cyan(tailwindVersion)}`,
-      `Components: ${chalk.cyan(config.aliases.components)} → ${chalk.dim(srcDir + "/" + config.aliases.components.replace(/^@\//, "").replace(/^~\//, ""))}`,
-      `Utils: ${chalk.cyan(config.aliases.utils)} → ${chalk.dim(srcDir + "/" + config.aliases.utils.replace(/^@\//, "").replace(/^~\//, "") + ".ts")}`,
+      `Components: ${chalk.cyan(config.aliases.components)} → ${chalk.dim(showResolvedPath(config.aliases.components))}`,
+      `Utils: ${chalk.cyan(config.aliases.utils)} → ${chalk.dim(showResolvedPath(config.aliases.utils, ".ts"))}`,
+      `Hooks: ${chalk.cyan(config.aliases.hooks)} → ${chalk.dim(showResolvedPath(config.aliases.hooks))}`,
     ].join("\n"),
     "Next steps"
   );

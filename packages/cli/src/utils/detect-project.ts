@@ -103,39 +103,66 @@ export async function detectTailwindVersion(
 }
 
 /**
- * Detect the source directory by checking tsconfig paths or common patterns.
+ * Detect the source directory by checking tsconfig/jsconfig paths or common patterns.
+ *
+ * Returns:
+ * - "src" if the alias points to ./src/*
+ * - "app" if the alias points to ./app/*
+ * - "." if the alias points to ./* (root-level project structure)
  */
 export async function detectSrcDir(cwd: string): Promise<string> {
-  // Check tsconfig.json for paths alias
-  const tsconfigPath = path.resolve(cwd, "tsconfig.json");
-  if (await fs.pathExists(tsconfigPath)) {
-    try {
-      const raw = await fs.readFile(tsconfigPath, "utf-8");
-      // Simple parse — handle comments by stripping them
-      const cleaned = raw
-        .replace(/\/\/.*$/gm, "")
-        .replace(/\/\*[\s\S]*?\*\//g, "");
-      const tsconfig = JSON.parse(cleaned);
+  // Check tsconfig.json and jsconfig.json for paths alias
+  const configFiles = ["tsconfig.json", "jsconfig.json"];
 
-      const paths = tsconfig?.compilerOptions?.paths;
-      if (paths) {
-        // Look for @/* or ~/* alias
-        const aliasKey = Object.keys(paths).find(
-          (k) => k === "@/*" || k === "~/*"
-        );
-        if (aliasKey) {
-          const aliasTargets = paths[aliasKey];
-          if (Array.isArray(aliasTargets) && aliasTargets.length > 0) {
-            // e.g., ["./src/*"] -> "src"
-            const target = aliasTargets[0]
-              .replace(/^\.\//, "")
-              .replace(/\/\*$/, "");
-            if (target) return target;
+  for (const file of configFiles) {
+    const configPath = path.resolve(cwd, file);
+    if (await fs.pathExists(configPath)) {
+      try {
+        const raw = await fs.readFile(configPath, "utf-8");
+        // Parse JSON — try direct parse first, then strip comments if needed.
+        // The comment-stripping regexes preserve double-quoted strings so that
+        // paths like "**/*.ts" are not corrupted by the // pattern.
+        let config;
+        try {
+          config = JSON.parse(raw);
+        } catch {
+          const cleaned = raw
+            .replace(
+              /("(?:[^"\\]|\\.)*")|\/\/.*$/gm,
+              (_, str) => str || ""
+            )
+            .replace(
+              /("(?:[^"\\]|\\.)*")|\/\*[\s\S]*?\*\//g,
+              (_, str) => str || ""
+            )
+            // Remove trailing commas before } or ]
+            .replace(/,\s*([\]}])/g, "$1");
+          config = JSON.parse(cleaned);
+        }
+
+        const paths = config?.compilerOptions?.paths;
+        if (paths) {
+          // Look for @/* or ~/* alias
+          const aliasKey = Object.keys(paths).find(
+            (k) => k === "@/*" || k === "~/*"
+          );
+          if (aliasKey) {
+            const aliasTargets = paths[aliasKey];
+            if (Array.isArray(aliasTargets) && aliasTargets.length > 0) {
+              // e.g., ["./src/*"] -> "src"
+              // e.g., ["./*"] -> "" (root)
+              const target = aliasTargets[0]
+                .replace(/^\.\//, "")
+                .replace(/\/?\*$/, "");
+
+              // If target is empty string, it means root (./)
+              return target === "" ? "." : target;
+            }
           }
         }
+      } catch {
+        // ignore parse errors
       }
-    } catch {
-      // ignore parse errors
     }
   }
 
@@ -146,18 +173,24 @@ export async function detectSrcDir(cwd: string): Promise<string> {
   return "src";
 }
 
-export function getDefaultCssPath(projectType: ProjectType): string {
+export function getDefaultCssPath(
+  projectType: ProjectType,
+  srcDir?: string
+): string {
+  // If srcDir is "." (root), adjust paths accordingly
+  const prefix = srcDir === "." ? "" : srcDir ? `${srcDir}/` : "src/";
+
   switch (projectType) {
     case "nextjs":
-      return "src/app/globals.css";
+      return `${prefix}app/globals.css`;
     case "vite":
-      return "src/index.css";
+      return `${prefix}index.css`;
     case "cra":
-      return "src/index.css";
+      return `${prefix}index.css`;
     case "expo":
       return "global.css";
     default:
-      return "src/globals.css";
+      return `${prefix}globals.css`;
   }
 }
 
