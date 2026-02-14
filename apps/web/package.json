@@ -33,6 +33,7 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@quarklab/rad-ui": "*",
     "@rad-ui/config": "*",
     "@types/node": "^20.11.5",
     "@types/react": "^18.2.48",
