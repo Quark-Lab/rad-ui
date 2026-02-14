@@ -29,7 +29,7 @@ rad-ui/
 │   │   └── next.config.js
 │   └── mobile/                      # Expo React Native app (coming soon)
 ├── packages/
-│   ├── cli/                         # @quarklab/rad-ui CLI
+│   ├── cli/                         # @quark-lab/rad-ui CLI
 │   │   ├── src/
 │   │   │   ├── index.ts             # Entry point (commander setup)
 │   │   │   ├── commands/
@@ -48,7 +48,7 @@ rad-ui/
 │   │   ├── scripts/
 │   │   │   └── sync-templates.js    # Copies registry -> templates at build time
 │   │   ├── tsup.config.ts
-│   │   └── package.json             # Published as @quarklab/rad-ui
+│   │   └── package.json             # Published as @quark-lab/rad-ui
 │   └── config/                      # Shared ESLint and TypeScript configs
 ├── turbo.json
 └── package.json
@@ -109,7 +109,7 @@ When deployed, these are served as static files at `quarklab.dev/r/button.json`.
 
 ### CLI Flow
 
-**`npx @quarklab/rad-ui init`**
+**`npx @quark-lab/rad-ui init`**
 
 1. Detects project type (Next.js, Vite, etc.) and package manager
 2. Detects Tailwind version (v3 or v4) and source directory
@@ -119,7 +119,7 @@ When deployed, these are served as static files at `quarklab.dev/r/button.json`.
 6. For v4: injects `@import "tailwindcss"` + `@theme inline` in CSS
 7. Installs base dependencies (clsx, tailwind-merge, cva)
 
-**`npx @quarklab/rad-ui add button`**
+**`npx @quark-lab/rad-ui add button`**
 
 1. Reads `rad-ui.json` for config
 2. Resolves internal dependencies (e.g., `field` pulls in `label` + `separator`)

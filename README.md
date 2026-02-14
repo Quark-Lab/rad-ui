@@ -5,8 +5,8 @@ An RTL-first, shadcn-inspired component library with Persian-themed color palett
 ## Install
 
 ```bash
-npx @quarklab/rad-ui init
-npx @quarklab/rad-ui add button
+npx @quark-lab/rad-ui init
+npx @quark-lab/rad-ui add button
 ```
 
 ## Features
@@ -34,7 +34,7 @@ rad-ui/
 │   │   └── src/app/            # Doc pages for each component
 │   └── mobile/                 # Expo React Native app (coming soon)
 ├── packages/
-│   ├── cli/                    # @quarklab/rad-ui CLI (published to npm)
+│   ├── cli/                    # @quark-lab/rad-ui CLI (published to npm)
 │   └── config/                 # Shared ESLint and TypeScript configs
 ├── turbo.json
 └── package.json
@@ -58,7 +58,7 @@ npm run build
 1. **Source of truth** — All 21 components live in `apps/web/registry/web/ui/`
 2. **Doc site** — `apps/web/src/` imports from the registry to render live demos
 3. **Registry build** — A prebuild script generates JSON files at `public/r/*.json`
-4. **CLI** — `npx @quarklab/rad-ui add button` fetches from `quarklab.dev/r/button.json`, falls back to bundled templates if offline
+4. **CLI** — `npx @quark-lab/rad-ui add button` fetches from `quarklab.dev/r/button.json`, falls back to bundled templates if offline
 5. **User's project** — Components are copied as `.tsx` files with imports transformed to match the user's aliases
 
 ## Tech Stack

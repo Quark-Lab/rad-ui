@@ -156,7 +156,7 @@ export async function addCommand(
   // Check config exists
   if (!(await configExists(cwd))) {
     p.log.error(
-      `Configuration not found. Run ${chalk.cyan("npx @quarklab/rad-ui init")} first.`
+      `Configuration not found. Run ${chalk.cyan("npx @quark-lab/rad-ui init")} first.`
     );
     process.exit(1);
   }

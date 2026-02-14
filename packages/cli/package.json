@@ -1,6 +1,6 @@
 {
-  "name": "@quarklab/rad-ui",
-  "version": "0.3.10",
+  "name": "@quark-lab/rad-ui",
+  "version": "0.1.0",
   "description": "A CLI for adding Rad UI components to your project. Beautiful Persian-themed React components built on Radix UI and Tailwind CSS.",
   "license": "MIT",
   "type": "module",
@@ -38,11 +38,23 @@
     "tailwindcss",
     "radix-ui",
     "persian",
-    "quarklab"
+    "quark-lab"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/quarklab/rad-ui.git"
+    "url": "git+https://github.com/quark-lab/rad-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quark-lab/rad-ui/issues"
+  },
+  "author": {
+    "name": "QuarkLab",
+    "email": "info@quarklab.dev",
+    "url": "https://quarklab.dev"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "homepage": "https://quarklab.dev"
 }

@@ -370,8 +370,8 @@ module.exports = {
     [
       `${chalk.green("Rad UI has been initialized!")}`,
       "",
-      `Add components with: ${chalk.cyan("npx @quarklab/rad-ui add <component>")}`,
-      `Add all components:  ${chalk.cyan("npx @quarklab/rad-ui add --all")}`,
+      `Add components with: ${chalk.cyan("npx @quark-lab/rad-ui add <component>")}`,
+      `Add all components:  ${chalk.cyan("npx @quark-lab/rad-ui add --all")}`,
       "",
       `Theme: ${chalk.cyan(selectedTheme?.label || config.theme)}`,
       `Tailwind: ${chalk.cyan(tailwindVersion)}`,

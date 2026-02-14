@@ -42,7 +42,7 @@ export default function InstallationPage() {
               برای شروع سریع، فقط یک دستور کافی است:
             </p>
             <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <code className="text-foreground">npx @quarklab/rad-ui init</code>
+              <code className="text-foreground">npx @quark-lab/rad-ui init</code>
             </div>
             <p className="text-sm text-muted-foreground mt-4">
               این دستور پروژه شما را شناسایی کرده و تنظیمات لازم را انجام می‌دهد.
@@ -103,7 +103,7 @@ export default function InstallationPage() {
                   دستور زیر را در ریشه پروژه خود اجرا کنید:
                 </p>
                 <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto mb-4">
-                  <code className="text-foreground">npx @quarklab/rad-ui init</code>
+                  <code className="text-foreground">npx @quark-lab/rad-ui init</code>
                 </div>
                 <p className="text-muted-foreground mb-4">
                   این دستور از شما چند سوال می‌پرسد:
@@ -156,7 +156,7 @@ export default function InstallationPage() {
                   حالا می‌توانید کامپوننت‌های مورد نیاز خود را اضافه کنید:
                 </p>
                 <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto mb-4">
-                  <code className="text-foreground">npx @quarklab/rad-ui add button</code>
+                  <code className="text-foreground">npx @quark-lab/rad-ui add button</code>
                 </div>
                 <p className="text-muted-foreground mb-4">
                   این دستور:

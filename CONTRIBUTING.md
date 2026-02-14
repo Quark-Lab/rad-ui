@@ -14,7 +14,7 @@ Welcome to Rad UI! We welcome your contributions to this RTL-first, Persian-insp
 
 ```bash
 # Clone the repository
-git clone https://github.com/QuarkComponent/rad-ui.git
+git clone https://github.com/quark-lab/rad-ui.git
 cd rad-ui
 
 # Install dependencies

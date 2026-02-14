@@ -19,7 +19,7 @@ export default function KbdDemo() {
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
         <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
           <pre className="text-sm">
-            <code>{`npx @quarklab/rad-ui add kbd`}</code>
+            <code>{`npx @quark-lab/rad-ui add kbd`}</code>
           </pre>
         </div>
       </section>
