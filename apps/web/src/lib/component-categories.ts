@@ -19,6 +19,7 @@ import {
   FormInput,
   SquareStack,
   MessageSquare,
+  PanelRight,
   type LucideIcon,
 } from "lucide-react";
 
@@ -213,6 +214,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/dialog",
         icon: MessageSquare,
         description: "پنجره مودال برای نمایش محتوای مهم",
+      },
+      {
+        name: "Drawer",
+        nameFA: "کشو",
+        href: "/components/drawer",
+        icon: PanelRight,
+        description: "پنل کشویی برای نمایش محتوا از لبه‌های صفحه",
       },
     ],
   },
