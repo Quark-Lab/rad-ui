@@ -1,289 +1,91 @@
 "use client";
 
-import { useState } from "react";
 import {
-  CodeBlock,
   InstallCodeBlock,
   InlineCodeBlock,
 } from "@/components/docs/code-block";
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  SheetClose,
-  Button,
-  Input,
-  Label,
-} from "@/registry/web/ui";
-
-const codeExamples = {
-  basic: `import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-
-export function SheetDemo() {
-  return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">باز کردن برگه</Button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>عنوان برگه</SheetTitle>
-          <SheetDescription>
-            این یک توضیح کوتاه درباره محتوای برگه است
-          </SheetDescription>
-        </SheetHeader>
-        <div className="py-4">
-          <p>محتوای اصلی برگه</p>
-        </div>
-      </SheetContent>
-    </Sheet>
-  );
-}`,
-  side: `import { Button } from "@/components/ui/button";
+  ComponentExample,
+  ComponentExampleGroup,
+  SubExample,
+} from "@/components/docs/component-example";
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  ApiReferenceSection,
+  PropsTable,
+  type PropDefinition,
+} from "@/components/docs/props-table";
+import BasicExample, { code as basicCode } from "./_examples/basic";
+import SideExample, { code as sideCode } from "./_examples/side";
+import WithFormExample, { code as withFormCode } from "./_examples/with-form";
+import NoCloseButtonExample, { code as noCloseButtonCode } from "./_examples/no-close-button";
+import ControlledExample, { code as controlledCode } from "./_examples/controlled";
+import ScrollableExample, { code as scrollableCode } from "./_examples/scrollable";
+import NavigationExample, { code as navigationCode } from "./_examples/navigation";
+import PreventCloseExample, { code as preventCloseCode } from "./_examples/prevent-close";
 
-const SHEET_SIDES = [
-  { side: "top", label: "بالا" },
-  { side: "right", label: "راست" },
-  { side: "bottom", label: "پایین" },
-  { side: "left", label: "چپ" },
-] as const;
+const sheetProps: PropDefinition[] = [
+  {
+    name: "open",
+    type: "boolean",
+    defaultValue: "undefined",
+    description: "وضعیت باز/بسته بودن (کنترل‌شده)",
+  },
+  {
+    name: "defaultOpen",
+    type: "boolean",
+    defaultValue: "false",
+    description: "وضعیت پیش‌فرض (غیرکنترل‌شده)",
+  },
+  {
+    name: "onOpenChange",
+    type: "(open: boolean) => void",
+    defaultValue: "undefined",
+    description: "تابع فراخوانی هنگام تغییر وضعیت",
+  },
+  {
+    name: "modal",
+    type: "boolean",
+    defaultValue: "true",
+    description: "حالت مودال (بلاک کردن تعامل با پس‌زمینه)",
+  },
+];
 
-export function SheetSide() {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {SHEET_SIDES.map(({ side, label }) => (
-        <Sheet key={side}>
-          <SheetTrigger asChild>
-            <Button variant="outline">{label}</Button>
-          </SheetTrigger>
-          <SheetContent side={side}>
-            <SheetHeader>
-              <SheetTitle>برگه از سمت {label}</SheetTitle>
-            </SheetHeader>
-            <div className="py-4">
-              <p>این برگه از سمت {label} باز می‌شود</p>
-            </div>
-          </SheetContent>
-        </Sheet>
-      ))}
-    </div>
-  );
-}`,
-  withForm: `<Sheet>
-  <SheetTrigger asChild>
-    <Button variant="outline">ویرایش پروفایل</Button>
-  </SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>ویرایش پروفایل</SheetTitle>
-      <SheetDescription>
-        تغییرات خود را اعمال کنید و دکمه ذخیره را بزنید
-      </SheetDescription>
-    </SheetHeader>
-    <div className="grid gap-4 py-4">
-      <div className="grid gap-2">
-        <Label htmlFor="name">نام</Label>
-        <Input id="name" defaultValue="علی کاوسی" />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="username">نام کاربری</Label>
-        <Input id="username" defaultValue="@alikawosi" />
-      </div>
-    </div>
-    <SheetFooter>
-      <SheetClose asChild>
-        <Button variant="outline">انصراف</Button>
-      </SheetClose>
-      <Button type="submit">ذخیره تغییرات</Button>
-    </SheetFooter>
-  </SheetContent>
-</Sheet>`,
-  noCloseButton: `<SheetContent showCloseButton={false}>
-  <SheetHeader>
-    <SheetTitle>بدون دکمه بستن</SheetTitle>
-    <SheetDescription>
-      این برگه دکمه X در گوشه بالا ندارد
-    </SheetDescription>
-  </SheetHeader>
-  <SheetFooter>
-    <SheetClose asChild>
-      <Button variant="outline">بستن</Button>
-    </SheetClose>
-  </SheetFooter>
-</SheetContent>`,
-  controlled: `const [open, setOpen] = useState(false);
-
-<Sheet open={open} onOpenChange={setOpen}>
-  <SheetTrigger asChild>
-    <Button variant="outline">برگه کنترل‌شده</Button>
-  </SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>برگه کنترل‌شده</SheetTitle>
-      <SheetDescription>
-        این برگه با استفاده از state کنترل می‌شود
-      </SheetDescription>
-    </SheetHeader>
-    <SheetFooter>
-      <Button onClick={() => setOpen(false)}>بستن با کد</Button>
-    </SheetFooter>
-  </SheetContent>
-</Sheet>`,
-  scrollable: `<SheetContent>
-  <SheetHeader>
-    <SheetTitle>محتوای قابل اسکرول</SheetTitle>
-    <SheetDescription>...</SheetDescription>
-  </SheetHeader>
-  <div className="flex-1 overflow-y-auto">
-    {/* Long content here */}
-  </div>
-  <SheetFooter>
-    <SheetClose asChild>
-      <Button variant="outline">بستن</Button>
-    </SheetClose>
-  </SheetFooter>
-</SheetContent>`,
-  usage: `import { useState } from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  SheetClose,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-
-export default function MyComponent() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div>
-      {/* Basic Sheet */}
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button>Open Sheet</Button>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Title</SheetTitle>
-            <SheetDescription>Description</SheetDescription>
-          </SheetHeader>
-          <p>Content goes here</p>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </SheetClose>
-            <Button>Confirm</Button>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
-
-      {/* Sheet with side */}
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button>Left Sheet</Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <SheetHeader>
-            <SheetTitle>Left Sheet</SheetTitle>
-          </SheetHeader>
-        </SheetContent>
-      </Sheet>
-
-      {/* Controlled Sheet */}
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
-          <Button>Controlled</Button>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Controlled Sheet</SheetTitle>
-          </SheetHeader>
-          <Button onClick={() => setOpen(false)}>
-            Close programmatically
-          </Button>
-        </SheetContent>
-      </Sheet>
-    </div>
-  );
-}`,
-  navigation: `<Sheet>
-  <SheetTrigger asChild>
-    <Button variant="ghost" size="icon">
-      <Menu className="h-5 w-5" />
-    </Button>
-  </SheetTrigger>
-  <SheetContent side="left">
-    <SheetHeader>
-      <SheetTitle>منوی ناوبری</SheetTitle>
-    </SheetHeader>
-    <nav className="flex flex-col gap-2 py-4">
-      <a href="/" className="px-4 py-2 hover:bg-muted rounded-md">
-        خانه
-      </a>
-      <a href="/products" className="px-4 py-2 hover:bg-muted rounded-md">
-        محصولات
-      </a>
-      <a href="/about" className="px-4 py-2 hover:bg-muted rounded-md">
-        درباره ما
-      </a>
-      <a href="/contact" className="px-4 py-2 hover:bg-muted rounded-md">
-        تماس با ما
-      </a>
-    </nav>
-  </SheetContent>
-</Sheet>`,
-  preventClose: `<SheetContent
-  onPointerDownOutside={(e) => e.preventDefault()}
-  onEscapeKeyDown={(e) => e.preventDefault()}
-  onInteractOutside={(e) => e.preventDefault()}
->
-  <SheetHeader>
-    <SheetTitle>فرم اجباری</SheetTitle>
-    <SheetDescription>
-      این فرم باید تکمیل شود
-    </SheetDescription>
-  </SheetHeader>
-  {/* Form content */}
-  <SheetFooter>
-    <Button type="submit">ارسال</Button>
-  </SheetFooter>
-</SheetContent>`,
-};
+const sheetContentProps: PropDefinition[] = [
+  {
+    name: "side",
+    type: '"top" | "right" | "bottom" | "left"',
+    defaultValue: '"right"',
+    description: "جهت باز شدن برگه",
+  },
+  {
+    name: "showCloseButton",
+    type: "boolean",
+    defaultValue: "true",
+    description: "نمایش دکمه بستن در گوشه بالا",
+  },
+  {
+    name: "onEscapeKeyDown",
+    type: "(event) => void",
+    defaultValue: "undefined",
+    description: "هندلر فشردن کلید Escape",
+  },
+  {
+    name: "onPointerDownOutside",
+    type: "(event) => void",
+    defaultValue: "undefined",
+    description: "هندلر کلیک خارج از برگه",
+  },
+];
 
 export default function SheetPage() {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl font-bold mb-4">برگه (Sheet)</h1>
         <p className="text-lg text-muted-foreground">
-          کامپوننت برگه یک پنل کشویی است که از لبه‌های صفحه (بالا، راست، پایین، چپ)
-          باز می‌شود و برای نمایش محتوای تکمیلی استفاده می‌شود
+          کامپوننت برگه یک پنل کشویی است که از لبه‌های صفحه (بالا، راست، پایین،
+          چپ) باز می‌شود و برای نمایش محتوای تکمیلی استفاده می‌شود.
         </p>
       </div>
 
@@ -296,391 +98,102 @@ export default function SheetPage() {
         />
       </section>
 
-      {/* Component-specific demos */}
+      {/* Examples */}
       <section className="mb-16">
         <h2 className="text-2xl font-semibold mb-6">نمونه‌ها (Examples)</h2>
 
-        {/* Basic Usage */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">
-            استفاده پایه (Basic Usage)
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            ساده‌ترین حالت استفاده از برگه با عنوان و توضیحات
-          </p>
+        <ComponentExample
+          title="استفاده پایه"
+          titleEn="Basic Usage"
+          description="ساده‌ترین حالت استفاده از برگه با عنوان و توضیحات."
+          code={basicCode}
+        >
+          <BasicExample />
+        </ComponentExample>
 
-          <div className="p-8 rounded-t-lg border border-border bg-card flex items-center justify-center">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline">باز کردن برگه</Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>عنوان برگه</SheetTitle>
-                  <SheetDescription>
-                    این یک توضیح کوتاه درباره محتوای برگه است
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="py-4">
-                  <p className="text-muted-foreground">
-                    محتوای اصلی برگه در اینجا قرار می‌گیرد
-                  </p>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+        <ComponentExample
+          title="جهت‌های مختلف"
+          titleEn="Side Variants"
+          description="از پراپ side برای تعیین جهت باز شدن برگه استفاده کنید."
+          code={sideCode}
+        >
+          <SideExample />
+        </ComponentExample>
 
-          <CodeBlock code={codeExamples.basic} />
-        </div>
+        <ComponentExample
+          title="با فرم"
+          titleEn="With Form"
+          description="برگه با فرم ورودی برای ویرایش اطلاعات."
+          code={withFormCode}
+        >
+          <WithFormExample />
+        </ComponentExample>
 
-        {/* Side Variants */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">
-            جهت‌های مختلف (Side Variants)
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            از پراپ side برای تعیین جهت باز شدن برگه استفاده کنید. مقادیر مجاز:
-            top، right، bottom، left
-          </p>
+        <ComponentExample
+          title="بدون دکمه بستن"
+          titleEn="No Close Button"
+          description="مخفی کردن دکمه X در گوشه بالای برگه با showCloseButton=false."
+          code={noCloseButtonCode}
+        >
+          <NoCloseButtonExample />
+        </ComponentExample>
 
-          <div className="p-8 rounded-t-lg border border-border bg-card flex items-center justify-center">
-            <div className="flex flex-wrap gap-2">
-              {(
-                [
-                  { side: "top", label: "بالا" },
-                  { side: "right", label: "راست" },
-                  { side: "bottom", label: "پایین" },
-                  { side: "left", label: "چپ" },
-                ] as const
-              ).map(({ side, label }) => (
-                <Sheet key={side}>
-                  <SheetTrigger asChild>
-                    <Button variant="outline">{label}</Button>
-                  </SheetTrigger>
-                  <SheetContent side={side}>
-                    <SheetHeader>
-                      <SheetTitle>برگه از سمت {label}</SheetTitle>
-                      <SheetDescription>
-                        این برگه از سمت {label} باز می‌شود
-                      </SheetDescription>
-                    </SheetHeader>
-                    <div className="py-4">
-                      <p className="text-muted-foreground">
-                        محتوای برگه در اینجا قرار می‌گیرد
-                      </p>
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              ))}
-            </div>
-          </div>
+        <ComponentExample
+          title="کنترل شده"
+          titleEn="Controlled"
+          description="کنترل وضعیت باز/بسته برگه با استفاده از state."
+          code={controlledCode}
+        >
+          <ControlledExample />
+        </ComponentExample>
 
-          <CodeBlock code={codeExamples.side} />
-        </div>
-
-        {/* With Form */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">با فرم (With Form)</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            برگه با فرم ورودی برای ویرایش اطلاعات
-          </p>
-
-          <div className="p-8 rounded-t-lg border border-border bg-card flex items-center justify-center">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline">ویرایش پروفایل</Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>ویرایش پروفایل</SheetTitle>
-                  <SheetDescription>
-                    تغییرات خود را اعمال کنید و دکمه ذخیره را بزنید
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="grid gap-4 py-4">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">نام</Label>
-                    <Input id="name" defaultValue="علی کاوسی" />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="username">نام کاربری</Label>
-                    <Input id="username" defaultValue="@alikawosi" />
-                  </div>
-                </div>
-                <SheetFooter>
-                  <SheetClose asChild>
-                    <Button variant="outline">انصراف</Button>
-                  </SheetClose>
-                  <Button type="submit">ذخیره تغییرات</Button>
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          <CodeBlock code={codeExamples.withForm} />
-        </div>
-
-        {/* No Close Button */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">
-            بدون دکمه بستن (No Close Button)
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            مخفی کردن دکمه X در گوشه بالای برگه با showCloseButton=false
-          </p>
-
-          <div className="p-8 rounded-t-lg border border-border bg-card flex items-center justify-center">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline">بدون دکمه X</Button>
-              </SheetTrigger>
-              <SheetContent showCloseButton={false}>
-                <SheetHeader>
-                  <SheetTitle>بدون دکمه بستن</SheetTitle>
-                  <SheetDescription>
-                    این برگه دکمه X در گوشه بالا ندارد. برای بستن از دکمه
-                    پایین استفاده کنید
-                  </SheetDescription>
-                </SheetHeader>
-                <SheetFooter>
-                  <SheetClose asChild>
-                    <Button variant="outline">بستن</Button>
-                  </SheetClose>
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          <CodeBlock code={codeExamples.noCloseButton} />
-        </div>
-
-        {/* Controlled */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">کنترل شده (Controlled)</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            کنترل وضعیت باز/بسته برگه با استفاده از state
-          </p>
-
-          <div className="p-8 rounded-t-lg border border-border bg-card flex flex-col items-center justify-center gap-4">
-            <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline">برگه کنترل‌شده</Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>برگه کنترل‌شده</SheetTitle>
-                  <SheetDescription>
-                    این برگه با استفاده از state کنترل می‌شود
-                  </SheetDescription>
-                </SheetHeader>
-                <SheetFooter>
-                  <Button onClick={() => setOpen(false)}>بستن با کد</Button>
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
-            <p className="text-sm text-muted-foreground">
-              وضعیت برگه: {open ? "باز" : "بسته"}
-            </p>
-          </div>
-
-          <CodeBlock code={codeExamples.controlled} />
-        </div>
-
-        {/* Scrollable Content */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-2">
-            محتوای قابل اسکرول (Scrollable Content)
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            برگه با محتوای طولانی که قابل اسکرول است
-          </p>
-
-          <div className="p-8 rounded-t-lg border border-border bg-card flex items-center justify-center">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline">محتوای طولانی</Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>محتوای قابل اسکرول</SheetTitle>
-                  <SheetDescription>
-                    این برگه محتوای طولانی دارد که قابل اسکرول است
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="flex-1 overflow-y-auto py-4">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <p key={index} className="mb-4 leading-relaxed">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                      و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
-                      روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                      شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف
-                      بهبود ابزارهای کاربردی می باشد.
-                    </p>
-                  ))}
-                </div>
-                <SheetFooter>
-                  <SheetClose asChild>
-                    <Button variant="outline">بستن</Button>
-                  </SheetClose>
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          <CodeBlock code={codeExamples.scrollable} />
-        </div>
+        <ComponentExample
+          title="محتوای قابل اسکرول"
+          titleEn="Scrollable Content"
+          description="برگه با محتوای طولانی که قابل اسکرول است."
+          code={scrollableCode}
+        >
+          <ScrollableExample />
+        </ComponentExample>
       </section>
+
+      {/* Advanced Examples */}
+      <ComponentExampleGroup
+        title="مثال‌های پیشرفته"
+        titleEn="Advanced Examples"
+      >
+        <SubExample
+          title="منوی ناوبری"
+          titleEn="Navigation Menu"
+          description="استفاده از برگه برای منوی ناوبری موبایل."
+          code={navigationCode}
+        >
+          <NavigationExample />
+        </SubExample>
+
+        <SubExample
+          title="جلوگیری از بسته شدن"
+          titleEn="Prevent Close"
+          description="جلوگیری از بسته شدن برگه با کلیک خارج یا کلید Escape."
+          code={preventCloseCode}
+        >
+          <PreventCloseExample />
+        </SubExample>
+      </ComponentExampleGroup>
 
       {/* API Reference */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مرجع API (API Reference)
-        </h2>
-
-        {/* Sheet */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Sheet</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-start p-4 font-semibold">پراپ (Prop)</th>
-                  <th className="text-start p-4 font-semibold">نوع (Type)</th>
-                  <th className="text-start p-4 font-semibold">
-                    پیش‌فرض (Default)
-                  </th>
-                  <th className="text-start p-4 font-semibold">
-                    توضیحات (Description)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>open</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">وضعیت باز/بسته بودن (کنترل‌شده)</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>defaultOpen</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>false</code>
-                  </td>
-                  <td className="p-4">وضعیت پیش‌فرض (غیرکنترل‌شده)</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>onOpenChange</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>(open: boolean) =&gt; void</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">تابع فراخوانی هنگام تغییر وضعیت</td>
-                </tr>
-                <tr>
-                  <td className="p-4" dir="ltr">
-                    <code>modal</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>true</code>
-                  </td>
-                  <td className="p-4">
-                    حالت مودال (بلاک کردن تعامل با پس‌زمینه)
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* SheetContent */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">SheetContent</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-start p-4 font-semibold">پراپ (Prop)</th>
-                  <th className="text-start p-4 font-semibold">نوع (Type)</th>
-                  <th className="text-start p-4 font-semibold">
-                    پیش‌فرض (Default)
-                  </th>
-                  <th className="text-start p-4 font-semibold">
-                    توضیحات (Description)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>side</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>&quot;right&quot;</code>
-                  </td>
-                  <td className="p-4">جهت باز شدن برگه</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>showCloseButton</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>true</code>
-                  </td>
-                  <td className="p-4">نمایش دکمه بستن در گوشه بالا</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>onEscapeKeyDown</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>(event) =&gt; void</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">هندلر فشردن کلید Escape</td>
-                </tr>
-                <tr>
-                  <td className="p-4" dir="ltr">
-                    <code>onPointerDownOutside</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>(event) =&gt; void</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">هندلر کلیک خارج از برگه</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <ApiReferenceSection>
+        <PropsTable
+          title="Sheet"
+          description="پراپ‌های کامپوننت Sheet."
+          props={sheetProps}
+        />
+        <PropsTable
+          title="SheetContent"
+          description="پراپ‌های کامپوننت SheetContent."
+          props={sheetContentProps}
+        />
+      </ApiReferenceSection>
 
       {/* Accessibility */}
       <section className="mb-16">
@@ -716,17 +229,8 @@ export default function SheetPage() {
               تله فوکوس (Focus Trap)
             </h3>
             <p>
-              وقتی برگه باز است، فوکوس در داخل آن محبوس می‌شود و کاربر
-              نمی‌تواند با Tab به خارج از برگه برود
-            </p>
-          </div>
-          <div className="p-4 rounded-lg bg-card border border-border">
-            <h3 className="font-semibold text-foreground mb-2">
-              بازگشت فوکوس (Focus Return)
-            </h3>
-            <p>
-              پس از بستن برگه، فوکوس به المانی که برگه را باز کرده بود
-              برمی‌گردد
+              وقتی برگه باز است، فوکوس در داخل آن محبوس می‌شود و کاربر نمی‌تواند
+              با Tab به خارج از برگه برود
             </p>
           </div>
           <div className="p-4 rounded-lg bg-card border border-border">
@@ -760,7 +264,9 @@ export default function SheetPage() {
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-3">انتخاب جهت مناسب (Choose Side Wisely)</h3>
+            <h3 className="font-semibold mb-3">
+              انتخاب جهت مناسب (Choose Side Wisely)
+            </h3>
             <p className="text-muted-foreground">
               جهت راست برای تنظیمات و فرم‌ها، جهت چپ برای منوی ناوبری، و جهت‌های
               بالا/پایین برای اعلان‌ها و فیلترها مناسب هستند
@@ -777,15 +283,6 @@ export default function SheetPage() {
           </div>
           <div>
             <h3 className="font-semibold mb-3">
-              محتوای طولانی (Long Content)
-            </h3>
-            <p className="text-muted-foreground">
-              برای محتوای طولانی از یک div با flex-1 و overflow-y-auto استفاده
-              کنید تا محتوا قابل اسکرول باشد
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3">
               تفاوت با Drawer و Dialog
             </h3>
             <p className="text-muted-foreground">
@@ -793,40 +290,6 @@ export default function SheetPage() {
               برای محتوای موبایل با قابلیت کشیدن و از Dialog برای مودال‌های
               مرکزی استفاده کنید
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Usage */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
-        <InlineCodeBlock code={codeExamples.usage} />
-      </section>
-
-      {/* Advanced Examples */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال‌های پیشرفته (Advanced Examples)
-        </h2>
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">
-              منوی ناوبری (Navigation Menu)
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              استفاده از برگه برای منوی ناوبری موبایل
-            </p>
-            <InlineCodeBlock code={codeExamples.navigation} />
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-2">
-              جلوگیری از بسته شدن (Prevent Close)
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              جلوگیری از بسته شدن برگه با کلیک خارج یا کلید Escape
-            </p>
-            <InlineCodeBlock code={codeExamples.preventClose} />
           </div>
         </div>
       </section>
