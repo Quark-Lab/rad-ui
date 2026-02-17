@@ -13,7 +13,7 @@ import {
 import { Calendar, MapPin } from "lucide-react";
 
 export const code = `import { Calendar, MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Badge,Button,Card,CardHeader,CardTitle,CardDescription,CardContent,CardFooter } from "@/components/ui";
 
 <Card className="max-w-sm overflow-hidden">
   <img
@@ -59,8 +59,7 @@ export default function WithImageExample() {
         </div>
         <CardTitle>همایش طراحی سیستم</CardTitle>
         <CardDescription>
-          یک گفتگوی عملی درباره API کامپوننت‌ها، دسترسی‌پذیری و ارسال
-          سریع‌تر.
+          یک گفتگوی عملی درباره API کامپوننت‌ها، دسترسی‌پذیری و ارسال سریع‌تر.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -1,19 +1,95 @@
 "use client";
 
-import { ToggleGroup, ToggleGroupItem } from "@/registry/web/ui";
 import {
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  LayoutGrid,
-  LayoutList,
-  Rows3,
-} from "lucide-react";
+  InstallCodeBlock,
+  InlineCodeBlock,
+} from "@/components/docs/code-block";
+import {
+  ComponentExample,
+  ComponentExampleGroup,
+  SubExample,
+} from "@/components/docs/component-example";
+import {
+  ApiReferenceSection,
+  PropsTable,
+  type PropDefinition,
+} from "@/components/docs/props-table";
+import SingleSelectionExample, { code as singleSelectionCode } from "./_examples/single";
+import MultipleSelectionExample, { code as multipleSelectionCode } from "./_examples/multiple";
+import VariantsExample, { code as variantsCode } from "./_examples/variants";
+import SizesExample, { code as sizesCode } from "./_examples/sizes";
+import WithTextExample, { code as withTextCode } from "./_examples/with-text";
+import DisabledExample, { code as disabledCode } from "./_examples/disabled";
+import InteractiveExample, { code as interactiveCode } from "./_examples/interactive";
+import FormattingToolbarExample, { code as formattingToolbarCode } from "./_examples/formatting-toolbar";
 
-export default function ToggleGroupDemo() {
+const toggleGroupProps: PropDefinition[] = [
+  {
+    name: "type",
+    type: '"single" | "multiple"',
+    defaultValue: "undefined",
+    description: "نوع انتخاب (تکی یا چندگانه)",
+  },
+  {
+    name: "variant",
+    type: '"default" | "outline" | "ghost"',
+    defaultValue: '"default"',
+    description: "نوع ظاهری گروه",
+  },
+  {
+    name: "size",
+    type: '"sm" | "md" | "lg"',
+    defaultValue: '"md"',
+    description: "اندازه گروه",
+  },
+  {
+    name: "value",
+    type: "string | string[]",
+    defaultValue: "undefined",
+    description: "مقدار کنترل شده",
+  },
+  {
+    name: "defaultValue",
+    type: "string | string[]",
+    defaultValue: "undefined",
+    description: "مقدار پیش‌فرض (غیرکنترل شده)",
+  },
+  {
+    name: "onValueChange",
+    type: "(value) => void",
+    defaultValue: "undefined",
+    description: "تابع فراخوانی هنگام تغییر مقدار",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "غیرفعال کردن کل گروه",
+  },
+];
+
+const toggleGroupItemProps: PropDefinition[] = [
+  {
+    name: "value",
+    type: "string",
+    defaultValue: "-",
+    description: "مقدار یکتای این آیتم",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "غیرفعال کردن این آیتم",
+  },
+  {
+    name: "aria-label",
+    type: "string",
+    defaultValue: "-",
+    description: "برچسب دسترسی‌پذیری",
+  },
+];
+
+export default function ToggleGroupPage() {
   return (
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
@@ -23,441 +99,112 @@ export default function ToggleGroupDemo() {
         </h1>
         <p className="text-lg text-muted-foreground">
           مجموعه‌ای از دکمه‌های دوحالته که می‌توانند روشن یا خاموش باشند، با
-          پشتیبانی از انتخاب تکی یا چندگانه
+          پشتیبانی از انتخاب تکی یا چندگانه.
         </p>
       </div>
 
       {/* Installation */}
       <section className="mb-16">
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
-        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-          <pre className="text-sm">
-            <code>{`npx @quark-lab/rad-ui add toggle-group`}</code>
-          </pre>
-        </div>
+        <InstallCodeBlock code="npx @quark-lab/rad-ui add toggle-group" language="bash" />
       </section>
 
-      {/* Single Selection */}
+      {/* Examples */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          انتخاب تکی (Single Selection)
-        </h2>
-        <div className="p-8 rounded-lg bg-card border border-border">
-          <ToggleGroup type="single" defaultValue="center">
-            <ToggleGroupItem value="right" aria-label="Align right">
-              <AlignRight className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="center" aria-label="Align center">
-              <AlignCenter className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="left" aria-label="Align left">
-              <AlignLeft className="h-4 w-4" />
-            </ToggleGroupItem>
-          </ToggleGroup>
-          <p className="text-sm text-muted-foreground mt-4">
-            فقط یک گزینه می‌تواند در یک زمان انتخاب شود
-          </p>
-        </div>
+        <h2 className="text-2xl font-semibold mb-6">نمونه‌ها (Examples)</h2>
+
+        <ComponentExample
+          title="انتخاب تکی"
+          titleEn="Single Selection"
+          description="گروه دکمه با امکان انتخاب تنها یک گزینه."
+          code={singleSelectionCode}
+        >
+          <SingleSelectionExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="انتخاب چندگانه"
+          titleEn="Multiple Selection"
+          description="گروه دکمه با امکان انتخاب چندین گزینه همزمان."
+          code={multipleSelectionCode}
+        >
+          <MultipleSelectionExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="انواع"
+          titleEn="Variants"
+          description="انواع مختلف ظاهری گروه دکمه دوحالته."
+          code={variantsCode}
+        >
+          <VariantsExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="اندازه‌ها"
+          titleEn="Sizes"
+          description="اندازه‌های مختلف گروه دکمه دوحالته."
+          code={sizesCode}
+        >
+          <SizesExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="با متن"
+          titleEn="With Text"
+          description="گروه دکمه همراه با آیکون و متن."
+          code={withTextCode}
+        >
+          <WithTextExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="حالت غیرفعال"
+          titleEn="Disabled State"
+          description="غیرفعال کردن کل گروه یا آیتم‌های خاص."
+          code={disabledCode}
+        >
+          <DisabledExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="مثال تعاملی"
+          titleEn="Interactive Example"
+          description="نمایش تغییر وضعیت گزینه‌ها در کنسول."
+          code={interactiveCode}
+        >
+          <InteractiveExample />
+        </ComponentExample>
       </section>
 
-      {/* Multiple Selection */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          انتخاب چندگانه (Multiple Selection)
-        </h2>
-        <div className="p-8 rounded-lg bg-card border border-border">
-          <ToggleGroup type="multiple" defaultValue={["bold"]}>
-            <ToggleGroupItem value="bold" aria-label="Toggle bold">
-              <Bold className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="italic" aria-label="Toggle italic">
-              <Italic className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="underline" aria-label="Toggle underline">
-              <Underline className="h-4 w-4" />
-            </ToggleGroupItem>
-          </ToggleGroup>
-          <p className="text-sm text-muted-foreground mt-4">
-            چند گزینه می‌توانند همزمان انتخاب شوند
-          </p>
-        </div>
-      </section>
-
-      {/* Variants */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">انواع (Variants)</h2>
-        <div className="space-y-6">
-          {/* Default Variant */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">پیش‌فرض (Default)</h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" variant="default">
-                <ToggleGroupItem value="bold" aria-label="Bold">
-                  <Bold className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Italic">
-                  <Italic className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Underline">
-                  <Underline className="h-4 w-4" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-
-          {/* Outline Variant */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">حاشیه‌دار (Outline)</h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" variant="outline">
-                <ToggleGroupItem value="bold" aria-label="Bold">
-                  <Bold className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Italic">
-                  <Italic className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Underline">
-                  <Underline className="h-4 w-4" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sizes */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">اندازه‌ها (Sizes)</h2>
-        <div className="space-y-6">
-          {/* Small */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">کوچک (Small)</h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" size="sm" variant="outline">
-                <ToggleGroupItem value="grid" aria-label="Grid view">
-                  <LayoutGrid className="h-3 w-3" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="list" aria-label="List view">
-                  <LayoutList className="h-3 w-3" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="rows" aria-label="Rows view">
-                  <Rows3 className="h-3 w-3" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-
-          {/* Medium */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">متوسط (Medium)</h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" size="md" variant="outline">
-                <ToggleGroupItem value="grid" aria-label="Grid view">
-                  <LayoutGrid className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="list" aria-label="List view">
-                  <LayoutList className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="rows" aria-label="Rows view">
-                  <Rows3 className="h-4 w-4" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-
-          {/* Large */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">بزرگ (Large)</h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" size="lg" variant="outline">
-                <ToggleGroupItem value="grid" aria-label="Grid view">
-                  <LayoutGrid className="h-5 w-5" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="list" aria-label="List view">
-                  <LayoutList className="h-5 w-5" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="rows" aria-label="Rows view">
-                  <Rows3 className="h-5 w-5" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* With Text */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">با متن (With Text)</h2>
-        <div className="p-8 rounded-lg bg-card border border-border">
-          <ToggleGroup type="single" variant="outline" defaultValue="center">
-            <ToggleGroupItem value="right" aria-label="Align right">
-              <AlignRight className="ms-2 h-4 w-4" />
-              راست
-            </ToggleGroupItem>
-            <ToggleGroupItem value="center" aria-label="Align center">
-              <AlignCenter className="ms-2 h-4 w-4" />
-              وسط
-            </ToggleGroupItem>
-            <ToggleGroupItem value="left" aria-label="Align left">
-              <AlignLeft className="ms-2 h-4 w-4" />
-              چپ
-            </ToggleGroupItem>
-          </ToggleGroup>
-        </div>
-      </section>
-
-      {/* Disabled State */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          حالت غیرفعال (Disabled State)
-        </h2>
-        <div className="space-y-6">
-          {/* Entire Group Disabled */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">
-              غیرفعال کردن کل گروه (Entire Group)
-            </h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" variant="outline" disabled>
-                <ToggleGroupItem value="bold" aria-label="Bold">
-                  <Bold className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Italic">
-                  <Italic className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Underline">
-                  <Underline className="h-4 w-4" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-
-          {/* Individual Items Disabled */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">
-              غیرفعال کردن اقلام جداگانه (Individual Items)
-            </h3>
-            <div className="p-8 rounded-lg bg-card border border-border">
-              <ToggleGroup type="single" variant="outline">
-                <ToggleGroupItem value="bold" aria-label="Bold">
-                  <Bold className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="italic" aria-label="Italic" disabled>
-                  <Italic className="h-4 w-4" />
-                </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Underline">
-                  <Underline className="h-4 w-4" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Example */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال تعاملی (Interactive Example)
-        </h2>
-        <div className="p-8 rounded-lg bg-card border border-border">
-          <div className="space-y-4">
-            <ToggleGroup
-              type="multiple"
-              variant="outline"
-              onValueChange={(value) =>
-                console.log("Selected formatting:", value)
-              }
-            >
-              <ToggleGroupItem value="bold" aria-label="Bold">
-                <Bold className="ms-2 h-4 w-4" />
-                پررنگ
-              </ToggleGroupItem>
-              <ToggleGroupItem value="italic" aria-label="Italic">
-                <Italic className="ms-2 h-4 w-4" />
-                کج
-              </ToggleGroupItem>
-              <ToggleGroupItem value="underline" aria-label="Underline">
-                <Underline className="ms-2 h-4 w-4" />
-                زیرخط
-              </ToggleGroupItem>
-            </ToggleGroup>
-            <p className="text-sm text-muted-foreground">
-              گزینه‌های انتخاب شده را در کنسول مشاهده کنید
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Advanced Examples */}
+      <ComponentExampleGroup
+        title="مثال‌های پیشرفته"
+        titleEn="Advanced Examples"
+      >
+        <SubExample
+          title="نوار ابزار قالب‌بندی کامل"
+          titleEn="Full Formatting Toolbar"
+          description="ترکیب گروه‌های دکمه برای ساخت نوار ابزار ویرایشگر متن."
+          code={formattingToolbarCode}
+        >
+          <FormattingToolbarExample />
+        </SubExample>
+      </ComponentExampleGroup>
 
       {/* API Reference */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مرجع API (API Reference)
-        </h2>
-
-        {/* ToggleGroup Props */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">ToggleGroup</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-right p-4 font-semibold">پراپ (Prop)</th>
-                  <th className="text-right p-4 font-semibold">نوع (Type)</th>
-                  <th className="text-right p-4 font-semibold">
-                    پیش‌فرض (Default)
-                  </th>
-                  <th className="text-right p-4 font-semibold">
-                    توضیحات (Description)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>type</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>"single" | "multiple"</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>-</code>
-                  </td>
-                  <td className="p-4">نوع انتخاب (تکی یا چندگانه)</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>variant</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>"default" | "outline"</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>"default"</code>
-                  </td>
-                  <td className="p-4">نوع ظاهری گروه</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>size</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>"sm" | "md" | "lg"</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>"md"</code>
-                  </td>
-                  <td className="p-4">اندازه گروه</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>value</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>string | string[]</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">مقدار کنترل شده</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>defaultValue</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>string | string[]</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">مقدار پیش‌فرض (غیرکنترل شده)</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>onValueChange</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>(value) =&gt; void</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>undefined</code>
-                  </td>
-                  <td className="p-4">تابع فراخوانی هنگام تغییر مقدار</td>
-                </tr>
-                <tr>
-                  <td className="p-4" dir="ltr">
-                    <code>disabled</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>false</code>
-                  </td>
-                  <td className="p-4">غیرفعال کردن کل گروه</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ToggleGroupItem Props */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">ToggleGroupItem</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-right p-4 font-semibold">پراپ (Prop)</th>
-                  <th className="text-right p-4 font-semibold">نوع (Type)</th>
-                  <th className="text-right p-4 font-semibold">
-                    پیش‌فرض (Default)
-                  </th>
-                  <th className="text-right p-4 font-semibold">
-                    توضیحات (Description)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>value</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>string</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>-</code>
-                  </td>
-                  <td className="p-4">مقدار یکتای این آیتم</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="p-4" dir="ltr">
-                    <code>disabled</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>boolean</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>false</code>
-                  </td>
-                  <td className="p-4">غیرفعال کردن این آیتم</td>
-                </tr>
-                <tr>
-                  <td className="p-4" dir="ltr">
-                    <code>aria-label</code>
-                  </td>
-                  <td className="p-4" dir="ltr">
-                    <code>string</code>
-                  </td>
-                  <td className="p-4">-</td>
-                  <td className="p-4">برچسب دسترسی‌پذیری</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <ApiReferenceSection>
+        <PropsTable
+          title="ToggleGroup"
+          description="پراپ‌های کامپوننت ToggleGroup."
+          props={toggleGroupProps}
+        />
+        <PropsTable
+          title="ToggleGroupItem"
+          description="پراپ‌های کامپوننت ToggleGroupItem."
+          props={toggleGroupItemProps}
+        />
+      </ApiReferenceSection>
 
       {/* Accessibility */}
       <section className="mb-16">
@@ -566,126 +313,6 @@ export default function ToggleGroupDemo() {
               آیتم‌های مرتبط را در یک گروه قرار دهید. برای دسته‌های مختلف از
               گروه‌های جداگانه استفاده کنید
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Example */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
-        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-          <pre className="text-sm">
-            <code>{`import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Bold, Italic, Underline } from "lucide-react";
-
-export default function MyComponent() {
-  return (
-    <div>
-      {/* Single selection */}
-      <ToggleGroup type="single" defaultValue="center">
-        <ToggleGroupItem value="left" aria-label="Align left">
-          <AlignLeft className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="center" aria-label="Align center">
-          <AlignCenter className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Align right">
-          <AlignRight className="h-4 w-4" />
-        </ToggleGroupItem>
-      </ToggleGroup>
-
-      {/* Multiple selection */}
-      <ToggleGroup type="multiple">
-        <ToggleGroupItem value="bold" aria-label="Bold">
-          <Bold className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="italic" aria-label="Italic">
-          <Italic className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="underline" aria-label="Underline">
-          <Underline className="h-4 w-4" />
-        </ToggleGroupItem>
-      </ToggleGroup>
-
-      {/* With variant and size */}
-      <ToggleGroup type="single" variant="outline" size="lg">
-        <ToggleGroupItem value="grid">Grid</ToggleGroupItem>
-        <ToggleGroupItem value="list">List</ToggleGroupItem>
-      </ToggleGroup>
-
-      {/* Controlled */}
-      <ToggleGroup
-        type="single"
-        value={alignment}
-        onValueChange={setAlignment}
-      >
-        <ToggleGroupItem value="left">Left</ToggleGroupItem>
-        <ToggleGroupItem value="center">Center</ToggleGroupItem>
-        <ToggleGroupItem value="right">Right</ToggleGroupItem>
-      </ToggleGroup>
-    </div>
-  );
-}`}</code>
-          </pre>
-        </div>
-      </section>
-
-      {/* Advanced Examples */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال‌های پیشرفته (Advanced Examples)
-        </h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-3">
-              نوار ابزار قالب‌بندی کامل (Full Formatting Toolbar)
-            </h3>
-            <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-              <pre className="text-sm">
-                <code>{`const [formatting, setFormatting] = useState([]);
-const [alignment, setAlignment] = useState("right");
-
-<div className="flex gap-2 p-2 border rounded-lg">
-  <ToggleGroup
-    type="multiple"
-    value={formatting}
-    onValueChange={setFormatting}
-    variant="outline"
-    size="sm"
-  >
-    <ToggleGroupItem value="bold" aria-label="Bold">
-      <Bold className="h-4 w-4" />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="italic" aria-label="Italic">
-      <Italic className="h-4 w-4" />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="underline" aria-label="Underline">
-      <Underline className="h-4 w-4" />
-    </ToggleGroupItem>
-  </ToggleGroup>
-
-  <div className="w-px bg-border" />
-
-  <ToggleGroup
-    type="single"
-    value={alignment}
-    onValueChange={setAlignment}
-    variant="outline"
-    size="sm"
-  >
-    <ToggleGroupItem value="right" aria-label="Align right">
-      <AlignRight className="h-4 w-4" />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="center" aria-label="Align center">
-      <AlignCenter className="h-4 w-4" />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="left" aria-label="Align left">
-      <AlignLeft className="h-4 w-4" />
-    </ToggleGroupItem>
-  </ToggleGroup>
-</div>`}</code>
-              </pre>
-            </div>
           </div>
         </div>
       </section>

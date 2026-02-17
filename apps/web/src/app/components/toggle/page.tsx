@@ -1,16 +1,80 @@
 "use client";
 
-import { Toggle } from "@/registry/web/ui";
 import {
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-} from "lucide-react";
+  InstallCodeBlock,
+  InlineCodeBlock,
+} from "@/components/docs/code-block";
+import {
+  ComponentExample,
+  ComponentExampleGroup,
+  SubExample,
+} from "@/components/docs/component-example";
+import {
+  ApiReferenceSection,
+  PropsTable,
+  type PropDefinition,
+} from "@/components/docs/props-table";
+import BasicExample, { code as basicCode } from "./_examples/basic";
+import VariantsExample, { code as variantsCode } from "./_examples/variants";
+import SizesExample, { code as sizesCode } from "./_examples/sizes";
+import WithTextExample, { code as withTextCode } from "./_examples/with-text";
+import DisabledExample, { code as disabledCode } from "./_examples/disabled";
+import InteractiveExample, { code as interactiveCode } from "./_examples/interactive";
+import CustomStylingExample, { code as customStylingCode } from "./_examples/custom-styling";
+import FormattingToolbarExample, { code as formattingToolbarCode } from "./_examples/formatting-toolbar";
 
-export default function ToggleDemo() {
+const toggleProps: PropDefinition[] = [
+  {
+    name: "variant",
+    type: '"default" | "outline" | "ghost"',
+    defaultValue: '"default"',
+    description: "نوع ظاهری دکمه",
+  },
+  {
+    name: "size",
+    type: '"sm" | "md" | "lg"',
+    defaultValue: '"md"',
+    description: "اندازه دکمه",
+  },
+  {
+    name: "pressed",
+    type: "boolean",
+    defaultValue: "undefined",
+    description: "وضعیت فعال/غیرفعال (کنترل شده)",
+  },
+  {
+    name: "defaultPressed",
+    type: "boolean",
+    defaultValue: "false",
+    description: "وضعیت اولیه (غیرکنترل شده)",
+  },
+  {
+    name: "onPressedChange",
+    type: "(pressed: boolean) => void",
+    defaultValue: "undefined",
+    description: "تابع فراخوانی هنگام تغییر وضعیت",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "غیرفعال کردن دکمه",
+  },
+  {
+    name: "aria-label",
+    type: "string",
+    defaultValue: "-",
+    description: "برچسب دسترسی‌پذیری (ضروری)",
+  },
+  {
+    name: "className",
+    type: "string",
+    defaultValue: "undefined",
+    description: "کلاس‌های CSS سفارشی",
+  },
+];
+
+export default function TogglePage() {
   return (
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
@@ -18,375 +82,107 @@ export default function ToggleDemo() {
         <h1 className="text-4xl font-bold mb-4">دکمه دوحالته (Toggle)</h1>
         <p className="text-lg text-muted-foreground">
           کامپوننت دکمه دوحالته که می‌تواند روشن یا خاموش باشد، با پشتیبانی کامل
-          از RTL و حالت تاریک
+          از RTL و حالت تاریک.
         </p>
       </div>
 
       {/* Installation */}
       <section className="mb-16">
         <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
-        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-          <pre className="text-sm">
-            <code>{`npx @quark-lab/rad-ui add toggle`}</code>
-          </pre>
-        </div>
+        <InstallCodeBlock code="npx @quark-lab/rad-ui add toggle" language="bash" />
       </section>
 
-      {/* Basic Usage */}
+      {/* Examples */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          استفاده پایه (Basic Usage)
-        </h2>
-        <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-          <Toggle aria-label="Toggle italic">
-            <Italic className="h-4 w-4" />
-          </Toggle>
-          <Toggle aria-label="Toggle bold">
-            <Bold className="h-4 w-4" />
-          </Toggle>
-          <Toggle aria-label="Toggle underline">
-            <Underline className="h-4 w-4" />
-          </Toggle>
-        </div>
+        <h2 className="text-2xl font-semibold mb-6">نمونه‌ها (Examples)</h2>
+
+        <ComponentExample
+          title="استفاده پایه"
+          titleEn="Basic Usage"
+          description="استفاده ساده از دکمه دوحالته."
+          code={basicCode}
+        >
+          <BasicExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="انواع"
+          titleEn="Variants"
+          description="انواع مختلف ظاهری دکمه دوحالته."
+          code={variantsCode}
+        >
+          <VariantsExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="اندازه‌ها"
+          titleEn="Sizes"
+          description="اندازه‌های مختلف دکمه دوحالته."
+          code={sizesCode}
+        >
+          <SizesExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="با متن"
+          titleEn="With Text"
+          description="دکمه دوحالته همراه با آیکون و متن."
+          code={withTextCode}
+        >
+          <WithTextExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="حالت غیرفعال"
+          titleEn="Disabled State"
+          description="دکمه دوحالته غیرفعال."
+          code={disabledCode}
+        >
+          <DisabledExample />
+        </ComponentExample>
+
+        <ComponentExample
+          title="مثال تعاملی"
+          titleEn="Interactive Example"
+          description="نمایش تغییر وضعیت دکمه‌ها در کنسول."
+          code={interactiveCode}
+        >
+          <InteractiveExample />
+        </ComponentExample>
       </section>
 
-      {/* Variants */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">انواع (Variants)</h2>
-        <div className="space-y-6">
-          {/* Default Variant */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">پیش‌فرض (Default)</h3>
-            <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle variant="default" aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="default" aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="default" aria-label="Toggle underline">
-                <Underline className="h-4 w-4" />
-              </Toggle>
-            </div>
-          </div>
+      {/* Advanced Examples */}
+      <ComponentExampleGroup
+        title="مثال‌های پیشرفته"
+        titleEn="Advanced Examples"
+      >
+        <SubExample
+          title="استایل سفارشی"
+          titleEn="Custom Styling"
+          description="استفاده از کلاس‌های سفارشی برای تغییر ظاهر دکمه."
+          code={customStylingCode}
+        >
+          <CustomStylingExample />
+        </SubExample>
 
-          {/* Outline Variant */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">حاشیه‌دار (Outline)</h3>
-            <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle variant="outline" aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle underline">
-                <Underline className="h-4 w-4" />
-              </Toggle>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sizes */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">اندازه‌ها (Sizes)</h2>
-        <div className="flex flex-wrap items-center gap-4 p-8 rounded-lg bg-card border border-border">
-          <Toggle size="sm" aria-label="Toggle small">
-            <Italic className="h-3 w-3" />
-          </Toggle>
-          <Toggle size="md" aria-label="Toggle medium">
-            <Italic className="h-4 w-4" />
-          </Toggle>
-          <Toggle size="lg" aria-label="Toggle large">
-            <Italic className="h-5 w-5" />
-          </Toggle>
-        </div>
-      </section>
-
-      {/* With Text */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">با متن (With Text)</h2>
-        <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-          <Toggle aria-label="Toggle italic">
-            <Italic className="ms-2 h-4 w-4" />
-            کج
-          </Toggle>
-          <Toggle aria-label="Toggle bold">
-            <Bold className="ms-2 h-4 w-4" />
-            پررنگ
-          </Toggle>
-          <Toggle aria-label="Toggle underline">
-            <Underline className="ms-2 h-4 w-4" />
-            زیرخط
-          </Toggle>
-        </div>
-      </section>
-
-      {/* Alignment Example */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال تراز متن (Text Alignment)
-        </h2>
-        <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-          <Toggle variant="outline" aria-label="Align right">
-            <AlignRight className="h-4 w-4" />
-          </Toggle>
-          <Toggle variant="outline" aria-label="Align center">
-            <AlignCenter className="h-4 w-4" />
-          </Toggle>
-          <Toggle variant="outline" aria-label="Align left">
-            <AlignLeft className="h-4 w-4" />
-          </Toggle>
-        </div>
-      </section>
-
-      {/* States */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">حالت‌ها (States)</h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-medium mb-4">عادی (Normal)</h3>
-            <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-4">غیرفعال (Disabled)</h3>
-            <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle disabled aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" disabled aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-4">پیش‌فرض فعال (Default On)</h3>
-            <div className="flex flex-wrap gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle defaultPressed aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" defaultPressed aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* All Combinations */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">ترکیبات (Combinations)</h2>
-        <div className="space-y-8">
-          {/* Default with all sizes */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">
-              پیش‌فرض - تمام اندازه‌ها
-            </h3>
-            <div className="flex flex-wrap items-center gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle variant="default" size="sm" aria-label="Small toggle">
-                <Italic className="h-3 w-3" />
-              </Toggle>
-              <Toggle variant="default" size="md" aria-label="Medium toggle">
-                <Italic className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="default" size="lg" aria-label="Large toggle">
-                <Italic className="h-5 w-5" />
-              </Toggle>
-            </div>
-          </div>
-
-          {/* Outline with all sizes */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">
-              حاشیه‌دار - تمام اندازه‌ها
-            </h3>
-            <div className="flex flex-wrap items-center gap-4 p-8 rounded-lg bg-card border border-border">
-              <Toggle variant="outline" size="sm" aria-label="Small toggle">
-                <Bold className="h-3 w-3" />
-              </Toggle>
-              <Toggle variant="outline" size="md" aria-label="Medium toggle">
-                <Bold className="h-4 w-4" />
-              </Toggle>
-              <Toggle variant="outline" size="lg" aria-label="Large toggle">
-                <Bold className="h-5 w-5" />
-              </Toggle>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Example */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال تعاملی (Interactive Example)
-        </h2>
-        <div className="p-8 rounded-lg bg-card border border-border">
-          <div className="flex flex-wrap gap-4">
-            <Toggle
-              variant="outline"
-              onPressedChange={(pressed) =>
-                console.log("Italic:", pressed ? "فعال" : "غیرفعال")
-              }
-              aria-label="Toggle italic"
-            >
-              <Italic className="ms-2 h-4 w-4" />
-              کج
-            </Toggle>
-            <Toggle
-              variant="outline"
-              onPressedChange={(pressed) =>
-                console.log("Bold:", pressed ? "فعال" : "غیرفعال")
-              }
-              aria-label="Toggle bold"
-            >
-              <Bold className="ms-2 h-4 w-4" />
-              پررنگ
-            </Toggle>
-            <Toggle
-              variant="outline"
-              onPressedChange={(pressed) =>
-                console.log("Underline:", pressed ? "فعال" : "غیرفعال")
-              }
-              aria-label="Toggle underline"
-            >
-              <Underline className="ms-2 h-4 w-4" />
-              زیرخط
-            </Toggle>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4">
-            وضعیت دکمه‌ها را در کنسول مشاهده کنید
-          </p>
-        </div>
-      </section>
+        <SubExample
+          title="نوار ابزار قالب‌بندی"
+          titleEn="Formatting Toolbar"
+          description="استفاده از دکمه‌های دوحالته برای ساخت نوار ابزار."
+          code={formattingToolbarCode}
+        >
+          <FormattingToolbarExample />
+        </SubExample>
+      </ComponentExampleGroup>
 
       {/* API Reference */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          مرجع API (API Reference)
-        </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-right p-4 font-semibold">پراپ (Prop)</th>
-                <th className="text-right p-4 font-semibold">نوع (Type)</th>
-                <th className="text-right p-4 font-semibold">
-                  پیش‌فرض (Default)
-                </th>
-                <th className="text-right p-4 font-semibold">
-                  توضیحات (Description)
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>variant</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>"default" | "outline"</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>"default"</code>
-                </td>
-                <td className="p-4">نوع ظاهری دکمه</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>size</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>"sm" | "md" | "lg"</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>"md"</code>
-                </td>
-                <td className="p-4">اندازه دکمه</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>pressed</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>boolean</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>undefined</code>
-                </td>
-                <td className="p-4">وضعیت فعال/غیرفعال (کنترل شده)</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>defaultPressed</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>boolean</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>false</code>
-                </td>
-                <td className="p-4">وضعیت اولیه (غیرکنترل شده)</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>onPressedChange</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>(pressed: boolean) =&gt; void</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>undefined</code>
-                </td>
-                <td className="p-4">تابع فراخوانی هنگام تغییر وضعیت</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>disabled</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>boolean</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>false</code>
-                </td>
-                <td className="p-4">غیرفعال کردن دکمه</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-4" dir="ltr">
-                  <code>className</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>string</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>undefined</code>
-                </td>
-                <td className="p-4">کلاس‌های CSS سفارشی</td>
-              </tr>
-              <tr>
-                <td className="p-4" dir="ltr">
-                  <code>aria-label</code>
-                </td>
-                <td className="p-4" dir="ltr">
-                  <code>string</code>
-                </td>
-                <td className="p-4">-</td>
-                <td className="p-4">برچسب دسترسی‌پذیری (ضروری)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <ApiReferenceSection>
+        <PropsTable
+          title="Toggle"
+          description="پراپ‌های کامپوننت Toggle."
+          props={toggleProps}
+        />
+      </ApiReferenceSection>
 
       {/* Accessibility */}
       <section className="mb-16">
@@ -496,135 +292,6 @@ export default function ToggleDemo() {
               برای دکمه‌های مرتبط مانند تراز متن یا قالب‌بندی، از گروه‌بندی
               بصری با فاصله‌گذاری مناسب استفاده کنید.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Example */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
-        <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-          <pre className="text-sm">
-            <code>{`import { Toggle } from "@/components/ui/toggle";
-import { Italic, Bold } from "lucide-react";
-
-export default function MyComponent() {
-  return (
-    <div>
-      {/* Basic */}
-      <Toggle aria-label="Toggle italic">
-        <Italic className="h-4 w-4" />
-      </Toggle>
-
-      {/* With text */}
-      <Toggle aria-label="Toggle bold">
-        <Bold className="ms-2 h-4 w-4" />
-        پررنگ
-      </Toggle>
-
-      {/* Outline variant */}
-      <Toggle variant="outline" aria-label="Toggle italic">
-        <Italic className="h-4 w-4" />
-      </Toggle>
-
-      {/* Different sizes */}
-      <Toggle size="sm" aria-label="Small">
-        <Italic className="h-3 w-3" />
-      </Toggle>
-      <Toggle size="lg" aria-label="Large">
-        <Italic className="h-5 w-5" />
-      </Toggle>
-
-      {/* Controlled */}
-      <Toggle
-        pressed={isItalic}
-        onPressedChange={setIsItalic}
-        aria-label="Toggle italic"
-      >
-        <Italic className="h-4 w-4" />
-      </Toggle>
-
-      {/* Default pressed */}
-      <Toggle defaultPressed aria-label="Toggle bold">
-        <Bold className="h-4 w-4" />
-      </Toggle>
-
-      {/* Disabled */}
-      <Toggle disabled aria-label="Toggle italic">
-        <Italic className="h-4 w-4" />
-      </Toggle>
-    </div>
-  );
-}`}</code>
-          </pre>
-        </div>
-      </section>
-
-      {/* Advanced Examples */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">
-          مثال‌های پیشرفته (Advanced Examples)
-        </h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-3">استایل سفارشی (Custom Styling)</h3>
-            <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-              <pre className="text-sm">
-                <code>{`<Toggle className="data-[state=on]:bg-green-500 data-[state=on]:text-white">
-  سفارشی
-</Toggle>`}</code>
-              </pre>
-            </div>
-          </div>
-          <div>
-            <h3 className="font-medium mb-3">
-              نوار ابزار قالب‌بندی (Formatting Toolbar)
-            </h3>
-            <div className="bg-muted p-6 rounded-lg overflow-x-auto" dir="ltr">
-              <pre className="text-sm">
-                <code>{`const [formatting, setFormatting] = useState({
-  bold: false,
-  italic: false,
-  underline: false
-});
-
-<div className="flex gap-1 p-1 border rounded-lg">
-  <Toggle
-    pressed={formatting.bold}
-    onPressedChange={(pressed) =>
-      setFormatting({ ...formatting, bold: pressed })
-    }
-    variant="outline"
-    size="sm"
-    aria-label="Toggle bold"
-  >
-    <Bold className="h-4 w-4" />
-  </Toggle>
-  <Toggle
-    pressed={formatting.italic}
-    onPressedChange={(pressed) =>
-      setFormatting({ ...formatting, italic: pressed })
-    }
-    variant="outline"
-    size="sm"
-    aria-label="Toggle italic"
-  >
-    <Italic className="h-4 w-4" />
-  </Toggle>
-  <Toggle
-    pressed={formatting.underline}
-    onPressedChange={(pressed) =>
-      setFormatting({ ...formatting, underline: pressed })
-    }
-    variant="outline"
-    size="sm"
-    aria-label="Toggle underline"
-  >
-    <Underline className="h-4 w-4" />
-  </Toggle>
-</div>`}</code>
-              </pre>
-            </div>
           </div>
         </div>
       </section>
