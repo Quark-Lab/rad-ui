@@ -61,6 +61,18 @@ export const components: ComponentDef[] = [
     internalDependencies: [],
   },
   {
+    name: "dialog",
+    description:
+      "A modal dialog that interrupts the user with important content",
+    platform: "web",
+    files: ["dialog/dialog.tsx"],
+    npmDependencies: {
+      "@radix-ui/react-dialog": "^1.1.4",
+      "lucide-react": "^0.309.0",
+    },
+    internalDependencies: [],
+  },
+  {
     name: "field",
     description:
       "A complete form field with label, description, error message, and more",

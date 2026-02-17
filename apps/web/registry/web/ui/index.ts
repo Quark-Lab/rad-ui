@@ -75,3 +75,16 @@ export type {
   NativeSelectOptionProps,
   NativeSelectOptGroupProps,
 } from "./native-select";
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "./dialog/dialog";
+export type { DialogContentProps } from "./dialog/dialog";

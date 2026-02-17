@@ -50,7 +50,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-rtl")],
+  plugins: [require("tailwindcss-rtl"), require("tailwindcss-animate")],
 };
 
 export default config;
