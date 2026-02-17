@@ -36,6 +36,15 @@
     "registryDependencies": []
   },
   {
+    "name": "card",
+    "description": "A container for grouping related content and actions",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
     "name": "checkbox",
     "description": "A control that allows the user to toggle between checked and not checked",
     "platform": "web",

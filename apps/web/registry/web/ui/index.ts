@@ -75,3 +75,14 @@ export type {
   NativeSelectOptionProps,
   NativeSelectOptGroupProps,
 } from "./native-select";
+export {
+  Card,
+  cardVariants,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+  CardFooter,
+} from "./card";
+export type { CardProps } from "./card";

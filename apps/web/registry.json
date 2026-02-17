@@ -48,6 +48,17 @@
       ]
     },
     {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "A container for grouping related content and actions",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/card.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "description": "A control that allows the user to toggle between checked and not checked",
