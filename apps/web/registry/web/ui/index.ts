@@ -99,3 +99,15 @@ export {
   DialogDescription,
 } from "./dialog/dialog";
 export type { DialogContentProps } from "./dialog/dialog";
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from "./drawer/drawer";
