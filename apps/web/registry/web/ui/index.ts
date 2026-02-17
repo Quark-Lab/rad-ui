@@ -86,6 +86,7 @@ export {
   CardFooter,
 } from "./card/card";
 export type { CardProps } from "./card/card";
+export {
   Dialog,
   DialogPortal,
   DialogOverlay,
