@@ -17,6 +17,7 @@ import {
   CircleDot,
   ChevronDown,
   FormInput,
+  SquareStack,
   MessageSquare,
   type LucideIcon,
 } from "lucide-react";
@@ -150,6 +151,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/aspect-ratio",
         icon: RectangleHorizontal,
         description: "حفظ نسبت ابعاد المان‌ها",
+      },
+      {
+        name: "Card",
+        nameFA: "کارت",
+        href: "/components/card",
+        icon: SquareStack,
+        description: "گروه‌بندی محتوا و اقدامات مرتبط",
       },
       {
         name: "Separator",

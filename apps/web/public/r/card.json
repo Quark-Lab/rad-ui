@@ -1,0 +1,21 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "description": "A container for grouping related content and actions",
+  "platform": "web",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/card/card.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { type VariantProps, cva } from \"class-variance-authority\";\nimport { cn } from \"../../lib/utils\";\n\nconst cardVariants = cva(\n  \"rounded-xl border border-border bg-card text-card-foreground shadow-sm\",\n  {\n    variants: {\n      size: {\n        default: \"\",\n        sm: \"\",\n      },\n    },\n    defaultVariants: {\n      size: \"default\",\n    },\n  }\n);\n\nexport interface CardProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nconst Card = React.forwardRef<HTMLDivElement, CardProps>(\n  ({ className, size, ...props }, ref) => {\n    return (\n      <div\n        className={cn(cardVariants({ size, className }))}\n        ref={ref}\n        data-size={size || \"default\"}\n        {...props}\n      />\n    );\n  }\n);\n\nCard.displayName = \"Card\";\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"relative flex flex-col gap-1.5 p-6\",\n      \"[[data-size=sm]_&]:p-4\",\n      className\n    )}\n    {...props}\n  />\n));\n\nCardHeader.displayName = \"CardHeader\";\n\nconst CardTitle = React.forwardRef<\n  HTMLHeadingElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\"font-semibold leading-none tracking-tight\", className)}\n    {...props}\n  />\n));\n\nCardTitle.displayName = \"CardTitle\";\n\nconst CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n));\n\nCardDescription.displayName = \"CardDescription\";\n\nconst CardAction = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"absolute end-6 top-6\",\n      \"[[data-size=sm]_&]:end-4 [[data-size=sm]_&]:top-4\",\n      className\n    )}\n    {...props}\n  />\n));\n\nCardAction.displayName = \"CardAction\";\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"p-6 pt-0\",\n      \"[[data-size=sm]_&]:p-4 [[data-size=sm]_&]:pt-0\",\n      className\n    )}\n    {...props}\n  />\n));\n\nCardContent.displayName = \"CardContent\";\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"flex items-center p-6 pt-0\",\n      \"[[data-size=sm]_&]:p-4 [[data-size=sm]_&]:pt-0\",\n      className\n    )}\n    {...props}\n  />\n));\n\nCardFooter.displayName = \"CardFooter\";\n\nexport {\n  Card,\n  cardVariants,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardAction,\n  CardContent,\n  CardFooter,\n};\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

@@ -76,6 +76,16 @@ export type {
   NativeSelectOptGroupProps,
 } from "./native-select";
 export {
+  Card,
+  cardVariants,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+  CardFooter,
+} from "./card/card";
+export type { CardProps } from "./card/card";
   Dialog,
   DialogPortal,
   DialogOverlay,
