@@ -17,6 +17,7 @@ import {
   CircleDot,
   ChevronDown,
   FormInput,
+  MessageSquare,
   type LucideIcon,
 } from "lucide-react";
 
@@ -197,6 +198,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/spinner",
         icon: Loader,
         description: "نمایش حالت در حال پردازش",
+      },
+      {
+        name: "Dialog",
+        nameFA: "دیالوگ",
+        href: "/components/dialog",
+        icon: MessageSquare,
+        description: "پنجره مودال برای نمایش محتوای مهم",
       },
     ],
   },
