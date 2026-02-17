@@ -20,6 +20,7 @@ import {
   SquareStack,
   MessageSquare,
   PanelRight,
+  PanelLeft,
   ScrollText,
   type LucideIcon,
 } from "lucide-react";
@@ -229,6 +230,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/drawer",
         icon: PanelRight,
         description: "پنل کشویی برای نمایش محتوا از لبه‌های صفحه",
+      },
+      {
+        name: "Sheet",
+        nameFA: "شیت",
+        href: "/components/sheet",
+        icon: PanelLeft,
+        description: "پنل کشویی از لبه صفحه",
       },
     ],
   },

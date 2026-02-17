@@ -113,3 +113,16 @@ export {
 } from "./drawer/drawer";
 export { ScrollArea, ScrollBar } from "./scroll-area/scroll-area";
 export type { ScrollAreaProps, ScrollBarProps } from "./scroll-area/scroll-area";
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+} from "./sheet/sheet";
+export type { SheetContentProps } from "./sheet/sheet";
