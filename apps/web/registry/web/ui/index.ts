@@ -84,5 +84,5 @@ export {
   CardAction,
   CardContent,
   CardFooter,
-} from "./card";
-export type { CardProps } from "./card";
+} from "./card/card";
+export type { CardProps } from "./card/card";

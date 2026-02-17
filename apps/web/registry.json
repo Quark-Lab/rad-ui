@@ -55,7 +55,7 @@
       "dependencies": ["class-variance-authority@^0.7.1"],
       "registryDependencies": [],
       "files": [
-        { "path": "registry/web/ui/card.tsx", "type": "registry:ui" }
+        { "path": "registry/web/ui/card/card.tsx", "type": "registry:ui" }
       ]
     },
     {
