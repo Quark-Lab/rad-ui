@@ -371,7 +371,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/web/ui/progress.tsx",
+          "path": "registry/web/ui/progress/progress.tsx",
           "type": "registry:ui"
         }
       ]
