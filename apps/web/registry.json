@@ -92,6 +92,17 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "description": "Display an empty state for pages and lists",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/web/ui/empty/empty.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:ui",
       "description": "A complete form field with label, description, error message, and more",

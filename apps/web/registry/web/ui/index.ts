@@ -131,3 +131,14 @@ export {
   HoverCardTrigger,
   HoverCardContent,
 } from "./hover-card/hover-card";
+export {
+  Empty,
+  emptyVariants,
+  EmptyHeader,
+  EmptyMedia,
+  emptyMediaVariants,
+  EmptyTitle,
+  EmptyDescription,
+  EmptyContent,
+} from "./empty/empty";
+export type { EmptyProps, EmptyMediaProps } from "./empty/empty";

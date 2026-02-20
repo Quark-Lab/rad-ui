@@ -74,6 +74,15 @@
     "registryDependencies": []
   },
   {
+    "name": "empty",
+    "description": "Display an empty state for pages and lists",
+    "platform": "web",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "registryDependencies": []
+  },
+  {
     "name": "field",
     "description": "A complete form field with label, description, error message, and more",
     "platform": "web",

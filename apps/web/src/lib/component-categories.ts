@@ -23,6 +23,7 @@ import {
   PanelRight,
   PanelLeft,
   ScrollText,
+  Inbox,
   type LucideIcon,
 } from "lucide-react";
 
@@ -245,6 +246,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/hover-card",
         icon: MousePointerClick,
         description: "نمایش پیش‌نمایش محتوا هنگام هاور روی یک لینک",
+      },
+      {
+        name: "Empty",
+        nameFA: "خالی",
+        href: "/components/empty",
+        icon: Inbox,
+        description: "نمایش حالت خالی برای صفحات و لیست‌ها",
       },
     ],
   },

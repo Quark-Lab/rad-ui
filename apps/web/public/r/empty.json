@@ -1,0 +1,21 @@
+{
+  "name": "empty",
+  "type": "registry:ui",
+  "description": "Display an empty state for pages and lists",
+  "platform": "web",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/empty/empty.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { type VariantProps, cva } from \"class-variance-authority\";\nimport { cn } from \"../../lib/utils\";\n\nconst emptyVariants = cva(\n  \"flex flex-col items-center justify-center text-center\",\n  {\n    variants: {},\n    defaultVariants: {},\n  }\n);\n\nexport interface EmptyProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof emptyVariants> {}\n\nconst Empty = React.forwardRef<HTMLDivElement, EmptyProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(emptyVariants({ className }))}\n        {...props}\n      />\n    );\n  }\n);\n\nEmpty.displayName = \"Empty\";\n\nconst EmptyHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col items-center gap-2\", className)}\n    {...props}\n  />\n));\n\nEmptyHeader.displayName = \"EmptyHeader\";\n\nconst emptyMediaVariants = cva(\"flex items-center justify-center\", {\n  variants: {\n    variant: {\n      default: \"\",\n      icon: \"text-muted-foreground\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\nexport interface EmptyMediaProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof emptyMediaVariants> {}\n\nconst EmptyMedia = React.forwardRef<HTMLDivElement, EmptyMediaProps>(\n  ({ className, variant, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(emptyMediaVariants({ variant, className }))}\n        {...props}\n      />\n    );\n  }\n);\n\nEmptyMedia.displayName = \"EmptyMedia\";\n\nconst EmptyTitle = React.forwardRef<\n  HTMLHeadingElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\"text-lg font-semibold\", className)}\n    {...props}\n  />\n));\n\nEmptyTitle.displayName = \"EmptyTitle\";\n\nconst EmptyDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n));\n\nEmptyDescription.displayName = \"EmptyDescription\";\n\nconst EmptyContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"mt-4\", className)}\n    {...props}\n  />\n));\n\nEmptyContent.displayName = \"EmptyContent\";\n\nexport {\n  Empty,\n  emptyVariants,\n  EmptyHeader,\n  EmptyMedia,\n  emptyMediaVariants,\n  EmptyTitle,\n  EmptyDescription,\n  EmptyContent,\n};\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}
