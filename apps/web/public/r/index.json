@@ -283,5 +283,14 @@
       "@radix-ui/react-tooltip"
     ],
     "registryDependencies": []
+  },
+  {
+    "name": "progress",
+    "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-progress"
+    ],
+    "registryDependencies": []
   }
 ]

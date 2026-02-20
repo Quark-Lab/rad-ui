@@ -26,6 +26,7 @@ import {
   Inbox,
   ArrowUpRight,
   HelpCircle,
+  Activity,
   type LucideIcon,
 } from "lucide-react";
 
@@ -269,6 +270,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/tooltip",
         icon: HelpCircle,
         description: "نمایش اطلاعات مرتبط با المان هنگام هاور یا فوکوس",
+      },
+      {
+        name: "Progress",
+        nameFA: "پیشرفت",
+        href: "/components/progress",
+        icon: Activity,
+        description: "نمایش میزان پیشرفت انجام یک کار به صورت نوار پیشرفت",
       },
     ],
   },

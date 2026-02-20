@@ -156,3 +156,4 @@ export {
   TooltipContent,
   TooltipProvider,
 } from "./tooltip/tooltip";
+export { Progress } from "./progress";
