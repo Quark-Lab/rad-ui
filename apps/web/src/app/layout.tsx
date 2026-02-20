@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { TooltipProvider } from "@/registry/web/ui/tooltip/tooltip";
+import { PostHogProvider } from "../../providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +21,8 @@ const vazirmatn = Vazirmatn({
 
 export const metadata: Metadata = {
   title: "Rad UI | راد",
-  description: "کتابخانه رابط کاربری برای React و React Native با طعم معماری ایرانی",
+  description:
+    "کتابخانه رابط کاربری برای React و React Native با طعم معماری ایرانی",
 };
 
 export default function RootLayout({
@@ -33,15 +35,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${vazirmatn.variable} font-sans antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <TooltipProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </TooltipProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <TooltipProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </TooltipProvider>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
 }
-
