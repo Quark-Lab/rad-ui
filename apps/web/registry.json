@@ -347,6 +347,20 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it",
+      "platform": "web",
+      "dependencies": ["@radix-ui/react-tooltip@^1.1.6"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/tooltip/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

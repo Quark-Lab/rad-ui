@@ -150,3 +150,9 @@ export {
   PopoverTitle,
   PopoverDescription,
 } from "./popover/popover";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "./tooltip/tooltip";

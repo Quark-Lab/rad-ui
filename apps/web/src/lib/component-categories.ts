@@ -25,6 +25,7 @@ import {
   ScrollText,
   Inbox,
   ArrowUpRight,
+  HelpCircle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -261,6 +262,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/popover",
         icon: ArrowUpRight,
         description: "نمایش محتوای غنی در یک پورتال با کلیک",
+      },
+      {
+        name: "Tooltip",
+        nameFA: "تولتیپ",
+        href: "/components/tooltip",
+        icon: HelpCircle,
+        description: "نمایش اطلاعات مرتبط با المان هنگام هاور یا فوکوس",
       },
     ],
   },
