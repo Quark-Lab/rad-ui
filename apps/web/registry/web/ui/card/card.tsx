@@ -3,7 +3,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const cardVariants = cva(
-  "rounded-xl border border-border bg-card text-card-foreground shadow-sm",
+  "w-full min-w-0 rounded-xl border border-border bg-card text-card-foreground shadow-sm",
   {
     variants: {
       size: {
@@ -103,7 +103,7 @@ const CardContent = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "p-6 pt-0",
+      "min-w-0 overflow-x-hidden p-6 pt-0",
       "[[data-size=sm]_&]:p-4 [[data-size=sm]_&]:pt-0",
       className
     )}

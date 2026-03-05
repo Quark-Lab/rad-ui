@@ -5,7 +5,17 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
 
-const Accordion = AccordionPrimitive.Root;
+const Accordion = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Root
+    ref={ref}
+    className={cn("w-full min-w-0", className)}
+    {...props}
+  />
+));
+Accordion.displayName = "Accordion";
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -13,7 +23,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b border-border last:border-b-0", className)}
+    className={cn("min-w-0 border-b border-border last:border-b-0", className)}
     {...props}
   />
 ));
@@ -54,7 +64,7 @@ const AccordionContent = React.forwardRef<
   >
     <div
       className={cn(
-        "pb-4 pt-0 text-muted-foreground",
+        "max-w-full min-w-0 overflow-x-hidden pb-4 pt-0 text-muted-foreground break-words",
         className
       )}
     >
