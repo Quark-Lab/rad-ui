@@ -343,6 +343,16 @@
     "registryDependencies": []
   },
   {
+    "name": "accordion",
+    "description": "A vertically stacked set of interactive headings that each reveal a section of content",
+    "platform": "web",
+    "dependencies": [
+      "@radix-ui/react-accordion",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
     "name": "dropdown-menu",
     "description": "Displays a menu to the user triggered by a button",
     "platform": "web",

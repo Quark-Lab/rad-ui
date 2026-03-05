@@ -18,6 +18,7 @@ import {
   CircleDot,
   ChevronDown,
   ChevronsLeftRight,
+  ChevronsUpDown,
   FormInput,
   SquareStack,
   MessageSquare,
@@ -201,6 +202,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/tabs",
         icon: SquareStack,
         description: "جابه‌جایی بین نماهای مختلف در یک صفحه",
+      },
+      {
+        name: "Accordion",
+        nameFA: "آکاردئون",
+        href: "/components/accordion",
+        icon: ChevronsUpDown,
+        description: "عناوین تعاملی که با کلیک بخشی از محتوا را نمایش می‌دهند",
       },
       {
         name: "Item",

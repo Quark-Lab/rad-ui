@@ -453,6 +453,23 @@
       ]
     },
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-accordion@^1.2.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/accordion/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dropdown-menu",
       "type": "registry:ui",
       "description": "Displays a menu to the user triggered by a button",

@@ -201,6 +201,12 @@ export {
   TabsContent,
 } from "./tabs/tabs";
 export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./accordion/accordion";
+export {
   Item,
   itemVariants,
   ItemGroup,
