@@ -49,6 +49,17 @@ export const components: ComponentDef[] = [
     internalDependencies: [],
   },
   {
+    name: "breadcrumb",
+    description: "Displays the path to the current resource using a hierarchy of links",
+    platform: "web",
+    files: ["breadcrumb/breadcrumb.tsx"],
+    npmDependencies: {
+      "@radix-ui/react-slot": "^1.1.0",
+      "lucide-react": "^0.309.0",
+    },
+    internalDependencies: [],
+  },
+  {
     name: "button",
     description: "Displays a button or a component that looks like a button",
     platform: "web",

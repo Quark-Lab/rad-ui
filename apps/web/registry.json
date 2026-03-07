@@ -33,6 +33,23 @@
       "files": [{ "path": "registry/web/ui/badge.tsx", "type": "registry:ui" }]
     },
     {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "description": "Displays the path to the current resource using a hierarchy of links",
+      "platform": "web",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/breadcrumb/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "description": "Displays a button or a component that looks like a button",

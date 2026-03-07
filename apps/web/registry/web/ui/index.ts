@@ -26,6 +26,15 @@ export { Kbd, KbdGroup } from "./kbd";
 export type { KbdProps, KbdGroupProps } from "./kbd";
 export { Badge, badgeVariants } from "./badge";
 export type { BadgeProps } from "./badge";
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from "./breadcrumb/breadcrumb";
 export { Label } from "./label";
 export { Skeleton } from "./skeleton";
 export { Slider } from "./slider";

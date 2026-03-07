@@ -18,6 +18,7 @@ import {
   CircleDot,
   ChevronDown,
   ChevronsLeftRight,
+  ChevronsRight,
   ChevronsUpDown,
   FormInput,
   SquareStack,
@@ -176,6 +177,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/aspect-ratio",
         icon: RectangleHorizontal,
         description: "حفظ نسبت ابعاد المان‌ها",
+      },
+      {
+        name: "Breadcrumb",
+        nameFA: "مسیر (نان‌خور)",
+        href: "/components/breadcrumb",
+        icon: ChevronsRight,
+        description: "نمایش مسیر به منبع فعلی با سلسله‌مراتب لینک‌ها",
       },
       {
         name: "Card",
