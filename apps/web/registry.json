@@ -78,6 +78,20 @@
       ]
     },
     {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Displays a callout for user attention",
+      "platform": "web",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/alert/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "alert-dialog",
       "type": "registry:ui",
       "description": "A modal dialog that interrupts the user with important content and expects a response",

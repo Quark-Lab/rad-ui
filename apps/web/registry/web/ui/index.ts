@@ -14,6 +14,14 @@ export type { ButtonProps } from "./button";
 export { Separator } from "./separator";
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 export { AspectRatio } from "./aspect-ratio";
+export {
+  Alert,
+  alertVariants,
+  AlertTitle,
+  AlertDescription,
+  AlertAction,
+} from "./alert/alert";
+export type { AlertProps } from "./alert/alert";
 export { Kbd, KbdGroup } from "./kbd";
 export type { KbdProps, KbdGroupProps } from "./kbd";
 export { Badge, badgeVariants } from "./badge";

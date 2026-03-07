@@ -9,6 +9,16 @@ export interface ComponentDef {
 
 export const components: ComponentDef[] = [
   {
+    name: "alert",
+    description: "Displays a callout for user attention",
+    platform: "web",
+    files: ["alert/alert.tsx"],
+    npmDependencies: {
+      "class-variance-authority": "^0.7.1",
+    },
+    internalDependencies: [],
+  },
+  {
     name: "aspect-ratio",
     description: "Displays content within a desired ratio",
     platform: "web",

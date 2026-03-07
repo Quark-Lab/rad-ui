@@ -33,6 +33,7 @@ import {
   Menu,
   BarChart3,
   AlertTriangle,
+  Info,
   type LucideIcon,
 } from "lucide-react";
 
@@ -293,6 +294,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/dialog",
         icon: MessageSquare,
         description: "پنجره مودال برای نمایش محتوای مهم",
+      },
+      {
+        name: "Alert",
+        nameFA: "هشدار",
+        href: "/components/alert",
+        icon: Info,
+        description: "نمایش callout برای جلب توجه کاربر با انواع پیش‌فرض و مخرب",
       },
       {
         name: "Alert Dialog",
