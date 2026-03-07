@@ -83,7 +83,7 @@ export default function CollapsedExample() {
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-9 w-9 p-0">
+              <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
                 <BreadcrumbEllipsis />
               </Button>
             </DropdownMenuTrigger>
