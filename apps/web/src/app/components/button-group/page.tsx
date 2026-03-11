@@ -15,7 +15,9 @@ import {
   type PropDefinition,
 } from "@/components/docs/props-table";
 import BasicExample, { code as basicCode } from "./_examples/basic";
-import OrientationExample, { code as orientationCode } from "./_examples/orientation";
+import OrientationExample, {
+  code as orientationCode,
+} from "./_examples/orientation";
 import SeparatorExample, { code as separatorCode } from "./_examples/separator";
 import SplitExample, { code as splitCode } from "./_examples/split";
 import InputExample, { code as inputCode } from "./_examples/input";
@@ -91,12 +93,10 @@ export default function ButtonGroupPage() {
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">
-          گروه دکمه‌ها (Button Group)
-        </h1>
+        <h1 className="text-4xl font-bold mb-4">گروه دکمه‌ها (Button Group)</h1>
         <p className="text-lg text-muted-foreground">
-          کانتینری برای گروه‌بندی دکمه‌های مرتبط با استایل و فاصله‌گذاری
-          یکسان، با پشتیبانی کامل از RTL.
+          کانتینری برای گروه‌بندی دکمه‌های مرتبط با استایل و فاصله‌گذاری یکسان،
+          با پشتیبانی کامل از RTL.
         </p>
       </div>
 
@@ -189,11 +189,16 @@ export default function ButtonGroupPage() {
               نقش گروه (Group Role)
             </h3>
             <p>
-              کامپوننت <code className="text-sm bg-muted px-2 py-1 rounded">ButtonGroup</code>{" "}
+              کامپوننت{" "}
+              <code className="text-sm bg-muted px-2 py-1 rounded">
+                ButtonGroup
+              </code>{" "}
               به صورت پیش‌فرض از{" "}
-              <code className="text-sm bg-muted px-2 py-1 rounded">role="group"</code>{" "}
-              استفاده می‌کند تا مجموعه‌ای از دکمه‌های مرتبط را به خوانندگان
-              صفحه معرفی کند.
+              <code className="text-sm bg-muted px-2 py-1 rounded">
+                role="group"
+              </code>{" "}
+              استفاده می‌کند تا مجموعه‌ای از دکمه‌های مرتبط را به خوانندگان صفحه
+              معرفی کند.
             </p>
           </div>
           <div className="p-4 rounded-lg bg-card border border-border">
@@ -219,7 +224,9 @@ export default function ButtonGroupPage() {
             </h3>
             <p>
               چیدمان دکمه‌ها و فاصله‌گذاری آن‌ها با در نظر گرفتن{" "}
-              <code className="text-sm bg-muted px-2 py-1 rounded">dir="rtl"</code>{" "}
+              <code className="text-sm bg-muted px-2 py-1 rounded">
+                dir="rtl"
+              </code>{" "}
               طراحی شده و در هر دو حالت جهت افقی و عمودی به درستی کار می‌کند.
             </p>
           </div>
@@ -237,9 +244,9 @@ export default function ButtonGroupPage() {
               گروه‌بندی عملیات مرتبط (Group Related Actions)
             </h3>
             <p className="text-muted-foreground">
-              از ButtonGroup برای قرار دادن عملیات مرتبط در کنار هم استفاده کنید؛
-              مثل دکمه‌های مربوط به وضعیت محتوا، فیلترها یا دسته‌ای از اکشن‌های
-              ثانویه.
+              از ButtonGroup برای قرار دادن عملیات مرتبط در کنار هم استفاده
+              کنید؛ مثل دکمه‌های مربوط به وضعیت محتوا، فیلترها یا دسته‌ای از
+              اکشن‌های ثانویه.
             </p>
           </div>
           <div>
@@ -272,14 +279,12 @@ export default function ButtonGroupPage() {
 
       {/* Usage */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          نحوه استفاده (Usage)
-        </h2>
+        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
         <InlineCodeBlock code={usageCode} />
       </section>
 
       {/* Advanced Examples */}
-      <ComponentExampleGroup
+      {/* <ComponentExampleGroup
         title="مثال‌های پیشرفته"
         titleEn="Advanced Examples"
       >
@@ -306,12 +311,11 @@ export function FilterToolbar() {
 }`}
         >
           <div dir="rtl">
-            {/* Reuse basic structure for live preview */}
+            
             <InlineCodeBlock code={`<FilterToolbar />`} />
           </div>
         </SubExample>
-      </ComponentExampleGroup>
+      </ComponentExampleGroup> */}
     </div>
   );
 }
-
