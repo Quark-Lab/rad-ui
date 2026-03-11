@@ -74,6 +74,13 @@ export const componentCategories: ComponentCategory[] = [
         description: "دکمه‌های قابل تنظیم با چندین نوع و اندازه",
       },
       {
+        name: "Button Group",
+        nameFA: "گروه دکمه‌ها",
+        href: "/components/button-group",
+        icon: ChevronsLeftRight,
+        description: "گروه‌بندی دکمه‌های مرتبط با استایل یکسان",
+      },
+      {
         name: "Toggle",
         nameFA: "دکمه دوحالته",
         href: "/components/toggle",

@@ -1,6 +1,11 @@
 export { cn } from "../lib/utils";
 export { Button, buttonVariants } from "./button";
 export {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "./button-group/button-group";
+export {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -20,6 +25,11 @@ export {
 } from "./chart/chart";
 export type { ChartConfig } from "./chart/chart";
 export type { ButtonProps } from "./button";
+export type {
+  ButtonGroupProps,
+  ButtonGroupSeparatorProps,
+  ButtonGroupTextProps,
+} from "./button-group/button-group";
 export { Separator } from "./separator";
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 export { AspectRatio } from "./aspect-ratio";
