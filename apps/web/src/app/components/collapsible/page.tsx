@@ -4,11 +4,7 @@ import {
   InstallCodeBlock,
   InlineCodeBlock,
 } from "@/components/docs/code-block";
-import {
-  ComponentExample,
-  ComponentExampleGroup,
-  SubExample,
-} from "@/components/docs/component-example";
+import { ComponentExample } from "@/components/docs/component-example";
 import {
   ApiReferenceSection,
   PropsTable,
@@ -20,12 +16,7 @@ import BasicCollapsibleExample, {
 import ControlledCollapsibleExample, {
   code as controlledCode,
 } from "./_examples/controlled";
-import CollapsibleSettingsPanel, {
-  code as settingsPanelCode,
-} from "./_examples/settings-panel";
-import CollapsibleFileTreeExample, {
-  code as fileTreeCode,
-} from "./_examples/file-tree";
+import CollapsibleSettingsPanel, { code as settingsPanelCode } from "./_examples/settings-panel";
 
 const collapsibleProps: PropDefinition[] = [
   {
@@ -159,15 +150,6 @@ export default function CollapsiblePage() {
         >
           <CollapsibleSettingsPanel />
         </ComponentExample>
-
-        <ComponentExample
-          title="درخت فایل"
-          titleEn="File Tree"
-          description="ساخت درخت فایل چندسطحی با کالپس‌های تو در تو."
-          code={fileTreeCode}
-        >
-          <CollapsibleFileTreeExample />
-        </ComponentExample>
       </section>
 
       {/* API Reference */}
@@ -291,41 +273,6 @@ export default function CollapsiblePage() {
         </h2>
         <InlineCodeBlock code={usageCode} />
       </section>
-
-      {/* Advanced Examples */}
-      <ComponentExampleGroup
-        title="مثال‌های پیشرفته"
-        titleEn="Advanced Examples"
-      >
-        <SubExample
-          title="ترکیب با فیلترها"
-          titleEn="Combined with Filters"
-          description="مخفی کردن فیلترهای پیشرفته برای ساده نگه داشتن رابط کاربری."
-          code={`import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-
-export function AdvancedFilters() {
-  return (
-    <Collapsible className="space-y-2">
-      <CollapsibleTrigger className="text-sm font-medium text-primary underline-offset-4 hover:underline">
-        فیلترهای پیشرفته
-      </CollapsibleTrigger>
-      <CollapsibleContent className="grid gap-3 text-sm text-muted-foreground">
-        {/* فیلدهای فیلتر اینجا قرار می‌گیرند */}
-      </CollapsibleContent>
-    </Collapsible>
-  );
-}`}
-        >
-          <p className="text-sm text-muted-foreground">
-            از Collapsible برای پنهان کردن فیلترهای پیشرفته استفاده کنید تا
-            فرم‌های جستجو تمیز و مینیمال بمانند.
-          </p>
-        </SubExample>
-      </ComponentExampleGroup>
     </div>
   );
 }
