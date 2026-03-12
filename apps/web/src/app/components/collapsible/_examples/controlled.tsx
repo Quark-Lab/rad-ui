@@ -22,12 +22,20 @@ export default function ControlledCollapsibleExample() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-3">
-      <Button variant="outline" onClick={() => setOpen((prev) => !prev)}>
+    <div className="flex w-full max-w-sm flex-col items-stretch gap-3">
+      <Button
+        variant="outline"
+        className="w-full"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         {open ? "بستن جزئیات" : "نمایش جزئیات"}
       </Button>
 
-      <Collapsible open={open} onOpenChange={setOpen} className="space-y-2">
+      <Collapsible
+        open={open}
+        onOpenChange={setOpen}
+        className="space-y-2 w-full"
+      >
         <CollapsibleTrigger className="text-sm font-medium text-primary underline-offset-4 hover:underline">
           تغییر وضعیت از داخل کامپوننت
         </CollapsibleTrigger>
@@ -45,12 +53,20 @@ export default function ControlledCollapsibleExample() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-3">
-      <Button variant="outline" onClick={() => setOpen((prev) => !prev)}>
+    <div className="flex w-full max-w-sm flex-col items-stretch gap-3">
+      <Button
+        variant="outline"
+        className="w-full"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         {open ? "بستن جزئیات" : "نمایش جزئیات"}
       </Button>
 
-      <Collapsible open={open} onOpenChange={setOpen} className="space-y-2">
+      <Collapsible
+        open={open}
+        onOpenChange={setOpen}
+        className="space-y-2 w-full"
+      >
         <CollapsibleTrigger className="text-sm font-medium text-primary underline-offset-4 hover:underline">
           تغییر وضعیت از داخل کامپوننت
         </CollapsibleTrigger>
