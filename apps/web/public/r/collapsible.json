@@ -1,0 +1,21 @@
+{
+  "name": "collapsible",
+  "type": "registry:ui",
+  "description": "An interactive component which expands and collapses content",
+  "platform": "web",
+  "dependencies": [
+    "@radix-ui/react-collapsible"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/collapsible/collapsible.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\";\n\nimport { cn } from \"../../lib/utils\";\n\nconst CollapsibleRoot = CollapsiblePrimitive.Root;\n\nconst CollapsibleTrigger = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Trigger>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.Trigger\n    ref={ref}\n    className={cn(\n      \"flex cursor-pointer items-center gap-2 text-sm font-medium\",\n      \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      className\n    )}\n    {...props}\n  />\n));\nCollapsibleTrigger.displayName = CollapsiblePrimitive.Trigger.displayName;\n\nconst CollapsibleContent = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.Content\n    ref={ref}\n    className={cn(\n      \"overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\",\n      className\n    )}\n    {...props}\n  />\n));\nCollapsibleContent.displayName = CollapsiblePrimitive.Content.displayName;\n\ntype CollapsibleProps = React.ComponentPropsWithoutRef<typeof CollapsibleRoot>;\ntype CollapsibleTriggerProps = React.ComponentPropsWithoutRef<\n  typeof CollapsibleTrigger\n>;\ntype CollapsibleContentProps = React.ComponentPropsWithoutRef<\n  typeof CollapsibleContent\n>;\n\nconst Collapsible = CollapsibleRoot;\n\nexport {\n  Collapsible,\n  CollapsibleTrigger,\n  CollapsibleContent,\n  type CollapsibleProps,\n  type CollapsibleTriggerProps,\n  type CollapsibleContentProps,\n};\n\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}
