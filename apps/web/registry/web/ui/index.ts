@@ -6,6 +6,11 @@ export {
   ButtonGroupText,
 } from "./button-group/button-group";
 export {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "./collapsible/collapsible";
+export {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -30,6 +35,11 @@ export type {
   ButtonGroupSeparatorProps,
   ButtonGroupTextProps,
 } from "./button-group/button-group";
+export type {
+  CollapsibleProps,
+  CollapsibleTriggerProps,
+  CollapsibleContentProps,
+} from "./collapsible/collapsible";
 export { Separator } from "./separator";
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 export { AspectRatio } from "./aspect-ratio";

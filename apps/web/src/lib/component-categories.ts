@@ -237,6 +237,13 @@ export const componentCategories: ComponentCategory[] = [
         description: "عناوین تعاملی که با کلیک بخشی از محتوا را نمایش می‌دهند",
       },
       {
+        name: "Collapsible",
+        nameFA: "بخش جمع‌شونده",
+        href: "/components/collapsible",
+        icon: ChevronsRight,
+        description: "نمایش و پنهان‌سازی بخش‌های محتوایی در یک صفحه",
+      },
+      {
         name: "Item",
         nameFA: "آیتم",
         href: "/components/item",
