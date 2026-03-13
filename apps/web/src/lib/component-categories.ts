@@ -174,6 +174,13 @@ export const componentCategories: ComponentCategory[] = [
         icon: ChevronDown,
         description: "منوی انتخاب بومی",
       },
+      {
+        name: "Combobox",
+        nameFA: "کمبوباکس",
+        href: "/components/combobox",
+        icon: Search,
+        description: "ورودی خودتکمیل با پیشنهادهای قابل جستجو",
+      },
     ],
   },
   {

@@ -90,6 +90,20 @@
       ]
     },
     {
+      "name": "combobox",
+      "type": "registry:ui",
+      "description": "Autocomplete input with a list of suggestions",
+      "platform": "web",
+      "dependencies": ["lucide-react@^0.309.0"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/combobox/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "carousel",
       "type": "registry:ui",
       "description": "A carousel with motion and swipe built using Embla",

@@ -11,6 +11,15 @@ export {
   CollapsibleContent,
 } from "./collapsible/collapsible";
 export {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxPopover,
+  ComboboxOption,
+  ComboboxNoOptions,
+  ComboboxGroup,
+  ComboboxGroupHeader,
+} from "./combobox/combobox";
+export {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -40,6 +49,7 @@ export type {
   CollapsibleTriggerProps,
   CollapsibleContentProps,
 } from "./collapsible/collapsible";
+export type { ComboboxProps } from "./combobox/combobox";
 export { Separator } from "./separator";
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 export { AspectRatio } from "./aspect-ratio";
