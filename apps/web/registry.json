@@ -94,7 +94,7 @@
       "type": "registry:ui",
       "description": "Autocomplete input with a list of suggestions",
       "platform": "web",
-      "dependencies": ["@ark-ui/react@^3.13.0", "lucide-react@^0.309.0"],
+      "dependencies": ["lucide-react@^0.309.0"],
       "registryDependencies": [],
       "files": [
         {

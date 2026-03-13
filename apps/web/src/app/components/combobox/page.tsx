@@ -10,18 +10,11 @@ import {
   PropsTable,
   type PropDefinition,
 } from "@/components/docs/props-table";
-import BasicComboboxExample, {
-  code as basicCode,
-} from "./_examples/basic";
+import BasicComboboxExample, { code as basicCode } from "./_examples/basic";
 import ControlledComboboxExample, {
   code as controlledCode,
 } from "./_examples/controlled";
-import CustomItemsComboboxExample, {
-  code as customItemsCode,
-} from "./_examples/custom-items";
-import GroupedComboboxExample, {
-  code as groupsCode,
-} from "./_examples/groups";
+import CustomItemsComboboxExample, { code as customItemsCode } from "./_examples/custom-items";
 import { code as usageCode } from "./_examples/usage";
 
 const comboboxProps: PropDefinition[] = [
@@ -80,13 +73,6 @@ const comboboxTriggerProps: PropDefinition[] = [
 ];
 
 const comboboxOptionProps: PropDefinition[] = [
-  {
-    name: "id",
-    type: "string",
-    defaultValue: "-",
-    description:
-      "شناسه لیست آیتم‌ها، برای اتصال به ComboboxList داخلی (وابسته به پیاده‌سازی Ark UI).",
-  },
   {
     name: "className",
     type: "string",
@@ -148,14 +134,6 @@ export default function ComboboxPage() {
           <CustomItemsComboboxExample />
         </ComponentExample>
 
-        <ComponentExample
-          title="گروه‌بندی آیتم‌ها"
-          titleEn="Groups"
-          description="گروه‌بندی آیتم‌ها بر اساس دسته (مثلاً مناطق زمانی)."
-          code={groupsCode}
-        >
-          <GroupedComboboxExample />
-        </ComponentExample>
       </section>
 
       {/* API Reference */}
