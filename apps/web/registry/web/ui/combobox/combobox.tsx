@@ -92,9 +92,30 @@ function ComboboxInner<T>({
     itemToString,
   };
 
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (rootRef.current && target && !rootRef.current.contains(target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [open]);
+
   return (
     <ComboboxContext.Provider value={ctx}>
-      <div className={cn("relative", className)} {...props}>
+      <div ref={rootRef} className={cn("relative", className)} {...props}>
         {children}
       </div>
     </ComboboxContext.Provider>
