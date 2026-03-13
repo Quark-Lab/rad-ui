@@ -8,7 +8,7 @@ import { cn } from "../../lib/utils";
 type StringGetter<T> = (item: T) => string;
 
 interface ComboboxContextValue<T> {
-  items: T[];
+  items: readonly T[];
   filteredItems: T[];
   value: T | null;
   setValue: (value: T | null) => void;
@@ -32,7 +32,7 @@ function useComboboxContext<T>() {
 }
 
 export interface ComboboxProps<T = string> {
-  items: T[];
+  items: readonly T[];
   value?: T | null;
   defaultValue?: T | null;
   onValueChange?: (value: T | null) => void;
@@ -62,15 +62,14 @@ function ComboboxInner<T>({
   const itemToString: StringGetter<T> =
     itemToStringValue ?? ((item) => String(item));
 
-  const filteredItems = React.useMemo(
-    () =>
-      items.filter((item) =>
-        itemToString(item)
-          .toLowerCase()
-          .includes(inputValue.toLowerCase())
-      ),
-    [items, itemToString, inputValue]
-  );
+  const filteredItems = React.useMemo(() => {
+    const mutableItems = [...items];
+    return mutableItems.filter((item) =>
+      itemToString(item)
+        .toLowerCase()
+        .includes(inputValue.toLowerCase())
+    );
+  }, [items, itemToString, inputValue]);
 
   const handleChange = (next: T | null) => {
     if (!isControlled) {
@@ -130,7 +129,7 @@ const ComboboxTrigger = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { value, inputValue, setInputValue, setOpen, itemToString } =
+  const { value, inputValue, setInputValue, setOpen, itemToString, open } =
     useComboboxContext<any>();
 
   const displayValue =
@@ -149,7 +148,7 @@ const ComboboxTrigger = React.forwardRef<
       )}
       dir="rtl"
       role="combobox"
-      aria-expanded={false}
+      aria-expanded={open}
       onClick={() => {
         // وقتی کاربر دوباره روی تریگر کلیک می‌کند، همه آیتم‌ها را نشان بده
         setInputValue("");
@@ -178,9 +177,9 @@ const ComboboxPopover = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
-  const { open, filteredItems } = useComboboxContext<any>();
+  const { open } = useComboboxContext<any>();
 
-  if (!open || filteredItems.length === 0) {
+  if (!open) {
     return null;
   }
 
