@@ -230,6 +230,13 @@ export const componentCategories: ComponentCategory[] = [
         description: "ناحیه اسکرول‌پذیر با نوار اسکرول سفارشی",
       },
       {
+        name: "Resizable",
+        nameFA: "پنل قابل تغییر اندازه",
+        href: "/components/resizable",
+        icon: ChevronsLeftRight,
+        description: "چیدمان‌های قابل تغییر اندازه با پنل‌های ریسایز",
+      },
+      {
         name: "Tabs",
         nameFA: "تب‌ها",
         href: "/components/tabs",

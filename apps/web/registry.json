@@ -402,6 +402,20 @@
       ]
     },
     {
+      "name": "resizable",
+      "type": "registry:ui",
+      "description": "Accessible resizable panel groups and layouts with keyboard support",
+      "platform": "web",
+      "dependencies": ["react-resizable-panels@^4.1.0", "lucide-react@^0.309.0"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/web/ui/resizable/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "description": "Displays a list of options for the user to pick from",
