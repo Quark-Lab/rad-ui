@@ -234,6 +234,11 @@ export {
   SelectScrollDownButton,
 } from "./select/select";
 export {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "./resizable/resizable";
+export {
   Sheet,
   SheetPortal,
   SheetOverlay,

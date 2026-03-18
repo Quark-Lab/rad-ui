@@ -299,6 +299,16 @@
     "registryDependencies": []
   },
   {
+    "name": "resizable",
+    "description": "Accessible resizable panel groups and layouts with keyboard support",
+    "platform": "web",
+    "dependencies": [
+      "react-resizable-panels",
+      "lucide-react"
+    ],
+    "registryDependencies": []
+  },
+  {
     "name": "select",
     "description": "Displays a list of options for the user to pick from",
     "platform": "web",
