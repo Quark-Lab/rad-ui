@@ -37,6 +37,7 @@ import {
   Info,
   Image,
   Search,
+  Bell,
   type LucideIcon,
 } from "lucide-react";
 
@@ -424,6 +425,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/chart",
         icon: BarChart3,
         description: "نمودارهای داده با Recharts همراه با تولتیپ و راهنما",
+      },
+      {
+        name: "Sonner",
+        nameFA: "سونر",
+        href: "/components/sonner",
+        icon: Bell,
+        description: "نمایش Toast (اعلان‌های موقتی)",
       },
     ],
   },

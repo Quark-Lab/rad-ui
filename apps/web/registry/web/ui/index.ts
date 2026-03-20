@@ -238,6 +238,7 @@ export {
   ResizablePanel,
   ResizableHandle,
 } from "./resizable/resizable";
+export { Toaster, type ToasterProps, toast } from "./sonner/sonner";
 export {
   Sheet,
   SheetPortal,
