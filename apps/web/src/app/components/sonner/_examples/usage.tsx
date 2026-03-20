@@ -4,7 +4,7 @@ export const code = `import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir="rtl">
+    <html lang="fa" dir="rtl">
       <body>
         <main>{children}</main>
         <Toaster />

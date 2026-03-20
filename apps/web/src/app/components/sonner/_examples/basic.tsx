@@ -12,16 +12,17 @@ export default function SonnerBasicExample() {
       <Button
         variant="outline"
         onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
+          toast("رویداد ایجاد شد", {
+            description:
+              "یکشنبه، ۳ دسامبر ۲۰۲۳ ساعت ۹:۰۰ صبح",
             action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
+              label: "بازگشت",
+              onClick: () => console.log("بازگشت"),
             },
           })
         }
       >
-        Show Toast
+        نمایش Toast
       </Button>
     </>
   );
@@ -35,16 +36,17 @@ export default function BasicExample() {
       <Button
         variant="outline"
         onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
+          toast("رویداد ایجاد شد", {
+            description:
+              "یکشنبه، ۳ دسامبر ۲۰۲۳ ساعت ۹:۰۰ صبح",
             action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
+              label: "بازگشت",
+              onClick: () => console.log("بازگشت"),
             },
           })
         }
       >
-        Show Toast
+        نمایش Toast
       </Button>
     </>
   );

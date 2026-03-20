@@ -8,23 +8,53 @@ import { toast } from "@/components/ui/sonner";
 export default function SonnerPosition() {
   return (
     <div className="flex flex-wrap justify-center gap-2">
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "top-left" })}>
-        Top Left
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "top-left" })
+        }
+      >
+        بالا چپ
       </Button>
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "top-center" })}>
-        Top Center
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "top-center" })
+        }
+      >
+        بالا مرکز
       </Button>
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "top-right" })}>
-        Top Right
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "top-right" })
+        }
+      >
+        بالا راست
       </Button>
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "bottom-left" })}>
-        Bottom Left
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "bottom-left" })
+        }
+      >
+        پایین چپ
       </Button>
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "bottom-center" })}>
-        Bottom Center
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "bottom-center" })
+        }
+      >
+        پایین مرکز
       </Button>
-      <Button variant="outline" onClick={() => toast("Event has been created", { position: "bottom-right" })}>
-        Bottom Right
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast("رویداد ایجاد شد", { position: "bottom-right" })
+        }
+      >
+        پایین راست
       </Button>
     </div>
   );
@@ -39,50 +69,50 @@ export default function PositionExample() {
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "top-left" })
+            toast("رویداد ایجاد شد", { position: "top-left" })
           }
         >
-          Top Left
+          بالا چپ
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "top-center" })
+            toast("رویداد ایجاد شد", { position: "top-center" })
           }
         >
-          Top Center
+          بالا مرکز
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "top-right" })
+            toast("رویداد ایجاد شد", { position: "top-right" })
           }
         >
-          Top Right
+          بالا راست
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "bottom-left" })
+            toast("رویداد ایجاد شد", { position: "bottom-left" })
           }
         >
-          Bottom Left
+          پایین چپ
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "bottom-center" })
+            toast("رویداد ایجاد شد", { position: "bottom-center" })
           }
         >
-          Bottom Center
+          پایین مرکز
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast("Event has been created", { position: "bottom-right" })
+            toast("رویداد ایجاد شد", { position: "bottom-right" })
           }
         >
-          Bottom Right
+          پایین راست
         </Button>
       </div>
     </>

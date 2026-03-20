@@ -20,7 +20,7 @@ const toasterProps: PropDefinition[] = [
     name: "className",
     type: "string",
     defaultValue: "-",
-    description: "کلاس‌های CSS سفارشی برای Toaster.",
+    description: "کلاس‌های CSS سفارشی برای توستر.",
   },
 ];
 
@@ -28,24 +28,23 @@ export default function SonnerPage() {
   return (
     <div className="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-5xl">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">سونر (Sonner)</h1>
+        <h1 className="text-4xl font-bold mb-4">سونر</h1>
         <p className="text-lg text-muted-foreground">
           نمایش Toast (اعلان‌های موقتی) با دکمه‌ها و پیام‌های متنی، شبیه الگوی shadcn/ui.
         </p>
       </div>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نصب (Installation)</h2>
+        <h2 className="text-2xl font-semibold mb-6">نصب</h2>
         <InstallCodeBlock code="npx @quark-lab/rad-ui add sonner" language="bash" />
       </section>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نمونه‌ها (Examples)</h2>
+        <h2 className="text-2xl font-semibold mb-6">نمونه‌ها</h2>
 
         <ComponentExample
           title="پایه"
-          titleEn="Basic"
-          description="نمایش یک Toast با description و action."
+          description="نمایش یک Toast با `description` و `action`."
           code={basicCode}
         >
           <BasicExample />
@@ -53,7 +52,6 @@ export default function SonnerPage() {
 
         <ComponentExample
           title="انواع Toast"
-          titleEn="Types"
           description="استفاده از toast.success / toast.info / toast.warning / toast.error."
           code={typesCode}
         >
@@ -61,8 +59,7 @@ export default function SonnerPage() {
         </ComponentExample>
 
         <ComponentExample
-          title="موقعیت (Position)"
-          titleEn="Position"
+          title="موقعیت"
           description="تغییر موقعیت Toast روی صفحه."
           code={positionCode}
         >
@@ -72,14 +69,14 @@ export default function SonnerPage() {
 
       <ApiReferenceSection>
         <PropsTable
-          title="Toaster"
+          title="توستر"
           description="کامپوننتی که باید یک‌بار در برنامه (ترجیحا در RootLayout) رندر شود."
           props={toasterProps}
         />
       </ApiReferenceSection>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">دسترسی‌پذیری (Accessibility)</h2>
+        <h2 className="text-2xl font-semibold mb-6">دسترسی‌پذیری</h2>
         <div className="space-y-4 text-muted-foreground">
           <div className="p-4 rounded-lg bg-card border border-border">
             <h3 className="font-semibold text-foreground mb-2">ARIA و اعلام وضعیت</h3>
@@ -98,7 +95,7 @@ export default function SonnerPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">بهترین شیوه‌ها (Best Practices)</h2>
+        <h2 className="text-2xl font-semibold mb-6">بهترین شیوه‌ها</h2>
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold mb-3">یک Toaster در کل برنامه</h3>
@@ -117,7 +114,7 @@ export default function SonnerPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده (Usage)</h2>
+        <h2 className="text-2xl font-semibold mb-6">نحوه استفاده</h2>
         <InlineCodeBlock code={usageCode} />
       </section>
     </div>

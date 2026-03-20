@@ -10,20 +10,39 @@ import { toast } from "@/components/ui/sonner"
 export default function SonnerTypes() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Button variant="outline" onClick={() => toast("Event has been created")}>
-        Default
+      <Button
+        variant="outline"
+        onClick={() => toast("رویداد ایجاد شد")}
+      >
+        پیش‌فرض
       </Button>
-      <Button variant="outline" onClick={() => toast.success("Event has been created")}>
-        Success
+      <Button
+        variant="outline"
+        onClick={() => toast.success("رویداد ایجاد شد")}
+      >
+        موفق
       </Button>
-      <Button variant="outline" onClick={() => toast.info("Be at the area 10 minutes before the event time")}>
-        Info
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast.info("۱۰ دقیقه قبل از زمان رویداد در محل حاضر باشید")
+        }
+      >
+        اطلاع
       </Button>
-      <Button variant="outline" onClick={() => toast.warning("Event start time cannot be earlier than 8am")}>
-        Warning
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast.warning("زمان شروع رویداد نباید قبل از ۸ صبح باشد")
+        }
+      >
+        هشدار
       </Button>
-      <Button variant="outline" onClick={() => toast.error("Event has not been created")}>
-        Error
+      <Button
+        variant="outline"
+        onClick={() => toast.error("رویداد ایجاد نشد")}
+      >
+        خطا
       </Button>
     </div>
   )
@@ -35,36 +54,39 @@ export default function TypesExample() {
     <>
       <Toaster />
       <div className="flex flex-wrap gap-2">
-        <Button variant="outline" onClick={() => toast("Event has been created")}>
-          Default
+        <Button
+          variant="outline"
+          onClick={() => toast("رویداد ایجاد شد")}
+        >
+          پیش‌فرض
         </Button>
         <Button
           variant="outline"
-          onClick={() => toast.success("Event has been created")}
+          onClick={() => toast.success("رویداد ایجاد شد")}
         >
-          Success
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            toast.info("Be at the area 10 minutes before the event time")
-          }
-        >
-          Info
+          موفق
         </Button>
         <Button
           variant="outline"
           onClick={() =>
-            toast.warning("Event start time cannot be earlier than 8am")
+            toast.info("۱۰ دقیقه قبل از زمان رویداد در محل حاضر باشید")
           }
         >
-          Warning
+          اطلاع
         </Button>
         <Button
           variant="outline"
-          onClick={() => toast.error("Event has not been created")}
+          onClick={() =>
+            toast.warning("زمان شروع رویداد نباید قبل از ۸ صبح باشد")
+          }
         >
-          Error
+          هشدار
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => toast.error("رویداد ایجاد نشد")}
+        >
+          خطا
         </Button>
       </div>
     </>
