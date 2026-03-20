@@ -489,5 +489,14 @@
       "lucide-react"
     ],
     "registryDependencies": []
+  },
+  {
+    "name": "sonner",
+    "description": "An opinionated toast component with Toaster and toast helpers",
+    "platform": "web",
+    "dependencies": [
+      "sonner"
+    ],
+    "registryDependencies": []
   }
 ]

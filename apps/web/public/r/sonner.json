@@ -1,0 +1,21 @@
+{
+  "name": "sonner",
+  "type": "registry:ui",
+  "description": "An opinionated toast component with Toaster and toast helpers",
+  "platform": "web",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/sonner/sonner.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Toaster as SonnerToaster } from \"sonner\";\nimport { toast } from \"sonner\";\n\nimport { cn } from \"../../lib/utils\";\n\nexport interface ToasterProps\n  extends React.ComponentPropsWithoutRef<typeof SonnerToaster> {\n  /**\n   * Rad UI is RTL-first. Default is `rtl`.\n   * If you need LTR toasts, pass `dir=\"ltr\"`.\n   */\n  dir?: \"rtl\" | \"ltr\";\n}\n\nexport function Toaster({\n  dir = \"rtl\",\n  className,\n  ...props\n}: ToasterProps) {\n  return (\n    <SonnerToaster\n      dir={dir}\n      className={cn(className)}\n      {...props}\n    />\n  );\n}\n\nexport { toast };\n\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}
