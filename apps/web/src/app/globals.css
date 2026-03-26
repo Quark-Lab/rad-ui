@@ -25,6 +25,14 @@
     --chart-3: 270 60% 50%;
     --chart-4: 348 75% 48%;
     --chart-5: 95 55% 40%;
+    --sidebar-background: 180 15% 96%;
+    --sidebar-foreground: 200 25% 10%;
+    --sidebar-primary: 174 72% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 12% 92%;
+    --sidebar-accent-foreground: 200 25% 10%;
+    --sidebar-border: 180 12% 87%;
+    --sidebar-ring: 174 72% 40%;
   }
 
   .dark {
@@ -48,6 +56,14 @@
     --chart-3: 270 55% 62%;
     --chart-4: 348 70% 58%;
     --chart-5: 95 50% 52%;
+    --sidebar-background: 200 38% 10%;
+    --sidebar-foreground: 180 30% 96%;
+    --sidebar-primary: 174 65% 52%;
+    --sidebar-primary-foreground: 200 40% 8%;
+    --sidebar-accent: 200 28% 15%;
+    --sidebar-accent-foreground: 180 30% 96%;
+    --sidebar-border: 200 28% 18%;
+    --sidebar-ring: 174 65% 52%;
   }
 
   /* Theme: Kahgel (Warm Clay) - Updated with #c68F3F */

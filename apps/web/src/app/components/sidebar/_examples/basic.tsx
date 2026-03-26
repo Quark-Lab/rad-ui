@@ -32,8 +32,12 @@ import { Home, Settings, User } from "lucide-react";
 
 export default function SidebarBasicExample() {
   return (
-    <SidebarProvider className="min-h-[420px] rounded-lg border border-border">
-      <Sidebar side="right" collapsible="icon">
+    <SidebarProvider className="relative min-h-[420px] overflow-hidden rounded-lg border border-border">
+      <Sidebar
+        side="right"
+        collapsible="icon"
+        className="!absolute !inset-y-0 !right-0 !left-auto"
+      >
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>ناوبری</SidebarGroupLabel>
@@ -77,8 +81,12 @@ export default function SidebarBasicExample() {
 
 export default function BasicExample() {
   return (
-    <SidebarProvider className="min-h-[420px] rounded-lg border border-border">
-      <Sidebar side="right" collapsible="icon">
+    <SidebarProvider className="relative min-h-[420px] overflow-hidden rounded-lg border border-border">
+      <Sidebar
+        side="right"
+        collapsible="icon"
+        className="!absolute !inset-y-0 !right-0 !left-auto"
+      >
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>ناوبری</SidebarGroupLabel>

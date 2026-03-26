@@ -39,9 +39,14 @@ export default function SidebarControlledExample() {
     <SidebarProvider
       open={open}
       onOpenChange={setOpen}
-      className="min-h-[420px] rounded-lg border border-border"
+      className="relative min-h-[420px] overflow-hidden rounded-lg border border-border"
     >
-      <Sidebar side="right" variant="inset" collapsible="offcanvas">
+      <Sidebar
+        side="right"
+        variant="inset"
+        collapsible="offcanvas"
+        className="!absolute !inset-y-0 !right-0 !left-auto"
+      >
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>پیام‌ها</SidebarGroupLabel>
@@ -94,9 +99,14 @@ export default function ControlledExample() {
     <SidebarProvider
       open={open}
       onOpenChange={setOpen}
-      className="min-h-[420px] rounded-lg border border-border"
+      className="relative min-h-[420px] overflow-hidden rounded-lg border border-border"
     >
-      <Sidebar side="right" variant="inset" collapsible="offcanvas">
+      <Sidebar
+        side="right"
+        variant="inset"
+        collapsible="offcanvas"
+        className="!absolute !inset-y-0 !right-0 !left-auto"
+      >
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>پیام‌ها</SidebarGroupLabel>
