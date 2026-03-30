@@ -7,6 +7,7 @@ import Link from "next/link";
 import { cn } from "@/registry/web/ui";
 import { ThemeSwitcher } from "./theme-switcher";
 import { GithubButton } from "./github-button";
+import { RadLogo } from "./rad-logo";
 
 const navLinks = [
   { href: "/", label: "صفحه اصلی" },
@@ -22,46 +23,45 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex-row-reverse flex items-center justify-between h-16">
-          {/* Logo - Right side (RTL) */}
-          {/* <Link
-            href="/"
-            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            <div className="text-2xl font-bold bg-gradient-to-l from-primary to-primary/60 bg-clip-text text-transparent">
-              راد
+        <div className="flex items-center justify-between h-16">
+          {/* Logo + Navigation (right side in RTL) */}
+          <div className="flex items-center gap-6">
+            <Link
+              href="/"
+              className="flex items-center cursor-pointer hover:opacity-80 transition-opacity"
+            >
+              <RadLogo size={28} />
+            </Link>
+            <div className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
-          </Link> */}
+          </div>
+
+          {/* Left side actions (RTL) */}
           <div className="flex flex-row items-center gap-4">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-card transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
             <GithubButton />
             <ThemeSwitcher />
           </div>
-
-          {/* Desktop Navigation - Left side (RTL) */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-card transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
         </div>
 
         {/* Mobile Menu */}
