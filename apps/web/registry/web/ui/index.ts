@@ -396,3 +396,10 @@ export {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "./navigation-menu/navigation-menu";
+export { Calendar, CalendarDayButton } from "./calendar/calendar";
+export type { CalendarProps } from "./calendar/calendar";
+export { DatePicker, DateRangePicker } from "./date-picker/date-picker";
+export type {
+  DatePickerProps,
+  DateRangePickerProps,
+} from "./date-picker/date-picker";

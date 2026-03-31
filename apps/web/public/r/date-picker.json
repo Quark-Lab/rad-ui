@@ -1,0 +1,27 @@
+{
+  "name": "date-picker",
+  "type": "registry:ui",
+  "description": "A date picker component with Persian (Jalali) calendar, range selection, and popover",
+  "platform": "web",
+  "dependencies": [
+    "react-day-picker",
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "popover",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "ui/date-picker/date-picker.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Calendar as CalendarIcon, CalendarDays } from \"lucide-react\";\nimport type { DateRange } from \"react-day-picker\";\n\nimport { cn } from \"../../lib/utils\";\nimport { Button } from \"../button\";\nimport { Calendar, type CalendarProps } from \"../calendar/calendar\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"../popover/popover\";\n\ninterface DatePickerProps\n  extends Omit<CalendarProps, \"mode\" | \"selected\" | \"onSelect\"> {\n  date?: Date;\n  onDateChange?: (date: Date | undefined) => void;\n  placeholder?: string;\n  className?: string;\n  calendarClassName?: string;\n  disabled?: boolean;\n}\n\nconst DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(\n  (\n    {\n      date,\n      onDateChange,\n      placeholder = \"انتخاب تاریخ\",\n      className,\n      calendarClassName,\n      disabled,\n      ...calendarProps\n    },\n    ref\n  ) => {\n    return (\n      <Popover>\n        <PopoverTrigger asChild>\n          <Button\n            ref={ref}\n            variant=\"outline\"\n            disabled={disabled}\n            className={cn(\n              \"w-[280px] justify-start text-start font-normal\",\n              !date && \"text-muted-foreground\",\n              className\n            )}\n          >\n            <CalendarIcon className=\"me-2 h-4 w-4\" />\n            {date ? date.toLocaleDateString(\"fa-IR\") : placeholder}\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className=\"w-auto p-0\">\n          <Calendar\n            mode=\"single\"\n            selected={date}\n            onSelect={onDateChange}\n            className={calendarClassName}\n            {...calendarProps}\n          />\n        </PopoverContent>\n      </Popover>\n    );\n  }\n);\n\nDatePicker.displayName = \"DatePicker\";\n\ninterface DateRangePickerProps\n  extends Omit<CalendarProps, \"mode\" | \"selected\" | \"onSelect\"> {\n  dateRange?: DateRange;\n  onDateRangeChange?: (range: DateRange | undefined) => void;\n  placeholder?: string;\n  className?: string;\n  calendarClassName?: string;\n  disabled?: boolean;\n  numberOfMonths?: number;\n}\n\nconst DateRangePicker = React.forwardRef<\n  HTMLButtonElement,\n  DateRangePickerProps\n>(\n  (\n    {\n      dateRange,\n      onDateRangeChange,\n      placeholder = \"انتخاب بازه تاریخ\",\n      className,\n      calendarClassName,\n      disabled,\n      numberOfMonths = 2,\n      ...calendarProps\n    },\n    ref\n  ) => {\n    return (\n      <Popover>\n        <PopoverTrigger asChild>\n          <Button\n            ref={ref}\n            variant=\"outline\"\n            disabled={disabled}\n            className={cn(\n              \"w-[300px] justify-start text-start font-normal\",\n              !dateRange && \"text-muted-foreground\",\n              className\n            )}\n          >\n            <CalendarDays className=\"me-2 h-4 w-4\" />\n            {dateRange?.from ? (\n              dateRange.to ? (\n                <>\n                  {dateRange.from.toLocaleDateString(\"fa-IR\")}\n                  {\" - \"}\n                  {dateRange.to.toLocaleDateString(\"fa-IR\")}\n                </>\n              ) : (\n                dateRange.from.toLocaleDateString(\"fa-IR\")\n              )\n            ) : (\n              placeholder\n            )}\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className=\"w-auto p-0\" align=\"start\">\n          <Calendar\n            mode=\"range\"\n            defaultMonth={dateRange?.from}\n            selected={dateRange}\n            onSelect={onDateRangeChange}\n            numberOfMonths={numberOfMonths}\n            className={calendarClassName}\n            {...calendarProps}\n          />\n        </PopoverContent>\n      </Popover>\n    );\n  }\n);\n\nDateRangePicker.displayName = \"DateRangePicker\";\n\nexport { DatePicker, DateRangePicker };\nexport type { DatePickerProps, DateRangePickerProps };\n"
+    }
+  ],
+  "utils": {
+    "path": "lib/utils.ts",
+    "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\n"
+  }
+}

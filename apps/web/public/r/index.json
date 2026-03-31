@@ -516,5 +516,33 @@
       "sonner"
     ],
     "registryDependencies": []
+  },
+  {
+    "name": "calendar",
+    "description": "A date calendar component with Persian (Jalali) calendar support built on react-day-picker",
+    "platform": "web",
+    "dependencies": [
+      "react-day-picker",
+      "date-fns",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ]
+  },
+  {
+    "name": "date-picker",
+    "description": "A date picker component with Persian (Jalali) calendar, range selection, and popover",
+    "platform": "web",
+    "dependencies": [
+      "react-day-picker",
+      "date-fns",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "calendar",
+      "popover",
+      "button"
+    ]
   }
 ]
