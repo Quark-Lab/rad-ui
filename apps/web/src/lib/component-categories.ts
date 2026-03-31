@@ -38,6 +38,7 @@ import {
   Image,
   Search,
   Bell,
+  CalendarDays,
   type LucideIcon,
 } from "lucide-react";
 
@@ -181,6 +182,20 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/combobox",
         icon: Search,
         description: "ورودی خودتکمیل با پیشنهادهای قابل جستجو",
+      },
+      {
+        name: "Calendar",
+        nameFA: "تقویم",
+        href: "/components/calendar",
+        icon: CalendarDays,
+        description: "تقویم شمسی با پشتیبانی از انتخاب تاریخ و بازه",
+      },
+      {
+        name: "Date Picker",
+        nameFA: "انتخابگر تاریخ",
+        href: "/components/date-picker",
+        icon: CalendarDays,
+        description: "انتخابگر تاریخ با پاپ‌اور و تقویم شمسی",
       },
     ],
   },

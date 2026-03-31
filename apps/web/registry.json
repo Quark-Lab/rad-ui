@@ -714,6 +714,42 @@
       "dependencies": ["sonner@^2.0.7"],
       "registryDependencies": [],
       "files": [{ "path": "registry/web/ui/sonner/sonner.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "A date calendar component with Persian (Jalali) calendar support built on react-day-picker",
+      "platform": "web",
+      "dependencies": [
+        "react-day-picker@^9.14.0",
+        "date-fns@^4.1.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/web/ui/calendar/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "description": "A date picker component with Persian (Jalali) calendar, range selection, and popover",
+      "platform": "web",
+      "dependencies": [
+        "react-day-picker@^9.14.0",
+        "date-fns@^4.1.0",
+        "lucide-react@^0.309.0"
+      ],
+      "registryDependencies": ["calendar", "popover", "button"],
+      "files": [
+        {
+          "path": "registry/web/ui/date-picker/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
