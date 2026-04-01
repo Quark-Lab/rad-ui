@@ -403,3 +403,13 @@ export type {
   DatePickerProps,
   DateRangePickerProps,
 } from "./date-picker/date-picker";
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from "./table/table";
