@@ -39,6 +39,7 @@ import {
   Search,
   Bell,
   CalendarDays,
+  Table2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -328,6 +329,13 @@ export const componentCategories: ComponentCategory[] = [
         href: "/components/sidebar",
         icon: PanelLeft,
         description: "نوار کناری قابل جمع‌شدن با گروه‌ها و آیتم‌های ناوبری",
+      },
+      {
+        name: "Table",
+        nameFA: "جدول",
+        href: "/components/table",
+        icon: Table2,
+        description: "جدول داده‌ها با پشتیبانی کامل از RTL",
       },
     ],
   },

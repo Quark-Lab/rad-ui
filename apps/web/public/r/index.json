@@ -544,5 +544,12 @@
       "popover",
       "button"
     ]
+  },
+  {
+    "name": "table",
+    "description": "A responsive table component",
+    "platform": "web",
+    "dependencies": [],
+    "registryDependencies": []
   }
 ]
