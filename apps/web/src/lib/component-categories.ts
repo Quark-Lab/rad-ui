@@ -337,6 +337,14 @@ export const componentCategories: ComponentCategory[] = [
         icon: Table2,
         description: "جدول داده‌ها با پشتیبانی کامل از RTL",
       },
+      {
+        name: "Data Table",
+        nameFA: "جدول داده",
+        href: "/components/data-table",
+        icon: Table2,
+        description:
+          "جدول داده‌های پیشرفته با مرتب‌سازی، فیلتر و صفحه‌بندی",
+      },
     ],
   },
   {
